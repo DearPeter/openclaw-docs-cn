@@ -47,3 +47,8 @@ translation_report.json
 TRANSLATION_REPORT.md
 TRANSLATION_SUMMARY.md
 PROJECT_COMPLETION_REPORT.md
+
+# Hugo build output
+public/
+bin/
+backup-old-build/

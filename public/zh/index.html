@@ -1,74 +1,150 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenClaw 中文文档</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        nav { background: #f5f5f5; padding: 10px; margin-bottom: 20px; }
-        nav a { margin-right: 15px; text-decoration: none; color: #0366d6; }
-        h1 { color: #24292e; }
-        .content { line-height: 1.6; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; }
-        .page-list { margin-top: 20px; }
-        .page-item { margin-bottom: 10px; padding: 10px; border: 1px solid #e1e4e8; border-radius: 6px; }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="/openclaw-docs-cn/">首页</a>
-        <a href="/openclaw-docs-cn/zh/">中文</a>
-        <a href="/openclaw-docs-cn/en/">英文</a>
-        <a href="https://docs.openclaw.ai/">原版文档</a>
-    </nav>
-    
-    <h1>OpenClaw 中文文档</h1>
-    
-    <div class="content">
-        <p>欢迎访问 OpenClaw 官方文档的中文翻译版本！</p>
-        
-        <h2>文档分类</h2>
-        
-        <div class="page-list">
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/concepts/">概念文档</a></h3>
-                <p>OpenClaw 的核心概念和架构说明。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/tools/">工具文档</a></h3>
-                <p>OpenClaw 的各种工具和功能使用指南。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/start/">开始使用</a></h3>
-                <p>OpenClaw 的安装和快速入门指南。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/install/">安装指南</a></h3>
-                <p>详细的安装步骤和配置说明。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/channels/">频道配置</a></h3>
-                <p>各种消息频道的配置和使用方法。</p>
-            </div>
-        </div>
-        
-        <h2>项目信息</h2>
-        <ul>
-            <li><strong>GitHub仓库</strong>: <a href="https://github.com/DearPeter/openclaw-docs-cn">DearPeter/openclaw-docs-cn</a></li>
-            <li><strong>原版文档</strong>: <a href="https://docs.openclaw.ai/">docs.openclaw.ai</a></li>
-            <li><strong>部署状态</strong>: GitHub Pages 自动部署</li>
-            <li><strong>最后更新</strong>: 2026-02-14</li>
-        </ul>
-    </div>
-    
-    <footer>
-        <p>© 2026 OpenClaw 中文文档 - OpenClaw官方文档中文翻译</p>
-        <p>本网站由 Data Team Assistant 自动创建和部署</p>
-    </footer>
-</body>
-</html>
+<!doctype html><html lang=zh dir=ltr><head><meta name=generator content="Hugo 0.146.0"><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="OpenClaw - OpenClaw - 中文翻译# OpenClaw 首页 英文 K Home OpenClaw 开始使用 安装 频道 智能体 工具 模型 平台 网关与运维 参考 帮助 Home OpenClaw 概述 展示 Core concepts Features First steps Getting Started 入门指南 概述 入门指南: 命令行界面 入门指南: macOS App Guides Personal Assistant 设置 本页内容 OpenClaw 🦞 What is OpenClaw? How it works Key capabilities Quick start Dashboard 配置 (optional) Start here Learn more ​ OpenClaw 🦞 “EXFOLIATE! EXFOLIATE!” — A space lobster, probably Any OS 网关为AI 智能体 across WhatsApp, Telegram, Discord, iMessage,与more. Send a 消息, get an 智能体 response从your pocket. Plugins add Mattermost与more. 开始使用 安装 OpenClaw与bring up the 网关在minutes. Run the 向导 Guided 设置 with OpenClaw onboard and pairing flows. Open the 控制 UI Launch the 浏览器 dashboard为chat, config,与sessions. ​ What is OpenClaw? OpenClaw is a self-hosted 网关 that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage,与more —到AI coding 智能体 like Pi. You run a single 网关 进程在your own machine (or a server),与it becomes the bridge between your messaging apps与an always-available AI assistant. Who is it for? Developers与power users who want a personal AI assistant they can 消息从anywhere — without giving up 控制的their data或relying在a hosted service. What makes it different? Self-hosted runs在your hardware, your rules Multi-频道 one 网关 serves WhatsApp, Telegram, Discord,与more simultaneously 智能体-native built为coding Agent使用tool use, sessions, 记忆,与multi-智能体 routing Open source MIT licensed, community-driven What do you need? Node 22+, an API key (Anthropic recommended),与5 minutes. ​ How it works The 网关 is the single source的truth为sessions, routing,与channel connections. ​ Key capabilities Multi-频道 网关 WhatsApp, Telegram, Discord,与iMessage使用a single 网关 进程. Plugin 频道 Add Mattermost与more使用extension packages. 多Agent routing Isolated sessions per 智能体, 工作空间,或sender. Media support Send与receive images, audio,与documents. 网页 控制 UI 浏览器 dashboard为chat, config, sessions,与节点. Mobile 节点 Pair iOS与Android 节点使用画布 support. ​ Quick start 1 安装 OpenClaw Copy npm 安装 -g OpenClaw@latest 2 Onboard与安装 the service Copy OpenClaw onboard –安装-daemon 3 Pair WhatsApp与start the 网关 Copy OpenClaw 频道 登录 OpenClaw 网关 –port 18789 Need the full 安装与dev 设置? See Quick start . ​ Dashboard Open the 浏览器 控制 UI after the 网关 starts. Local default: http://127.0.0.1:18789/ Remote access: 网页 surfaces and Tailscale ​ 配置 (optional) Config lives at ~/.OpenClaw/OpenClaw.JSON . If you do nothing , OpenClaw uses the bundled Pi binary在RPC mode使用per-sender sessions. If you want到lock it down, start with 频道.WhatsApp.allowFrom and (for groups) mention rules. 示例： Copy { 频道 : { WhatsApp : { allowFrom : [ “+15555550123” ] , groups : { “” : { requireMention : true } } , } , } , messages : { groupChat : { mentionPatterns : [ “@OpenClaw” ] } } , } ​ Start here Docs 中心 All docs与guides, organized通过use case. 配置 Core 网关 settings, tokens,与provider config. Remote access SSH与tailnet access patterns. 频道 频道-specific 设置为WhatsApp, Telegram, Discord,与more. 节点 iOS与Android 节点使用pairing与画布. 帮助 Common fixes与troubleshooting entry point. ​ Learn more Full feature list Complete 频道, routing,与media capabilities. 多Agent routing 工作空间 isolation与per-智能体 sessions. Security Tokens, allowlists,与safety controls. Troubleshooting 网关 diagnostics与common errors. About与credits Project origins, contributors,与license. 展示 I 查看英文原版)ities)ional)\n\n—\n\n本文档已通过AI翻译完成，如有疑问请参考英文原版。* 本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考英文原版。 "><meta name=theme-color media="(prefers-color-scheme: light)" content="#ffffff"><meta name=theme-color media="(prefers-color-scheme: dark)" content="#343a40"><meta name=color-scheme content="light dark"><meta property="og:url" content="https://dearpeter.github.io/openclaw-docs-cn/zh/"><meta property="og:site_name" content="OpenClaw 中文文档"><meta property="og:title" content="OpenClaw 中文文档"><meta property="og:description" content="OpenClaw - OpenClaw - 中文翻译# OpenClaw 首页 英文 K Home OpenClaw 开始使用 安装 频道 智能体 工具 模型 平台 网关与运维 参考 帮助 Home OpenClaw 概述 展示 Core concepts Features First steps Getting Started 入门指南 概述 入门指南: 命令行界面 入门指南: macOS App Guides Personal Assistant 设置 本页内容 OpenClaw 🦞 What is OpenClaw? How it works Key capabilities Quick start Dashboard 配置 (optional) Start here Learn more ​ OpenClaw 🦞 “EXFOLIATE! EXFOLIATE!” — A space lobster, probably Any OS 网关为AI 智能体 across WhatsApp, Telegram, Discord, iMessage,与more. Send a 消息, get an 智能体 response从your pocket. Plugins add Mattermost与more. 开始使用 安装 OpenClaw与bring up the 网关在minutes. Run the 向导 Guided 设置 with OpenClaw onboard and pairing flows. Open the 控制 UI Launch the 浏览器 dashboard为chat, config,与sessions. ​ What is OpenClaw? OpenClaw is a self-hosted 网关 that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage,与more —到AI coding 智能体 like Pi. You run a single 网关 进程在your own machine (or a server),与it becomes the bridge between your messaging apps与an always-available AI assistant. Who is it for? Developers与power users who want a personal AI assistant they can 消息从anywhere — without giving up 控制的their data或relying在a hosted service. What makes it different? Self-hosted runs在your hardware, your rules Multi-频道 one 网关 serves WhatsApp, Telegram, Discord,与more simultaneously 智能体-native built为coding Agent使用tool use, sessions, 记忆,与multi-智能体 routing Open source MIT licensed, community-driven What do you need? Node 22+, an API key (Anthropic recommended),与5 minutes. ​ How it works The 网关 is the single source的truth为sessions, routing,与channel connections. ​ Key capabilities Multi-频道 网关 WhatsApp, Telegram, Discord,与iMessage使用a single 网关 进程. Plugin 频道 Add Mattermost与more使用extension packages. 多Agent routing Isolated sessions per 智能体, 工作空间,或sender. Media support Send与receive images, audio,与documents. 网页 控制 UI 浏览器 dashboard为chat, config, sessions,与节点. Mobile 节点 Pair iOS与Android 节点使用画布 support. ​ Quick start 1 安装 OpenClaw Copy npm 安装 -g OpenClaw@latest 2 Onboard与安装 the service Copy OpenClaw onboard –安装-daemon 3 Pair WhatsApp与start the 网关 Copy OpenClaw 频道 登录 OpenClaw 网关 –port 18789 Need the full 安装与dev 设置? See Quick start . ​ Dashboard Open the 浏览器 控制 UI after the 网关 starts. Local default: http://127.0.0.1:18789/ Remote access: 网页 surfaces and Tailscale ​ 配置 (optional) Config lives at ~/.OpenClaw/OpenClaw.JSON . If you do nothing , OpenClaw uses the bundled Pi binary在RPC mode使用per-sender sessions. If you want到lock it down, start with 频道.WhatsApp.allowFrom and (for groups) mention rules. 示例： Copy { 频道 : { WhatsApp : { allowFrom : [ “+15555550123” ] , groups : { “” : { requireMention : true } } , } , } , messages : { groupChat : { mentionPatterns : [ “@OpenClaw” ] } } , } ​ Start here Docs 中心 All docs与guides, organized通过use case. 配置 Core 网关 settings, tokens,与provider config. Remote access SSH与tailnet access patterns. 频道 频道-specific 设置为WhatsApp, Telegram, Discord,与more. 节点 iOS与Android 节点使用pairing与画布. 帮助 Common fixes与troubleshooting entry point. ​ Learn more Full feature list Complete 频道, routing,与media capabilities. 多Agent routing 工作空间 isolation与per-智能体 sessions. Security Tokens, allowlists,与safety controls. Troubleshooting 网关 diagnostics与common errors. About与credits Project origins, contributors,与license. 展示 I 查看英文原版)ities)ional)\n\n—\n\n本文档已通过AI翻译完成，如有疑问请参考英文原版。* 本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考英文原版。"><meta property="og:locale" content="zh"><meta property="og:type" content="website"><meta itemprop=name content="OpenClaw 中文文档"><meta itemprop=description content="OpenClaw - OpenClaw - 中文翻译# OpenClaw 首页 英文 K Home OpenClaw 开始使用 安装 频道 智能体 工具 模型 平台 网关与运维 参考 帮助 Home OpenClaw 概述 展示 Core concepts Features First steps Getting Started 入门指南 概述 入门指南: 命令行界面 入门指南: macOS App Guides Personal Assistant 设置 本页内容 OpenClaw 🦞 What is OpenClaw? How it works Key capabilities Quick start Dashboard 配置 (optional) Start here Learn more ​ OpenClaw 🦞 “EXFOLIATE! EXFOLIATE!” — A space lobster, probably Any OS 网关为AI 智能体 across WhatsApp, Telegram, Discord, iMessage,与more. Send a 消息, get an 智能体 response从your pocket. Plugins add Mattermost与more. 开始使用 安装 OpenClaw与bring up the 网关在minutes. Run the 向导 Guided 设置 with OpenClaw onboard and pairing flows. Open the 控制 UI Launch the 浏览器 dashboard为chat, config,与sessions. ​ What is OpenClaw? OpenClaw is a self-hosted 网关 that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage,与more —到AI coding 智能体 like Pi. You run a single 网关 进程在your own machine (or a server),与it becomes the bridge between your messaging apps与an always-available AI assistant. Who is it for? Developers与power users who want a personal AI assistant they can 消息从anywhere — without giving up 控制的their data或relying在a hosted service. What makes it different? Self-hosted runs在your hardware, your rules Multi-频道 one 网关 serves WhatsApp, Telegram, Discord,与more simultaneously 智能体-native built为coding Agent使用tool use, sessions, 记忆,与multi-智能体 routing Open source MIT licensed, community-driven What do you need? Node 22+, an API key (Anthropic recommended),与5 minutes. ​ How it works The 网关 is the single source的truth为sessions, routing,与channel connections. ​ Key capabilities Multi-频道 网关 WhatsApp, Telegram, Discord,与iMessage使用a single 网关 进程. Plugin 频道 Add Mattermost与more使用extension packages. 多Agent routing Isolated sessions per 智能体, 工作空间,或sender. Media support Send与receive images, audio,与documents. 网页 控制 UI 浏览器 dashboard为chat, config, sessions,与节点. Mobile 节点 Pair iOS与Android 节点使用画布 support. ​ Quick start 1 安装 OpenClaw Copy npm 安装 -g OpenClaw@latest 2 Onboard与安装 the service Copy OpenClaw onboard –安装-daemon 3 Pair WhatsApp与start the 网关 Copy OpenClaw 频道 登录 OpenClaw 网关 –port 18789 Need the full 安装与dev 设置? See Quick start . ​ Dashboard Open the 浏览器 控制 UI after the 网关 starts. Local default: http://127.0.0.1:18789/ Remote access: 网页 surfaces and Tailscale ​ 配置 (optional) Config lives at ~/.OpenClaw/OpenClaw.JSON . If you do nothing , OpenClaw uses the bundled Pi binary在RPC mode使用per-sender sessions. If you want到lock it down, start with 频道.WhatsApp.allowFrom and (for groups) mention rules. 示例： Copy { 频道 : { WhatsApp : { allowFrom : [ “+15555550123” ] , groups : { “” : { requireMention : true } } , } , } , messages : { groupChat : { mentionPatterns : [ “@OpenClaw” ] } } , } ​ Start here Docs 中心 All docs与guides, organized通过use case. 配置 Core 网关 settings, tokens,与provider config. Remote access SSH与tailnet access patterns. 频道 频道-specific 设置为WhatsApp, Telegram, Discord,与more. 节点 iOS与Android 节点使用pairing与画布. 帮助 Common fixes与troubleshooting entry point. ​ Learn more Full feature list Complete 频道, routing,与media capabilities. 多Agent routing 工作空间 isolation与per-智能体 sessions. Security Tokens, allowlists,与safety controls. Troubleshooting 网关 diagnostics与common errors. About与credits Project origins, contributors,与license. 展示 I 查看英文原版)ities)ional)\n\n—\n\n本文档已通过AI翻译完成，如有疑问请参考英文原版。* 本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考英文原版。"><meta itemprop=dateModified content="2026-02-14T18:33:34+08:00"><meta itemprop=wordCount content="487"><title>OpenClaw 中文文档</title>
+<link rel=icon href=/openclaw-docs-cn/favicon.png><link rel=manifest href=/openclaw-docs-cn/manifest.json><link rel=canonical href=https://dearpeter.github.io/openclaw-docs-cn/zh/><link rel=alternate hreflang=en href=https://dearpeter.github.io/openclaw-docs-cn/ title><link rel=stylesheet href=/openclaw-docs-cn/book.min.6970156cec683193d93c9c4edaf0d56574e4361df2e0c1be4f697ae81c3ba55f.css integrity="sha256-aXAVbOxoMZPZPJxO2vDVZXTkNh3y4MG+T2l66Bw7pV8=" crossorigin=anonymous><script defer src=/openclaw-docs-cn/fuse.min.js></script><script defer src=/openclaw-docs-cn/zh.search.min.0e5263716deab3a0ca47194c6f13ef05cf6d7067c636ca5ab0338773efd35451.js integrity="sha256-DlJjcW3qs6DKRxlMbxPvBc9tcGfGNspasDOHc+/TVFE=" crossorigin=anonymous></script><link rel=alternate type=application/rss+xml href=https://dearpeter.github.io/openclaw-docs-cn/zh/index.xml title="OpenClaw 中文文档"></head><body dir=ltr class="book-kind-home book-type-page"><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/openclaw-docs-cn/zh/><span>OpenClaw 中文文档</span></a></h2><div class="book-search hidden"><input id=book-search-input type=text placeholder=搜索 aria-label=搜索 maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><script>document.querySelector(".book-search").classList.remove("hidden")</script><ul class=book-languages><li><input type=checkbox id=languages class=toggle>
+<label for=languages class=flex><a role=button><img src=/openclaw-docs-cn/icons/translate.svg class=book-icon alt=Languages>
+中文
+</a><img src=/openclaw-docs-cn/icons/chevron-right.svg class=book-icon alt=Expand></label><ul><li><a href=/openclaw-docs-cn/ class="flex flex-auto">English</a></li></ul></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class="book-header hidden"><div class="flex align-center justify-between"><label for=menu-control><img src=/openclaw-docs-cn/icons/menu.svg class=book-icon alt=Menu></label><h3></h3><label for=toc-control><img src=/openclaw-docs-cn/icons/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class=hidden><nav id=TableOfContents><ul><li><a href=#openclaw---openclaw---中文翻译>OpenClaw - OpenClaw - 中文翻译</a></li></ul></nav></aside></header><article class="markdown book-article"><h1 id=openclaw---openclaw---中文翻译>OpenClaw - OpenClaw - 中文翻译<a class=anchor href=#openclaw---openclaw---%e4%b8%ad%e6%96%87%e7%bf%bb%e8%af%91>#</a></h1><dl><dt>OpenClaw</dt><dt>首页</dt><dt>英文</dt><dt>K</dt><dt>Home</dt><dt>OpenClaw</dt><dt>开始使用</dt><dt>安装</dt><dt>频道</dt><dt>智能体</dt><dt>工具</dt><dt>模型</dt><dt>平台</dt><dt>网关与运维</dt><dt>参考</dt><dt>帮助</dt><dt>Home</dt><dt>OpenClaw</dt><dt>概述</dt><dt>展示</dt><dt>Core concepts</dt><dt>Features</dt><dt>First steps</dt><dt>Getting Started</dt><dt>入门指南 概述</dt><dt>入门指南: 命令行界面</dt><dt>入门指南: macOS App</dt><dt>Guides</dt><dt>Personal Assistant 设置</dt><dt>本页内容</dt><dt>OpenClaw 🦞</dt><dt>What is OpenClaw?</dt><dt>How it works</dt><dt>Key capabilities</dt><dt>Quick start</dt><dt>Dashboard</dt><dt>配置 (optional)</dt><dt>Start here</dt><dt>Learn more</dt><dt>​</dt><dt>OpenClaw 🦞</dt><dt>“EXFOLIATE! EXFOLIATE!”</dt><dt>— A space lobster, probably</dt><dt>Any OS 网关为AI 智能体 across WhatsApp, Telegram, Discord, iMessage,与more.</dt><dt>Send a 消息, get an 智能体 response从your pocket. Plugins add Mattermost与more.</dt><dt>开始使用</dt><dt>安装 OpenClaw与bring up the 网关在minutes.</dt><dt>Run the 向导</dt><dt>Guided 设置 with</dt><dt>OpenClaw onboard</dt><dt>and pairing flows.</dt><dt>Open the 控制 UI</dt><dt>Launch the 浏览器 dashboard为chat, config,与sessions.</dt><dt>​</dt><dt>What is OpenClaw?</dt><dt>OpenClaw is a</dt><dt>self-hosted 网关</dt><dt>that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage,与more —到AI coding 智能体 like Pi. You run a single 网关 进程在your own machine (or a server),与it becomes the bridge between your messaging apps与an always-available AI assistant.</dt><dt>Who is it for?</dt><dt>Developers与power users who want a personal AI assistant they can 消息从anywhere — without giving up 控制的their data或relying在a hosted service.</dt><dt>What makes it different?</dt><dt>Self-hosted</dt><dd>runs在your hardware, your rules
+Multi-频道</dd><dd>one 网关 serves WhatsApp, Telegram, Discord,与more simultaneously
+智能体-native</dd><dd>built为coding Agent使用tool use, sessions, 记忆,与multi-智能体 routing
+Open source</dd><dd>MIT licensed, community-driven
+What do you need?
+Node 22+, an API key (Anthropic recommended),与5 minutes.
+​
+How it works
+The 网关 is the single source的truth为sessions, routing,与channel connections.
+​
+Key capabilities
+Multi-频道 网关
+WhatsApp, Telegram, Discord,与iMessage使用a single 网关 进程.
+Plugin 频道
+Add Mattermost与more使用extension packages.
+多Agent routing
+Isolated sessions per 智能体, 工作空间,或sender.
+Media support
+Send与receive images, audio,与documents.
+网页 控制 UI
+浏览器 dashboard为chat, config, sessions,与节点.
+Mobile 节点
+Pair iOS与Android 节点使用画布 support.
+​
+Quick start
+1
+安装 OpenClaw
+Copy
+npm
+安装
+-g
+OpenClaw@latest
+2
+Onboard与安装 the service
+Copy
+OpenClaw
+onboard
+&ndash;安装-daemon
+3
+Pair WhatsApp与start the 网关
+Copy
+OpenClaw
+频道
+登录
+OpenClaw
+网关
+&ndash;port
+18789
+Need the full 安装与dev 设置? See
+Quick start
+.
+​
+Dashboard
+Open the 浏览器 控制 UI after the 网关 starts.
+Local default:
+http://127.0.0.1:18789/
+Remote access:
+网页 surfaces
+and
+Tailscale
+​
+配置 (optional)
+Config lives at
+~/.OpenClaw/OpenClaw.JSON
+.
+If you
+do nothing
+, OpenClaw uses the bundled Pi binary在RPC mode使用per-sender sessions.
+If you want到lock it down, start with
+频道.WhatsApp.allowFrom
+and (for groups) mention rules.
+示例：
+Copy
+{
+频道
+:
+{
+WhatsApp
+:
+{
+allowFrom
+:
+[
+&ldquo;+15555550123&rdquo;
+]
+,
+groups
+:
+{
+&ldquo;<em>&rdquo;
+:
+{
+requireMention
+:
+true
+} }
+,
+}
+,
+}
+,
+messages
+:
+{
+groupChat
+:
+{
+mentionPatterns
+:
+[
+&ldquo;@OpenClaw&rdquo;
+] } }
+,
+}
+​
+Start here
+Docs 中心
+All docs与guides, organized通过use case.
+配置
+Core 网关 settings, tokens,与provider config.
+Remote access
+SSH与tailnet access patterns.
+频道
+频道-specific 设置为WhatsApp, Telegram, Discord,与more.
+节点
+iOS与Android 节点使用pairing与画布.
+帮助
+Common fixes与troubleshooting entry point.
+​
+Learn more
+Full feature list
+Complete 频道, routing,与media capabilities.
+多Agent routing
+工作空间 isolation与per-智能体 sessions.
+Security
+Tokens, allowlists,与safety controls.
+Troubleshooting
+网关 diagnostics与common errors.
+About与credits
+Project origins, contributors,与license.
+展示
+I
+<a href=https://docs.OpenClaw.ai/#dashboard>查看英文原版</a>)ities)ional)\n\n&mdash;\n\n</em>本文档已通过AI翻译完成，如有疑问请参考<a href=https://docs.OpenClaw.ai>英文原版</a>。*
+<em>本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考<a href=https://docs.openclaw.ai>英文原版</a>。</em></dd></dl></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div></div><div><a class="flex align-center" href=https://github.com/DearPeter/openclaw-docs-cn/edit/main/content/%3Cno%20value%3E/content/zh/index.md target=_blank rel="noopener edit"><img src=/openclaw-docs-cn/icons/edit.svg class=book-icon alt=Edit>
+<span>编辑本页</span></a></div></div><div class=book-comments></div><div class="book-copyright flex justify-center"><small>OpenClaw 中文文档 - © 2026 OpenClaw Community. Licensed under MIT.</small></div><script>(function(){document.querySelectorAll("pre:has(code)").forEach(e=>{e.addEventListener("click",e.focus),e.addEventListener("copy",function(t){if(t.preventDefault(),navigator.clipboard){const t=window.getSelection().toString()||e.textContent;navigator.clipboard.writeText(t)}})})})()</script></footer><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#openclaw---openclaw---中文翻译>OpenClaw - OpenClaw - 中文翻译</a></li></ul></nav></div></aside></main></body></html>
