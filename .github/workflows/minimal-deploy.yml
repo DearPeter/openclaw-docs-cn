@@ -1,4 +1,4 @@
-name: Simple Deploy to GitHub Pages
+name: Minimal Hugo Deploy
 
 on:
   push:
@@ -10,16 +10,13 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,11 +30,8 @@ jobs:
           hugo-version: '0.140.0'
           extended: true
       
-      - name: Build with Hugo
-        env:
-          HUGO_ENV: production
-        run: |
-          hugo --minify
+      - name: Build
+        run: hugo --minify
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
