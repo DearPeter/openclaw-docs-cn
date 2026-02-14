@@ -1,5 +1,3 @@
-# English Version
+# Agent Runtime
 
-This is the English version placeholder. The actual English content would be here.
-
-See [Chinese version](../zh/) for translated content.
+Core concept of OpenClaw: agent runtime environment.

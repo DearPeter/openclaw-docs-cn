@@ -1,16 +1,8 @@
 # Agent Loop - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 基础概念
 Agent循环
 开始使用
@@ -107,7 +99,7 @@ resolves 模型 + auth profile与builds the pi 会话
 subscribes到pi events与streams assistant/工具 deltas
 enforces timeout -> aborts run if exceeded
 returns payloads + usage metadata
-subscribeEmbeddedPiSession
+subscribeEmbeddedPi会话
 bridges pi-智能体-core events到OpenClaw
 智能体
 stream:
@@ -144,7 +136,7 @@ See
 技能 are loaded (or reused从a snapshot)与injected into env与prompt.
 引导/上下文 files are resolved与injected into the system 提示词 report.
 A 会话 write lock is acquired;
-SessionManager
+会话Manager
 is opened与prepared before 流式传输.
 ​
 提示词 assembly + system 提示词
@@ -255,7 +247,7 @@ for the 压缩 pipeline.
 Event streams (today)
 lifecycle
 : emitted by
-subscribeEmbeddedPiSession
+subscribeEmbeddedPi会话
 (and as a fallback by
 agentCommand
 )
@@ -293,14 +285,6 @@ AbortSignal (cancel)
 timeout (wait-only, does not stop 智能体)
 Agent运行时
 系统提示
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/concepts/智能体-loop)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

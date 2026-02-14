@@ -1,16 +1,8 @@
 # 会话 管理 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 会话与记忆
 会话管理
 开始使用
@@ -174,9 +166,9 @@ Store file:
 ~/.OpenClaw/智能体/<agentId>/sessions/sessions.JSON
 (per 智能体).
 Transcripts:
-~/.OpenClaw/智能体/<agentId>/sessions/<SessionId>.jsonl
+~/.OpenClaw/智能体/<agentId>/sessions/<会话Id>.jsonl
 (Telegram topic sessions use
-.../<SessionId>-topic-<threadId>.jsonl
+.../<会话Id>-topic-<threadId>.jsonl
 ).
 The store is a map
 sessionKey -> { sessionId, updatedAt, ... }
@@ -583,21 +575,13 @@ GroupSpace
 SenderName
 in the inbound
 上下文与calling
-recordSessionMetaFromInbound
+record会话MetaFromInbound
 (or passing the same 上下文
 to
 updateLastRoute
 ).
 引导启动
 会话
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/concepts/会话#mapping-transports-→-会话-keys)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

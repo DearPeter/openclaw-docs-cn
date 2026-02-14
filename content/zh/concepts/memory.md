@@ -1,16 +1,8 @@
 # 记忆 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 会话与记忆
 记忆
 开始使用
@@ -212,11 +204,9 @@ Watches 记忆 files为changes (debounced).
 memorySearch
 ).
 Uses remote embeddings通过default. If
-memory搜索...ovider
 is not set, OpenClaw auto-selects:
 local
 if a
-memory搜索...cal.modelPath
 is configured与the file exists.
 openai
 if an OpenAI key can be resolved.
@@ -248,9 +238,7 @@ or
 模型.提供者.voyage.apiKey
 . When using a custom OpenAI-compatible endpoint,
 set
-memory搜索...mote.apiKey
 (and optional
-memory搜索...mote.headers
 ).
 ​
 QMD backend (experimental)
@@ -316,7 +304,6 @@ blocked; set
 记忆.qmd.update.waitForBootSync = true
 to keep the previous
 blocking behavior.
-搜索...run via
 记忆.qmd.searchMode
 (default
 qmd 搜索 --JSON
@@ -743,12 +730,9 @@ headers
 }
 }
 If you don’t want到set an API key, use
-memory搜索...ovider = "local"
 or set
-memory搜索...llback = "none"
 .
 Fallbacks:
-memory搜索...llback
 can be
 openai
 ,
@@ -761,7 +745,6 @@ none
 The fallback provider is only used when the primary embedding provider fails.
 Batch indexing (OpenAI + Gemini + Voyage):
 Disabled通过default. Set
-智能体.defaults.memory搜索...mote.batch.enabled = true
 to enable为large-corpus indexing (OpenAI, Gemini,与Voyage).
 Default behavior waits为batch completion; tune
 remote.batch.wait
@@ -774,7 +757,6 @@ Set
 remote.batch.concurrency
 to 控制 how many batch jobs we submit在parallel (default: 2).
 Batch mode applies when
-memory搜索...ovider = "openai"
 or
 "gemini"
 and uses the corresponding API key.
@@ -838,15 +820,12 @@ memory_get
 — read 记忆 file content通过path.
 Local mode:
 Set
-智能体.defaults.memory搜索...ovider = "local"
 .
 Provide
-智能体.defaults.memory搜索...cal.modelPath
 (GGUF or
 hf:
 URI).
 Optional: set
-智能体.defaults.memory搜索...llback = "none"
 to avoid remote fallback.
 ​
 How the 记忆 工具 work
@@ -863,7 +842,6 @@ reads a specific 记忆 Markdown file (工作空间-relative), optionally从a st
 记忆/
 are rejected.
 Both 工具 are enabled only when
-memory搜索...abled
 resolves true为the 智能体.
 ​
 What gets indexed (and when)
@@ -875,7 +853,6 @@ File type: Markdown only (
 Index storage: per-智能体 SQLite at
 ~/.OpenClaw/记忆/<agentId>.sqlite
 (configurable via
-智能体.defaults.memory搜索...ore.path
 , supports
 {agentId}
 token).
@@ -907,7 +884,6 @@ a828e60
 b3b9895a…
 )
 code symbols (
-memory搜索...ery.hybrid
 )
 error strings (“sqlite-vec unavailable”)
 BM25 (full-text) is the opposite: strong在exact tokens, weaker在paraphrases.
@@ -1131,7 +1107,6 @@ Default local embedding 模型:
 hf:ggml-org/embeddinggemma-300m-qat-q8_0-GGUF/embeddinggemma-300m-qat-Q8_0.gguf
 (~0.6 GB).
 When
-memory搜索...ovider = "local"
 ,
 node-llama-cpp
 resolves
@@ -1149,7 +1124,6 @@ node-llama-cpp
 pnpm rebuild node-llama-cpp
 .
 Fallback: if local 设置 fails and
-memory搜索...llback = "openai"
 , we automatically switch到remote embeddings (
 openai/text-embedding-3-small
 unless overridden)与record the reason.
@@ -1208,14 +1182,6 @@ remote.headers
 to use the OpenAI defaults.
 会话 工具
 压缩
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/concepts/记忆#custom-openai-compatible-endpoint-example)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

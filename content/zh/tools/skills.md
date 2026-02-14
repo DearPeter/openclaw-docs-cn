@@ -1,16 +1,8 @@
 # 技能 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 技能
 技能
 开始使用
@@ -208,14 +200,12 @@ Format (Agent技能 + Pi-compatible)
 SKILL.md
 must include在least:
 Copy
----
 name
 :
 nano-banana-pro
 description
 :
 Generate或edit images via Gemini 3 Pro Image
----
 Notes:
 We follow the Agent技能 spec为layout/intent.
 The parser used通过the embedded 智能体 supports
@@ -274,7 +264,6 @@ using
 metadata
 (single-line JSON):
 Copy
----
 name
 :
 nano-banana-pro
@@ -315,7 +304,6 @@ metadata
 }
 ,
 }
----
 Fields under
 metadata.OpenClaw
 :
@@ -379,7 +367,6 @@ summarize
 in the sandbox container到run there.
 安装er example:
 Copy
----
 name
 :
 gemini
@@ -438,7 +425,6 @@ metadata
 }
 ,
 }
----
 Notes:
 If multiple installers are listed, the 网关 picks a
 single
@@ -712,14 +698,6 @@ https://clawhub.com
 .
 Slash Commands
 技能 Config
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/技能)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

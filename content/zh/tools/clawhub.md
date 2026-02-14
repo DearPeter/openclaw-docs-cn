@@ -1,16 +1,8 @@
 # ClawHub - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 技能
 ClawHub
 开始使用
@@ -84,7 +76,6 @@ What the service provides (features)
 Security与moderation
 命令行界面 commands与parameters
 Common workflows为Agent
-搜索...r 技能
 Download new 技能
 Update installed 技能
 Back up your 技能 (publish或sync)
@@ -125,14 +116,12 @@ If you are a moderator, hide, unhide, delete,或ban.
 ​
 Who这is为(beginner-friendly)
 If you want到add new capabilities到your OpenClaw 智能体, ClawHub is the easiest way到find与安装 技能. You do not need到know how the backend works. You can:
-搜索...r 技能通过plain language.
 安装 a skill into your 工作空间.
 Update 技能 later使用one command.
 Back up your own 技能通过publishing them.
 ​
 Quick start (non-technical)
 安装 the 命令行界面 (see next section).
-搜索...r something you need:
 clawhub 搜索 "calendar"
 安装 a skill:
 clawhub 安装 <skill-slug>
@@ -316,7 +305,6 @@ latest
 ​
 Common workflows为Agent
 ​
-搜索...r 技能
 Copy
 clawhub
 搜索
@@ -412,14 +400,6 @@ sync
 .
 技能 Config
 Plugins
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/clawhub)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

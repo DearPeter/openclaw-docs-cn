@@ -1,16 +1,8 @@
 # 展示 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 概述
 展示
 开始使用
@@ -232,13 +224,11 @@ website
 migration
 astro
 Rebuilt entire personal site via Telegram while watching Netflix — Notion → Astro, 18 posts migrated, DNS到Cloudflare. Never opened a laptop.
-Job 搜索...ent
 @attol8
 •
 automation
 api
 skill
-搜索...job listings, matches against CV keywords,与returns relevant opportunities使用links. Built在30 minutes using J搜索...I.
 Jira Skill Builder
 @jdrhyne
 •
@@ -387,14 +377,6 @@ Get Featured
 We’ll add standout projects到this page
 OpenClaw
 Features
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/start/展示)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

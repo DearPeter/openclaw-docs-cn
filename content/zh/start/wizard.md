@@ -1,16 +1,8 @@
 # 入门指南 向导 (命令行界面) - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 First steps
 入门指南 向导 (命令行界面)
 开始使用
@@ -74,7 +66,6 @@ e
 does not imply non-interactive mode. For scripts, use
 --non-interactive
 .
-Recommended: set up a Brave 搜索...I key so the 智能体 can use
 web_search
 (
 web_fetch
@@ -189,14 +180,6 @@ macOS app 入门指南:
 智能体 引导启动
 入门指南 概述
 入门指南: macOS App
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/start/向导)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

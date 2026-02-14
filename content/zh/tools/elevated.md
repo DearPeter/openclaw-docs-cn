@@ -1,16 +1,8 @@
 # Elevated Mode - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 内置工具
 Elevated Mode
 开始使用
@@ -225,14 +217,6 @@ elevated=full
 ).
 apply_patch 工具
 Thinking Levels
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/elevated)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

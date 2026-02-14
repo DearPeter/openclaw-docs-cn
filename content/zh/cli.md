@@ -1,16 +1,8 @@
 # 命令行界面 参考 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 命令行界面 commands
 命令行界面 参考
 开始使用
@@ -1499,7 +1491,6 @@ Actions:
 Docs 搜索
 ​
 docs [query...]
-搜索...e live docs index.
 ​
 TUI
 ​
@@ -1519,14 +1510,6 @@ Options:
 )
 --history-limit <n>
 智能体
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/命令行界面)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

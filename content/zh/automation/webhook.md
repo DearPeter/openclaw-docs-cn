@@ -1,16 +1,8 @@
 # Webhooks - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 Automation
 Webhooks
 开始使用
@@ -230,7 +222,7 @@ agentId
 optional (string): Route这hook到a specific 智能体. Unknown IDs fall back到the default 智能体. When set, the hook runs using the resolved 智能体’s 工作空间与配置.
 sessionKey
 optional (string): The key used到identify the 智能体’s 会话. By default这field is rejected unless
-hooks.allowRequestSessionKey=true
+hooks.allowRequest会话Key=true
 .
 wakeMode
 optional (
@@ -301,7 +293,7 @@ payload
 sessionKey
 overrides are disabled通过default.
 Recommended: set a fixed
-hooks.defaultSessionKey
+hooks.default会话Key
 and keep request overrides off.
 Optional: allow request overrides only when needed,与restrict prefixes.
 Recommended config:
@@ -318,15 +310,15 @@ token
 :
 "${OPENCLAW_HOOKS_TOKEN}"
 ,
-defaultSessionKey
+default会话Key
 :
 "hook:ingress"
 ,
-allowRequestSessionKey
+allowRequest会话Key
 :
 false
 ,
-allowedSessionKeyPrefixes
+allowed会话KeyPrefixes
 :
 [
 "hook:"
@@ -349,11 +341,11 @@ token
 :
 "${OPENCLAW_HOOKS_TOKEN}"
 ,
-allowRequestSessionKey
+allowRequest会话Key
 :
 true
 ,
-allowedSessionKeyPrefixes
+allowed会话KeyPrefixes
 :
 [
 "hook:"
@@ -422,9 +414,9 @@ routing. Omit it (or include
 to deny explicit
 agentId
 routing.
-hooks.defaultSessionKey
+hooks.default会话Key
 sets the default 会话为hook 智能体 runs when no explicit key is provided.
-hooks.allowRequestSessionKey
+hooks.allowRequest会话Key
 controls whether
 /hooks/智能体
 payloads may set
@@ -432,7 +424,7 @@ sessionKey
 (default:
 false
 ).
-hooks.allowedSessionKeyPrefixes
+hooks.allowed会话KeyPrefixes
 optionally restricts explicit
 sessionKey
 values从request payloads与mappings.
@@ -544,12 +536,12 @@ to limit explicit
 agentId
 selection.
 Keep
-hooks.allowRequestSessionKey=false
+hooks.allowRequest会话Key=false
 unless you require caller-selected sessions.
 If you enable request
 sessionKey
 , restrict
-hooks.allowedSessionKeyPrefixes
+hooks.allowed会话KeyPrefixes
 (for example,
 ["hook:"]
 ).
@@ -560,14 +552,6 @@ allowUnsafeExternalContent: true
 in那hook’s mapping (dangerous).
 Automation Troubleshooting
 Gmail PubSub
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/automation/webhook)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

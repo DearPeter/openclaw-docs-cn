@@ -1,16 +1,8 @@
 # 工具 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 概述
 工具
 开始使用
@@ -600,7 +592,6 @@ to grab the last N lines).
 is scoped per 智能体; sessions从other 智能体 are not visible.
 ​
 web_search
-搜索...e 网页 using Brave 搜索...I.
 Core parameters:
 query
 (required)
@@ -1237,14 +1228,6 @@ System 提示词 text
 That means the 智能体 sees both “what 工具 exist”与“how到call them.” If a 工具
 doesn’t appear在the system prompt或the schema, the 模型 cannot call it.
 Lobster
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具#safety)-+-工具)esented-to-the-智能体)ssions_send-/-sessions_spawn-/-session_status)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

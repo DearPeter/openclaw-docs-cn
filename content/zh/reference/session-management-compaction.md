@@ -1,16 +1,8 @@
 # 会话 管理 Deep Dive - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 压缩 internals
 会话管理 Deep Dive
 开始使用
@@ -106,7 +98,7 @@ OpenClaw persists sessions在two layers:
 sessions.JSON
 )
 Key/value map:
-sessionKey -> SessionEntry
+sessionKey -> 会话Entry
 Small, mutable, safe到edit (or delete entries)
 Tracks 会话 metadata (current 会话 id, last activity, toggles, token counters, etc.)
 Transcript (
@@ -193,7 +185,7 @@ or legacy
 sessionId
 when a 消息 arrives after the idle window. When daily + idle are both configured, whichever expires first wins.
 Implementation detail: the decision happens in
-initSessionState()
+init会话State()
 in
 src/auto-reply/reply/会话.ts
 .
@@ -202,7 +194,7 @@ src/auto-reply/reply/会话.ts
 sessions.JSON
 )
 The store’s value type is
-SessionEntry
+会话Entry
 in
 src/config/sessions.ts
 .
@@ -267,7 +259,7 @@ Transcript structure (
 Transcripts are managed by
 @mariozechner/pi-coding-智能体
 ’s
-SessionManager
+会话Manager
 .
 The file is JSONL:
 First line: 会话 header (
@@ -279,7 +271,7 @@ cwd
 ,
 timestamp
 , optional
-parentSession
+parent会话
 )
 Then: 会话 entries with
 id
@@ -307,7 +299,7 @@ branch_summary
 OpenClaw intentionally does
 not
 “fix up” transcripts; the 网关 uses
-SessionManager
+会话Manager
 to read/write them.
 ​
 上下文 windows vs tracked tokens
@@ -503,14 +495,6 @@ NO_REPLY
 (exact token)与you’re在a build那includes the 流式传输 suppression fix.
 Node.js
 设置
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/参考/会话-管理-压缩)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

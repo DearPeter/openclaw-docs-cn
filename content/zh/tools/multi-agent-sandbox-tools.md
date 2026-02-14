@@ -1,16 +1,8 @@
 # Multi-Agent Sandbox & 工具 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 智能体 coordination
 Multi-智能体 Sandbox & 工具
 开始使用
@@ -913,14 +905,6 @@ Sandbox 配置
 会话管理
 Sub-智能体
 Slash Commands
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/multi-智能体-sandbox-工具)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

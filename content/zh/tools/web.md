@@ -1,16 +1,8 @@
 # 网页 工具 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 内置工具
 网页 工具
 开始使用
@@ -92,7 +84,6 @@ web_fetch 工具 parameters
 网页 工具
 OpenClaw ships two lightweight 网页 工具:
 web_search
-— 搜索...e 网页 via Brave 搜索...I (default)或Perplexity Sonar (direct或via OpenRouter).
 web_fetch
 — HTTP 获取 + readable extraction (HTML → Markdown/text).
 These are
@@ -134,7 +125,6 @@ OPENROUTER_API_KEY
 or
 PERPLEXITY_API_KEY
 See
-Brave 搜索...tup
 and
 Perplexity Sonar
 for provider-specific details.
@@ -204,7 +194,6 @@ baseUrl
 }
 ​
 Getting a Brave API key
-Create a Brave 搜索...I account at
 https://brave.com/搜索/api/
 In the dashboard, choose the
 Data为搜索
@@ -333,7 +322,6 @@ Chain-of-thought analysis
 Deep research
 ​
 web_search
-搜索...e 网页 using your configured provider.
 ​
 Requirements
 工具.网页.搜索.enabled
@@ -628,14 +616,6 @@ web_search
 returns a short 设置 hint使用a docs link.
 执行 工具
 apply_patch 工具
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/网页)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

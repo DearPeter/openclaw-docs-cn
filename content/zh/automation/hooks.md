@@ -1,16 +1,8 @@
 # Hooks - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 Automation
 Hooks
 开始使用
@@ -304,7 +296,6 @@ The
 HOOK.md
 file contains metadata在YAML frontmatter plus Markdown documentation:
 Copy
----
 name
 :
 my-hook
@@ -338,7 +329,6 @@ metadata
 [
 "node"
 ] } } }
----
 # My Hook
 Detailed documentation goes here...
 ## What It Does
@@ -514,7 +504,7 @@ string[]
 {
 sessionEntry
 ?:
-SessionEntry
+会话Entry
 ,
 sessionId
 ?:
@@ -621,7 +611,6 @@ cd
 ​
 3. Create HOOK.md
 Copy
----
 name
 :
 my-hook
@@ -643,7 +632,6 @@ metadata
 [
 "command:new"
 ] } }
----
 # My Custom Hook
 This hook does something useful when you issue
 `/new`
@@ -1552,7 +1540,6 @@ mv
 ~/.OpenClaw/hooks/my-hook/handler.ts
 Create HOOK.md:
 Copy
----
 name
 :
 my-hook
@@ -1574,7 +1561,6 @@ metadata
 [
 "command:new"
 ] } }
----
 # My Hook
 Does something useful.
 Update config:
@@ -1625,14 +1611,6 @@ Webhook Hooks
 配置
 Zalo Personal Plugin
 Cron Jobs
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/automation/hooks)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

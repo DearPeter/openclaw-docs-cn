@@ -1,16 +1,8 @@
 # Sub-Agent - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 智能体 coordination
 Sub-智能体
 开始使用
@@ -121,7 +113,7 @@ sessions_spawn
 with a task description. The call is
 non-blocking
 — the main 智能体 gets back
-{ status: "accepted", runId, childSessionKey }
+{ status: "accepted", runId, child会话Key }
 immediately.
 2
 Sub-智能体 runs在the background
@@ -824,14 +816,6 @@ subagent
 lane works
 智能体 Send
 Multi-智能体 Sandbox & 工具
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/工具/subagents)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

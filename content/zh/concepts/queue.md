@@ -1,16 +1,8 @@
 # Command Queue - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 消息与传递
 命令队列
 开始使用
@@ -222,14 +214,6 @@ Troubleshooting
 If commands seem stuck, enable verbose logs与look为“queued为…ms” lines到confirm the 队列 is draining.
 If you need 队列 depth, enable verbose logs与watch为queue timing lines.
 重试策略
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/concepts/队列)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

@@ -1,16 +1,8 @@
 # security - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 命令行界面 commands
 security
 开始使用
@@ -128,11 +120,11 @@ It also warns when small 模型 (
 <=300B
 ) are used without sandboxing与with 网页/浏览器 工具 enabled.
 For webhook ingress, it warns when
-hooks.defaultSessionKey
+hooks.default会话Key
 is unset, when request
 sessionKey
 overrides are enabled,与when overrides are enabled without
-hooks.allowedSessionKeyPrefixes
+hooks.allowed会话KeyPrefixes
 .
 It also warns when sandbox Docker settings are configured while sandbox mode is off, when
 网关.节点.denyCommands
@@ -141,14 +133,6 @@ uses ineffective pattern-like/unknown entries, when global
 is overridden通过agent 工具 profiles,与when installed extension plugin 工具 may be reachable under permissive 工具 policy.
 Sandbox 命令行界面
 sessions
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/命令行界面/security)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

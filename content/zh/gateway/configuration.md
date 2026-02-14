@@ -1,16 +1,8 @@
 # 配置 - OpenClaw - 中文翻译
-
-
-此页面正在翻译中...\n\n
-跳转到主要内容
 OpenClaw
 首页
 英文
-搜索...
-⌘
 K
-搜索...
-导航
 配置与operations
 配置
 开始使用
@@ -36,7 +28,7 @@ Doctor
 Logging
 网关 Lock
 Background 执行与进程 工具
-Multiple Gateways
+Multiple 网关s
 Troubleshooting
 Security与sandboxing
 Protocols与APIs
@@ -581,15 +573,15 @@ path
 :
 "/hooks"
 ,
-defaultSessionKey
+default会话Key
 :
 "hook:ingress"
 ,
-allowRequestSessionKey
+allowRequest会话Key
 :
 false
 ,
-allowedSessionKeyPrefixes
+allowed会话KeyPrefixes
 :
 [
 "hook:"
@@ -1055,14 +1047,6 @@ Related:
 Doctor
 网关 Runbook
 配置 参考
-⌘
 I
-
----
-
 [查看英文原版](https://docs.OpenClaw.ai/网关/配置#会话)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-
-
----
-
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*
