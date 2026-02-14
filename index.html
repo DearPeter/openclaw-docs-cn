@@ -3,51 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenClaw 中文文档 - 成功部署！</title>
+    <title>OpenClaw 中文文档</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; text-align: center; }
-        h1 { color: #0366d6; margin-bottom: 20px; }
-        .success { color: #28a745; font-size: 24px; margin: 20px 0; }
-        .links { margin-top: 30px; }
-        .links a { display: inline-block; margin: 10px; padding: 12px 24px; background: #0366d6; color: white; text-decoration: none; border-radius: 6px; }
-        .links a:hover { background: #0056b3; }
-        .info { background: #f6f8fa; padding: 20px; border-radius: 6px; margin-top: 30px; text-align: left; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        nav { background: #f5f5f5; padding: 10px; margin-bottom: 20px; }
+        nav a { margin-right: 15px; text-decoration: none; color: #0366d6; }
+        h1 { color: #24292e; }
+        .content { line-height: 1.6; }
+        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; }
+        .page-list { margin-top: 20px; }
+        .page-item { margin-bottom: 10px; padding: 10px; border: 1px solid #e1e4e8; border-radius: 6px; }
     </style>
 </head>
 <body>
-    <h1>🎉 OpenClaw 中文文档网站已成功部署！</h1>
+    <nav>
+        <a href="/openclaw-docs-cn/">首页</a>
+        <a href="/openclaw-docs-cn/zh/">中文</a>
+        <a href="/openclaw-docs-cn/en/">英文</a>
+        <a href="https://docs.openclaw.ai/">原版文档</a>
+    </nav>
     
-    <div class="success">✅ 网站已成功上线并可通过以下链接访问：</div>
+    <h1>OpenClaw 中文文档</h1>
     
-    <div class="links">
-        <a href="/openclaw-docs-cn/zh/">访问中文首页</a>
-        <a href="/openclaw-docs-cn/zh/concepts/agent.html">查看示例页面</a>
-        <a href="https://github.com/DearPeter/openclaw-docs-cn">GitHub仓库</a>
-    </div>
-    
-    <div class="info">
-        <h3>📋 项目信息：</h3>
-        <ul>
-            <li><strong>项目名称</strong>: OpenClaw 中文文档翻译</li>
-            <li><strong>部署状态</strong>: ✅ 成功部署到 GitHub Pages</li>
-            <li><strong>网站地址</strong>: https://dearpeter.github.io/openclaw-docs-cn/</li>
-            <li><strong>GitHub仓库</strong>: https://github.com/DearPeter/openclaw-docs-cn</li>
-            <li><strong>部署时间</strong>: 2026-02-14 10:40 UTC</li>
-            <li><strong>项目经理</strong>: Data Team Assistant</li>
-        </ul>
+    <div class="content">
+        <p>欢迎访问 OpenClaw 官方文档的中文翻译版本！</p>
         
-        <h3>🔧 如果看到此页面但其他链接404：</h3>
-        <p>请检查GitHub Pages配置：</p>
-        <ol>
-            <li>访问: <code>https://github.com/DearPeter/openclaw-docs-cn/settings/pages</code></li>
-            <li>确保配置为: <strong>Deploy from a branch</strong> → <strong>main</strong> → <strong>/public</strong></li>
-            <li>或选择: <strong>GitHub Actions</strong>（自动检测）</li>
-            <li>保存配置，等待2-5分钟构建完成</li>
-        </ol>
+        <h2>文档分类</h2>
+        
+        <div class="page-list">
+            <div class="page-item">
+                <h3><a href="/openclaw-docs-cn/zh/concepts/">概念文档</a></h3>
+                <p>OpenClaw 的核心概念和架构说明。</p>
+            </div>
+            
+            <div class="page-item">
+                <h3><a href="/openclaw-docs-cn/zh/tools/">工具文档</a></h3>
+                <p>OpenClaw 的各种工具和功能使用指南。</p>
+            </div>
+            
+            <div class="page-item">
+                <h3><a href="/openclaw-docs-cn/zh/start/">开始使用</a></h3>
+                <p>OpenClaw 的安装和快速入门指南。</p>
+            </div>
+            
+            <div class="page-item">
+                <h3><a href="/openclaw-docs-cn/zh/install/">安装指南</a></h3>
+                <p>详细的安装步骤和配置说明。</p>
+            </div>
+            
+            <div class="page-item">
+                <h3><a href="/openclaw-docs-cn/zh/channels/">频道配置</a></h3>
+                <p>各种消息频道的配置和使用方法。</p>
+            </div>
+        </div>
+        
+        <h2>项目信息</h2>
+        <ul>
+            <li><strong>GitHub仓库</strong>: <a href="https://github.com/DearPeter/openclaw-docs-cn">DearPeter/openclaw-docs-cn</a></li>
+            <li><strong>原版文档</strong>: <a href="https://docs.openclaw.ai/">docs.openclaw.ai</a></li>
+            <li><strong>部署状态</strong>: GitHub Pages 自动部署</li>
+            <li><strong>最后更新</strong>: 2026-02-14</li>
+        </ul>
     </div>
     
-    <div style="margin-top: 40px; color: #666; font-size: 14px;">
-        <p>© 2026 OpenClaw 中文文档 - 由 Data Team Assistant 自动创建和部署</p>
-    </div>
+    <footer>
+        <p>© 2026 OpenClaw 中文文档 - OpenClaw官方文档中文翻译</p>
+        <p>本网站由 Data Team Assistant 自动创建和部署</p>
+    </footer>
 </body>
 </html>
