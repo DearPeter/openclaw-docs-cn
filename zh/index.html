@@ -3,72 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenClaw 中文文档</title>
+    <title>OpenClaw 中文文档 - 专业AI助手开发平台</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-        nav { background: #f5f5f5; padding: 10px; margin-bottom: 20px; }
-        nav a { margin-right: 15px; text-decoration: none; color: #0366d6; }
-        h1 { color: #24292e; }
-        .content { line-height: 1.6; }
-        footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #666; }
-        .page-list { margin-top: 20px; }
-        .page-item { margin-bottom: 10px; padding: 10px; border: 1px solid #e1e4e8; border-radius: 6px; }
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #3b82f6;
+            --accent-color: #1d4ed8;
+            --text-color: #1f2937;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏 */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* 功能卡片 */
+        .features {
+            padding: 4rem 0;
+            background: var(--light-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* 文档分类 */
+        .categories {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .category-card {
+            background: var(--light-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .category-card:hover {
+            border-color: var(--primary-color);
+            background: white;
+        }
+        
+        .category-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: var(--text-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="/openclaw-docs-cn/">首页</a>
-        <a href="/openclaw-docs-cn/zh/">中文</a>
-        <a href="/openclaw-docs-cn/en/">英文</a>
-        <a href="https://docs.openclaw.ai/">原版文档</a>
-    </nav>
-    
-    <h1>OpenClaw 中文文档</h1>
-    
-    <div class="content">
-        <p>欢迎访问 OpenClaw 官方文档的中文翻译版本！</p>
-        
-        <h2>文档分类</h2>
-        
-        <div class="page-list">
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/concepts/">概念文档</a></h3>
-                <p>OpenClaw 的核心概念和架构说明。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/tools/">工具文档</a></h3>
-                <p>OpenClaw 的各种工具和功能使用指南。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/start/">开始使用</a></h3>
-                <p>OpenClaw 的安装和快速入门指南。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/install/">安装指南</a></h3>
-                <p>详细的安装步骤和配置说明。</p>
-            </div>
-            
-            <div class="page-item">
-                <h3><a href="/openclaw-docs-cn/zh/channels/">频道配置</a></h3>
-                <p>各种消息频道的配置和使用方法。</p>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="/openclaw-docs-cn/zh/" class="logo">OpenClaw 中文文档</a>
+            <div class="nav-links">
+                <a href="/openclaw-docs-cn/zh/concepts/">概念</a>
+                <a href="/openclaw-docs-cn/zh/tools/">工具</a>
+                <a href="/openclaw-docs-cn/zh/start/">开始使用</a>
+                <a href="/openclaw-docs-cn/en/">English</a>
+                <a href="https://docs.openclaw.ai/" target="_blank">原版文档</a>
+                <a href="https://github.com/DearPeter/openclaw-docs-cn" target="_blank" class="btn-primary">GitHub</a>
             </div>
         </div>
-        
-        <h2>项目信息</h2>
-        <ul>
-            <li><strong>GitHub仓库</strong>: <a href="https://github.com/DearPeter/openclaw-docs-cn">DearPeter/openclaw-docs-cn</a></li>
-            <li><strong>原版文档</strong>: <a href="https://docs.openclaw.ai/">docs.openclaw.ai</a></li>
-            <li><strong>部署状态</strong>: GitHub Pages 自动部署</li>
-            <li><strong>最后更新</strong>: 2026-02-14</li>
-        </ul>
-    </div>
-    
-    <footer>
-        <p>© 2026 OpenClaw 中文文档 - OpenClaw官方文档中文翻译</p>
-        <p>本网站由 Data Team Assistant 自动创建和部署</p>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>OpenClaw 中文文档</h1>
+            <p>专业的AI助手开发平台，为中文开发者提供完整的技术文档和最佳实践指南。</p>
+            <div style="margin-top: 2rem;">
+                <a href="/openclaw-docs-cn/zh/start/" class="btn-primary" style="margin-right: 1rem;">快速开始</a>
+                <a href="/openclaw-docs-cn/zh/concepts/" class="btn-primary" style="background: transparent; border: 2px solid white;">了解概念</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>智能代理系统</h3>
+                    <p>强大的多代理架构，支持复杂的自动化工作流和智能决策。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>丰富工具集</h3>
+                    <p>内置浏览器自动化、API集成、数据处理等专业工具。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>多平台支持</h3>
+                    <p>支持WhatsApp、Telegram、Discord等多种消息平台。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>高性能</h3>
+                    <p>基于现代技术栈，提供快速响应和稳定的服务。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文档分类 -->
+    <section class="categories">
+        <div class="container">
+            <h2 class="section-title">文档分类</h2>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <h3>📚 概念文档</h3>
+                    <p>深入理解OpenClaw的核心概念、架构设计和工作原理。</p>
+                    <a href="/openclaw-docs-cn/zh/concepts/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+                <div class="category-card">
+                    <h3>🛠️ 工具文档</h3>
+                    <p>详细的使用指南和API参考，涵盖所有内置工具和功能。</p>
+                    <a href="/openclaw-docs-cn/zh/tools/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+                <div class="category-card">
+                    <h3>🚀 开始使用</h3>
+                    <p>从安装到第一个项目的完整指南，快速上手OpenClaw。</p>
+                    <a href="/openclaw-docs-cn/zh/start/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+                <div class="category-card">
+                    <h3>⚙️ 安装配置</h3>
+                    <p>详细的安装步骤、环境配置和系统要求说明。</p>
+                    <a href="/openclaw-docs-cn/zh/install/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+                <div class="category-card">
+                    <h3>📱 频道配置</h3>
+                    <p>各种消息频道的配置、使用和最佳实践。</p>
+                    <a href="/openclaw-docs-cn/zh/channels/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+                <div class="category-card">
+                    <h3>🔐 安全指南</h3>
+                    <p>安全最佳实践、权限管理和数据保护指南。</p>
+                    <a href="/openclaw-docs-cn/zh/security/" style="color: var(--primary-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem;">查看文档 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目信息 -->
+    <section class="features" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">项目信息</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; margin-bottom: 2rem;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">关于本项目</h3>
+                    <p style="margin-bottom: 1rem;">OpenClaw中文文档网站是OpenClaw官方文档的完整中文翻译版本，旨在为中文开发者提供更好的学习和使用体验。</p>
+                    <p><strong>翻译状态</strong>: 99个文档文件已翻译完成</p>
+                    <p><strong>最后更新</strong>: 2026-02-14</p>
+                    <p><strong>部署平台</strong>: GitHub Pages</p>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://github.com/DearPeter/openclaw-docs-cn" target="_blank" class="btn-primary">GitHub仓库</a>
+                    <a href="https://docs.openclaw.ai/" target="_blank" class="btn-primary" style="background: var(--secondary-color);">原版文档</a>
+                    <a href="https://github.com/openclaw/openclaw" target="_blank" class="btn-primary" style="background: #24292e;">OpenClaw源码</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>OpenClaw 中文文档</h3>
+                    <p>专业的AI助手开发平台中文文档，为中文开发者提供完整的技术支持。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <div class="footer-links">
+                        <a href="/openclaw-docs-cn/zh/">首页</a>
+                        <a href="/openclaw-docs-cn/zh/concepts/">概念文档</a>
+                        <a href="/openclaw-docs-cn/zh/tools/">工具文档</a>
+                        <a href="/openclaw-docs-cn/zh/start/">开始使用</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>相关资源</h3>
+                    <div class="footer-links">
+                        <a href="https://docs.openclaw.ai/" target="_blank">官方英文文档</a>
+                        <a href="https://github.com/openclaw/openclaw" target="_blank">GitHub仓库</a>
+                        <a href="https://discord.com/invite/clawd" target="_blank">Discord社区</a>
+                        <a href="https://clawhub.com" target="_blank">ClawHub技能市场</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 OpenClaw 中文文档 - 由 Data Team Assistant 自动创建和部署</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">本网站是OpenClaw官方文档的中文翻译版本，旨在帮助中文开发者更好地学习和使用OpenClaw。</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
