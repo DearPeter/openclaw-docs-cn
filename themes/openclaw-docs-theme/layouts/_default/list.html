@@ -1,0 +1,98 @@
+{{ define "main" }}
+<div class="list-page">
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <h1 class="page-title">{{ .Title }}</h1>
+        
+        {{ if .Params.description }}
+        <p class="page-description">{{ .Params.description }}</p>
+        {{ end }}
+        
+        <!-- 页面统计 -->
+        <div class="page-stats">
+            <span class="stat-item">
+                <i class="fas fa-file-alt"></i>
+                共 {{ len .Pages }} 个页面
+            </span>
+        </div>
+    </header>
+
+    <!-- 页面列表 -->
+    <div class="page-list">
+        {{ range .Pages.GroupBy "Section" }}
+        <section class="section-group">
+            <h2 class="section-title">
+                {{ .Key | title }}
+                <span class="section-count">({{ len .Pages }})</span>
+            </h2>
+            
+            <div class="section-pages">
+                {{ range .Pages.ByTitle }}
+                <article class="page-item">
+                    <div class="page-item-content">
+                        <h3 class="page-item-title">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h3>
+                        
+                        {{ if .Params.description }}
+                        <p class="page-item-description">{{ .Params.description }}</p>
+                        {{ else if .Summary }}
+                        <p class="page-item-description">{{ .Summary | truncate 150 }}</p>
+                        {{ end }}
+                        
+                        <div class="page-item-meta">
+                            {{ if .Lastmod }}
+                            <span class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ .Lastmod.Format "2006-01-02" }}
+                            </span>
+                            {{ end }}
+                            
+                            {{ if .ReadingTime }}
+                            <span class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                {{ .ReadingTime }} 分钟阅读
+                            </span>
+                            {{ end }}
+                        </div>
+                    </div>
+                    
+                    <div class="page-item-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </div>
+
+    <!-- 空状态 -->
+    {{ if not .Pages }}
+    <div class="empty-state">
+        <div class="empty-icon">
+            <i class="fas fa-folder-open"></i>
+        </div>
+        <h3 class="empty-title">暂无内容</h3>
+        <p class="empty-description">
+            此目录下暂时没有页面内容。
+        </p>
+        <a href="{{ .Site.Home.RelPermalink }}" class="btn btn-primary">
+            <i class="fas fa-home"></i>
+            返回首页
+        </a>
+    </div>
+    {{ end }}
+
+    <!-- 目录树视图 -->
+    <div class="directory-tree">
+        <h3 class="tree-title">
+            <i class="fas fa-sitemap"></i>
+            文档目录结构
+        </h3>
+        <div class="tree-container">
+            {{ partial "directory-tree.html" . }}
+        </div>
+    </div>
+</div>
+{{ end }}

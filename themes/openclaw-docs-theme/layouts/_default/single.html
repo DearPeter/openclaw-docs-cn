@@ -1,0 +1,109 @@
+{{ define "main" }}
+<article class="single-page">
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <h1 class="page-title">{{ .Title }}</h1>
+        
+        {{ if .Params.description }}
+        <p class="page-description">{{ .Params.description }}</p>
+        {{ end }}
+        
+        <!-- 页面元信息 -->
+        <div class="page-meta">
+            {{ if .Lastmod }}
+            <span class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                最后更新: {{ .Lastmod.Format "2006-01-02" }}
+            </span>
+            {{ end }}
+            
+            {{ if .Params.author }}
+            <span class="meta-item">
+                <i class="fas fa-user"></i>
+                作者: {{ .Params.author }}
+            </span>
+            {{ end }}
+            
+            {{ if .Params.tags }}
+            <span class="meta-item">
+                <i class="fas fa-tags"></i>
+                标签: {{ delimit .Params.tags ", " }}
+            </span>
+            {{ end }}
+        </div>
+    </header>
+
+    <!-- 页面内容 -->
+    <div class="page-content">
+        {{ .Content }}
+        
+        <!-- 翻译说明（如果是翻译页面） -->
+        {{ if .Params.translated }}
+        <div class="translation-note">
+            <div class="note-header">
+                <i class="fas fa-language"></i>
+                <strong>翻译说明</strong>
+            </div>
+            <p>
+                此页面由AI自动翻译生成。如需查看英文原版，请访问：
+                <a href="{{ .Params.original_url | default .Site.Params.originalDocs }}" target="_blank">
+                    英文原版文档
+                </a>
+            </p>
+        </div>
+        {{ end }}
+    </div>
+
+    <!-- 页面导航 -->
+    <nav class="page-navigation">
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="nav-link prev">
+            <i class="fas fa-arrow-left"></i>
+            <div class="nav-content">
+                <span class="nav-label">上一篇</span>
+                <span class="nav-title">{{ .Title }}</span>
+            </div>
+        </a>
+        {{ end }}
+        
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="nav-link next">
+            <div class="nav-content">
+                <span class="nav-label">下一篇</span>
+                <span class="nav-title">{{ .Title }}</span>
+            </div>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+        {{ end }}
+    </nav>
+
+    <!-- 相关页面 -->
+    {{ $related := .Site.RegularPages.Related . | first 5 }}
+    {{ if $related }}
+    <section class="related-pages">
+        <h3 class="related-title">
+            <i class="fas fa-link"></i>
+            相关页面
+        </h3>
+        <div class="related-list">
+            {{ range $related }}
+            <a href="{{ .RelPermalink }}" class="related-item">
+                <h4 class="related-item-title">{{ .Title }}</h4>
+                <p class="related-item-excerpt">{{ .Summary | truncate 100 }}</p>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    <!-- 编辑此页链接 -->
+    <div class="edit-page">
+        <a href="{{ .Site.Params.githubRepo }}/edit/main/content/{{ .File.Path }}" 
+           class="btn btn-outline" 
+           target="_blank">
+            <i class="fas fa-edit"></i>
+            在 GitHub 上编辑此页
+        </a>
+    </div>
+</article>
+{{ end }}

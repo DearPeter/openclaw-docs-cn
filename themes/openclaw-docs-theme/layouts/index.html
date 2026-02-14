@@ -1,0 +1,148 @@
+{{ define "main" }}
+<div class="home">
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <i class="fas fa-paw"></i>
+                {{ .Site.Title }}
+            </h1>
+            <p class="hero-subtitle">{{ .Site.Params.description }}</p>
+            
+            <div class="hero-actions">
+                <a href="{{ "start/getting-started" | relURL }}" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    快速开始
+                </a>
+                <a href="{{ "concepts/architecture" | relURL }}" class="btn btn-secondary">
+                    <i class="fas fa-book"></i>
+                    了解概念
+                </a>
+                <a href="{{ .Site.Params.githubRepo }}" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特色 -->
+    <section class="features">
+        <h2 class="section-title">为什么选择 OpenClaw？</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3 class="feature-title">自托管</h3>
+                <p class="feature-description">
+                    运行在您自己的硬件上，完全控制您的数据，无需依赖第三方服务。
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">多渠道支持</h3>
+                <p class="feature-description">
+                    一个网关同时服务 WhatsApp、Telegram、Discord、iMessage 等多个通信渠道。
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3 class="feature-title">代理原生</h3>
+                <p class="feature-description">
+                    专为AI代理设计，支持工具使用、会话管理、记忆和多代理路由。
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h3 class="feature-title">开源</h3>
+                <p class="feature-description">
+                    MIT 许可证，社区驱动，透明开发，欢迎贡献。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速链接 -->
+    <section class="quick-links">
+        <h2 class="section-title">快速链接</h2>
+        <div class="links-grid">
+            {{ range .Site.Menus.main }}
+            <a href="{{ .URL }}" class="link-card">
+                <div class="link-content">
+                    <h3 class="link-title">{{ .Name }}</h3>
+                    <p class="link-description">
+                        {{ if eq .Name "首页" }}了解 OpenClaw 的基本信息{{ end }}
+                        {{ if eq .Name "开始" }}快速入门指南和设置{{ end }}
+                        {{ if eq .Name "安装" }}各种安装方法和配置{{ end }}
+                        {{ if eq .Name "概念" }}核心概念和架构说明{{ end }}
+                        {{ if eq .Name "工具" }}代理工具使用指南{{ end }}
+                        {{ if eq .Name "渠道" }}通信渠道配置{{ end }}
+                        {{ if eq .Name "CLI" }}命令行工具参考{{ end }}
+                        {{ if eq .Name "网关" }}网关配置和管理{{ end }}
+                    </p>
+                    <div class="link-arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+
+    <!-- 最新更新 -->
+    <section class="recent-updates">
+        <h2 class="section-title">文档目录</h2>
+        <div class="updates-list">
+            {{ $pages := where .Site.RegularPages "Type" "ne" "" }}
+            {{ $recent := first 10 $pages.ByLastmod.Reverse }}
+            
+            {{ range $recent }}
+            <div class="update-item">
+                <div class="update-meta">
+                    <span class="update-section">{{ .Section | title }}</span>
+                    <span class="update-date">{{ .Lastmod.Format "2006-01-02" }}</span>
+                </div>
+                <h3 class="update-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                <p class="update-excerpt">
+                    {{ .Summary | truncate 150 }}
+                </p>
+            </div>
+            {{ end }}
+        </div>
+        
+        <div class="view-all">
+            <a href="{{ "sitemap" | relURL }}" class="btn btn-outline">
+                <i class="fas fa-sitemap"></i>
+                查看完整文档目录
+            </a>
+        </div>
+    </section>
+
+    <!-- 翻译说明 -->
+    <section class="translation-notice">
+        <div class="notice-content">
+            <h3 class="notice-title">
+                <i class="fas fa-language"></i>
+                翻译说明
+            </h3>
+            <p class="notice-text">
+                此中文文档由AI自动翻译生成，可能存在不准确之处。如需查看最新、最准确的文档，请访问
+                <a href="{{ .Site.Params.originalDocs }}" target="_blank">英文原版文档</a>。
+                欢迎通过GitHub提交翻译改进建议。
+            </p>
+        </div>
+    </section>
+</div>
+{{ end }}

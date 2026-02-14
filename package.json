@@ -1,0 +1,32 @@
+{
+  "name": "openclaw-docs-cn",
+  "version": "1.0.0",
+  "description": "OpenClaw 中文文档网站",
+  "main": "index.js",
+  "scripts": {
+    "dev": "hugo server -D",
+    "build": "hugo --minify",
+    "build:search": "node scripts/generate-search-index.js",
+    "preview": "hugo server --buildDrafts --buildFuture",
+    "clean": "rm -rf public resources",
+    "deploy": "npm run build && npm run build:search"
+  },
+  "keywords": [
+    "openclaw",
+    "documentation",
+    "chinese",
+    "ai",
+    "gateway"
+  ],
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "autoprefixer": "^10.4.19",
+    "postcss-cli": "^11.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

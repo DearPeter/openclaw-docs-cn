@@ -1,0 +1,50 @@
+# Hugo
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Node
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+translation.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Build scripts (temporary)
+batch_translate.sh
+translate.py
+translate_all.py
+finalize_translation.py
+fix_translation_issues.py
+organize_for_multilingual.py
+professional_translate.py
+test_build.py
+translation_report.json
+TRANSLATION_REPORT.md
+TRANSLATION_SUMMARY.md
+PROJECT_COMPLETION_REPORT.md

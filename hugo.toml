@@ -1,0 +1,89 @@
+baseURL = 'https://dearpeter.github.io/openclaw-docs-cn/'
+languageCode = 'zh-cn'
+title = 'OpenClaw 中文文档'
+theme = 'openclaw-docs-theme'
+
+[params]
+  description = 'OpenClaw 中文文档 - 自托管的AI代理网关'
+  author = 'OpenClaw 社区'
+  version = '1.0.0'
+  
+  # 搜索配置
+  enableSearch = true
+  searchPlaceholder = "搜索文档..."
+  
+  # 导航配置
+  showLanguageSwitcher = true
+  showBreadcrumb = true
+  
+  # 样式配置
+  primaryColor = "#3b82f6"
+  secondaryColor = "#10b981"
+  
+  # 社交链接
+  githubRepo = "https://github.com/DearPeter/openclaw-docs-cn"
+  originalDocs = "https://docs.openclaw.ai"
+
+[languages]
+  [languages.zh]
+    languageName = "中文"
+    weight = 1
+    title = "OpenClaw 中文文档"
+    contentDir = "content/zh"
+    
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "OpenClaw Documentation"
+    contentDir = "content/en"
+
+[menu]
+  [[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+    
+  [[menu.main]]
+    name = "开始"
+    url = "/start/"
+    weight = 2
+    
+  [[menu.main]]
+    name = "安装"
+    url = "/install/"
+    weight = 3
+    
+  [[menu.main]]
+    name = "概念"
+    url = "/concepts/"
+    weight = 4
+    
+  [[menu.main]]
+    name = "工具"
+    url = "/tools/"
+    weight = 5
+    
+  [[menu.main]]
+    name = "渠道"
+    url = "/channels/"
+    weight = 6
+    
+  [[menu.main]]
+    name = "CLI"
+    url = "/cli/"
+    weight = 7
+    
+  [[menu.main]]
+    name = "网关"
+    url = "/gateway/"
+    weight = 8
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "github"
