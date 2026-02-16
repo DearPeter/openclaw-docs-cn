@@ -25,7 +25,7 @@ Troubleshooting
 Health Checks
 Heartbeat
 Doctor
-Logging
+日志记录
 网关 Lock
 Background 执行与进程 工具
 Multiple 网关s
@@ -42,18 +42,18 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
 网关 troubleshooting
 Command ladder
 No replies
-Dashboard 控制 ui connectivity
+仪表板 控制 ui connectivity
 网关 service not 运行
 频道 connected messages not flowing
 Cron与heartbeat delivery
-Node paired 工具 fails
+节点 paired 工具 fails
 浏览器 工具 fails
 If you upgraded与something suddenly broke
 1) Auth与URL override behavior changed
@@ -88,7 +88,7 @@ OpenClaw 网关 status
 shows
 运行时: 运行
 and
-RPC probe: ok
+远程过程调用 probe: ok
 .
 OpenClaw doctor
 reports no blocking config/service issues.
@@ -140,7 +140,7 @@ Related:
 /频道/pairing
 /频道/groups
 ​
-Dashboard 控制 ui connectivity
+仪表板 控制 ui connectivity
 When dashboard/控制 UI will not connect, validate URL, auth mode,与secure 上下文 assumptions.
 Copy
 OpenClaw
@@ -158,7 +158,7 @@ OpenClaw
 status
 --JSON
 Look for:
-Correct probe URL与dashboard URL.
+Correct probe URL与仪表板 URL.
 Auth mode/token mismatch between client与网关.
 HTTP usage where device identity is required.
 Common signatures:
@@ -207,14 +207,14 @@ refusing到bind 网关 ... without auth
 another 网关 instance is already listening
 /
 EADDRINUSE
-→ port conflict.
+→ 端口 conflict.
 Related:
 /网关/background-进程
 /网关/配置
 /网关/doctor
 ​
 频道 connected messages not flowing
-If 频道 state is connected but 消息 flow is dead, focus在policy, permissions,与channel specific delivery rules.
+If 频道 state is connected but 消息 flow is dead, focus在policy, permissions,与频道 specific delivery rules.
 Copy
 OpenClaw
 频道
@@ -256,7 +256,7 @@ pairing
 / pending approval traces → sender is not approved.
 missing_scope
 ,
-not_in_channel
+not_in_频道
 ,
 Forbidden
 ,
@@ -326,8 +326,8 @@ Related:
 /automation/cron-jobs
 /网关/heartbeat
 ​
-Node paired 工具 fails
-If a node is paired but 工具 fail, isolate foreground, permission,与approval state.
+节点 paired 工具 fails
+If a 节点 is paired but 工具 fail, isolate foreground, permission,与approval state.
 Copy
 OpenClaw
 节点
@@ -335,7 +335,7 @@ status
 OpenClaw
 节点
 describe
---node
+--节点
 <
 idOrNameOrI
 p
@@ -343,7 +343,7 @@ p
 OpenClaw
 approvals
 get
---node
+--节点
 <
 idOrNameOrI
 p
@@ -354,12 +354,12 @@ logs
 OpenClaw
 status
 Look for:
-Node online使用expected capabilities.
+节点 online使用expected capabilities.
 OS permission grants为camera/mic/location/screen.
 执行 approvals与allowlist state.
 Common signatures:
-NODE_BACKGROUND_UNAVAILABLE
-→ node app must be在foreground.
+节点_BACKGROUND_UNAVAILABLE
+→ 节点 app must be在foreground.
 *_PERMISSION_REQUIRED
 /
 LOCATION_PERMISSION_REQUIRED
@@ -399,7 +399,7 @@ Extension relay tab attachment for
 profile="chrome"
 .
 Common signatures:
-Failed到start Chrome CDP在port
+Failed到start Chrome CDP在端口
 → 浏览器 进程 failed到launch.
 浏览器.executablePath not found
 → configured path is invalid.
@@ -443,7 +443,7 @@ Common signatures:
 网关 connect failed:
 → wrong URL target.
 unauthorized
-→ endpoint reachable but wrong auth.
+→ 端点 reachable but wrong auth.
 ​
 2) Bind与auth guardrails are stricter
 Copy
@@ -454,7 +454,7 @@ get
 OpenClaw
 config
 get
-网关.auth.token
+网关.auth.令牌
 OpenClaw
 网关
 status
@@ -470,14 +470,14 @@ tailnet
 custom
 ) need auth configured.
 Old keys like
-网关.token
+网关.令牌
 do not replace
-网关.auth.token
+网关.auth.令牌
 .
 Common signatures:
 refusing到bind 网关 ... without auth
 → bind+auth mismatch.
-RPC probe: failed
+远程过程调用 probe: failed
 while 运行时 is 运行 → 网关 alive but inaccessible使用current auth/url.
 ​
 3) Pairing与device identity state changed

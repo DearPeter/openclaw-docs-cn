@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -229,7 +229,7 @@ on|off
 , default off)
 智能体.defaults.blockStreamingBreak
 (
-text_end|message_end
+text_end|消息_end
 )
 智能体.defaults.blockStreamingChunk
 (
@@ -254,12 +254,12 @@ Reasoning visibility与tokens
 OpenClaw can expose或hide 模型 reasoning:
 /reasoning on|off|stream
 controls visibility.
-Reasoning content still counts toward token usage when produced通过the 模型.
-Telegram supports reasoning stream into the draft bubble.
+Reasoning content still counts toward 令牌 usage when produced通过the 模型.
+Telegram supports reasoning 流 into the draft bubble.
 Details:
 Thinking + reasoning directives
 and
-Token use
+令牌 use
 .
 ​
 Prefixes, threading,与replies

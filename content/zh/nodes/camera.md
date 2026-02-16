@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -64,19 +64,19 @@ Voice Wake
 Location Command
 本页内容
 Camera capture (智能体)
-iOS node
+iOS 节点
 User setting (default on)
-Commands (via 网关 node.invoke)
+Commands (via 网关 节点.invoke)
 Foreground requirement
 命令行界面 helper (temp files + MEDIA)
-Android node
+Android 节点
 Android user setting (default on)
 Permissions
 Android foreground requirement
 Payload guard
 macOS app
 User setting (default off)
-命令行界面 helper (node invoke)
+命令行界面 helper (节点 invoke)
 Safety + practical limits
 macOS screen video (OS-level)
 ​
@@ -84,7 +84,7 @@ Camera capture (智能体)
 OpenClaw supports
 camera capture
 for 智能体 workflows:
-iOS node
+iOS 节点
 (paired via 网关): capture a
 photo
 (
@@ -94,9 +94,9 @@ short video clip
 (
 mp4
 ,使用optional audio) via
-node.invoke
+节点.invoke
 .
-Android node
+Android 节点
 (paired via 网关): capture a
 photo
 (
@@ -106,10 +106,10 @@ short video clip
 (
 mp4
 ,使用optional audio) via
-node.invoke
+节点.invoke
 .
 macOS app
-(node via 网关): capture a
+(节点 via 网关): capture a
 photo
 (
 jpg
@@ -118,13 +118,13 @@ short video clip
 (
 mp4
 ,使用optional audio) via
-node.invoke
+节点.invoke
 .
 All camera access is gated behind
 user-controlled settings
 .
 ​
-iOS node
+iOS 节点
 ​
 User setting (default on)
 iOS Settings tab →
@@ -144,7 +144,7 @@ CAMERA_DISABLED
 .
 ​
 Commands (via 网关
-node.invoke
+节点.invoke
 )
 camera.list
 Response payload:
@@ -162,7 +162,7 @@ front
 maxWidth
 : number (optional; default
 1600
-on the iOS node)
+on the iOS 节点)
 quality
 :
 0..1
@@ -221,12 +221,12 @@ hasAudio
 Foreground requirement
 Like
 画布.*
-, the iOS node only allows
+, the iOS 节点 only allows
 camera.*
 commands在the
 foreground
 . Background invocations return
-NODE_BACKGROUND_UNAVAILABLE
+节点_BACKGROUND_UNAVAILABLE
 .
 ​
 命令行界面 helper (temp files + MEDIA)
@@ -239,7 +239,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -249,7 +249,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -260,7 +260,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -271,7 +271,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -284,7 +284,7 @@ both
 facings到give the 智能体 both views.
 Output files are temporary (in the OS temp directory) unless you 构建 your own wrapper.
 ​
-Android node
+Android 节点
 ​
 Android user setting (default on)
 Android Settings sheet →
@@ -326,12 +326,12 @@ error.
 Android foreground requirement
 Like
 画布.*
-, the Android node only allows
+, the Android 节点 only allows
 camera.*
 commands在the
 foreground
 . Background invocations return
-NODE_BACKGROUND_UNAVAILABLE
+节点_BACKGROUND_UNAVAILABLE
 .
 ​
 Payload guard
@@ -349,17 +349,17 @@ Default:
 off
 When off: camera requests return “Camera disabled通过user”.
 ​
-命令行界面 helper (node invoke)
+命令行界面 helper (节点 invoke)
 Use the main
 OpenClaw
-命令行界面到invoke camera commands在the macOS node.
+命令行界面到invoke camera commands在the macOS 节点.
 Examples:
 Copy
 OpenClaw
 节点
 camera
 list
---node
+--节点
 <
 i
 d
@@ -369,7 +369,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -379,7 +379,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -390,7 +390,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -401,7 +401,7 @@ OpenClaw
 节点
 camera
 snap
---node
+--节点
 <
 i
 d
@@ -415,7 +415,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -427,7 +427,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -439,7 +439,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -453,7 +453,7 @@ OpenClaw
 节点
 camera
 clip
---node
+--节点
 <
 i
 d
@@ -475,7 +475,7 @@ Safety + practical limits
 Camera与microphone access trigger the usual OS permission prompts (and require usage strings在Info.plist).
 Video clips are capped (currently
 <= 60s
-)到avoid oversized node payloads (base64 overhead + 消息 limits).
+)到avoid oversized 节点 payloads (base64 overhead + 消息 limits).
 ​
 macOS screen video (OS-level)
 For
@@ -486,7 +486,7 @@ OpenClaw
 节点
 screen
 record
---node
+--节点
 <
 i
 d

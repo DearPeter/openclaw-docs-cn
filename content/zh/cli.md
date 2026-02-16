@@ -24,9 +24,9 @@ approvals
 频道
 配置
 cron
-dashboard
+仪表板
 directory
-dns
+DNS
 docs
 doctor
 网关
@@ -52,9 +52,9 @@ tui
 uninstall
 update
 voicecall
-RPC与API
-RPC Adapters
-Device 模型 Database
+远程过程调用与API
+远程过程调用 Adapters
+Device 模型 数据库
 Templates
 Default 智能体.md
 智能体.md Template
@@ -67,7 +67,7 @@ SOUL.md Template
 USER
 Technical 参考
 向导 参考
-Token Use与Costs
+令牌 Use与Costs
 grammY
 Concept internals
 TypeBox
@@ -108,7 +108,7 @@ doctor
 技能
 pairing
 webhooks gmail
-dns 设置
+DNS 设置
 Messaging + 智能体
 消息
 智能体
@@ -139,14 +139,14 @@ logs
 模型 fallbacks list|add|remove|clear
 模型 image-fallbacks list|add|remove|clear
 模型 scan
-模型 auth add|设置-token|paste-token
+模型 auth add|设置-token|paste-令牌
 模型 auth order get|set|clear
 System
 system event
 system heartbeat last|enable|disable
 system 在线状态
 Cron
-Node host
+节点 host
 节点
 浏览器
 Docs 搜索
@@ -163,7 +163,7 @@ onboard
 配置
 config
 doctor
-dashboard
+仪表板
 reset
 uninstall
 update
@@ -181,13 +181,13 @@ system
 记忆
 节点
 devices
-node
+节点
 approvals
 sandbox
 tui
 浏览器
 cron
-dns
+DNS
 docs
 hooks
 webhooks
@@ -332,7 +332,7 @@ aliases list|add|remove
 fallbacks list|add|remove|clear
 image-fallbacks list|add|remove|clear
 scan
-auth add|设置-token|paste-token
+auth add|设置-token|paste-令牌
 auth order get|set|clear
 sandbox
 list
@@ -350,7 +350,7 @@ runs
 run
 节点
 devices
-node
+节点
 run
 status
 安装
@@ -405,7 +405,7 @@ pairing
 list
 approve
 docs
-dns
+DNS
 设置
 tui
 Note: plugins can add additional top-level commands (for example
@@ -490,8 +490,8 @@ Options:
 : 向导 mode.
 --remote-url <url>
 : remote 网关 URL.
---remote-token <token>
-: remote 网关 token.
+--remote-token <令牌>
+: remote 网关 令牌.
 向导 auto-runs when any 向导 flags are present (
 --non-interactive
 ,
@@ -499,7 +499,7 @@ Options:
 ,
 --remote-url
 ,
---remote-token
+--remote-令牌
 ).
 ​
 onboard
@@ -512,46 +512,46 @@ Options:
 --mode <local|remote>
 --flow <快速开始|advanced|manual>
 (manual is an alias为advanced)
---auth-choice <设置-token|token|chutes|openai-codex|openai-api-key|openrouter-api-key|ai-网关-api-key|moonshot-api-key|moonshot-api-key-cn|kimi-code-api-key|synthetic-api-key|venice-api-key|gemini-api-key|zai-api-key|apiKey|minimax-api|minimax-api-lightning|opencode-zen|custom-api-key|skip>
---token-provider <id>
+--auth-choice <设置-token|令牌|chutes|openai-codex|openai-API-key|openrouter-api-key|ai-网关-API-key|moonshot-api-key|moonshot-API-key-cn|kimi-code-API-key|synthetic-api-key|venice-API-key|gemini-api-key|zai-API-key|apiKey|minimax-api|minimax-API-lightning|opencode-zen|custom-API-key|skip>
+--令牌-provider <id>
 (non-interactive; used with
---auth-choice token
+--auth-choice 令牌
 )
---token <token>
+--token <令牌>
 (non-interactive; used with
---auth-choice token
+--auth-choice 令牌
 )
---token-profile-id <id>
+--令牌-profile-id <id>
 (non-interactive; default:
 <provider>:manual
 )
---token-expires-in <duration>
+--令牌-expires-in <duration>
 (non-interactive; e.g.
 365d
 ,
 12h
 )
---anthropic-api-key <key>
---openai-api-key <key>
---openrouter-api-key <key>
---ai-网关-api-key <key>
---moonshot-api-key <key>
---kimi-code-api-key <key>
---gemini-api-key <key>
---zai-api-key <key>
---minimax-api-key <key>
---opencode-zen-api-key <key>
+--anthropic-API-key <key>
+--openai-API-key <key>
+--openrouter-API-key <key>
+--ai-网关-API-key <key>
+--moonshot-API-key <key>
+--kimi-code-API-key <key>
+--gemini-API-key <key>
+--zai-API-key <key>
+--minimax-API-key <key>
+--opencode-zen-API-key <key>
 --custom-base-url <url>
 (non-interactive; used with
---auth-choice custom-api-key
+--auth-choice custom-API-key
 )
 --custom-模型-id <id>
 (non-interactive; used with
---auth-choice custom-api-key
+--auth-choice custom-API-key
 )
---custom-api-key <key>
+--custom-API-key <key>
 (non-interactive; optional; used with
---auth-choice custom-api-key
+--auth-choice custom-API-key
 ; falls back to
 CUSTOM_API_KEY
 when omitted)
@@ -561,13 +561,13 @@ when omitted)
 (non-interactive; optional; default
 openai
 )
---网关-port <port>
+--网关-port <端口>
 --网关-bind <loopback|lan|tailnet|auto|custom>
---网关-auth <token|password>
---网关-token <token>
+--网关-auth <令牌|password>
+--网关-token <令牌>
 --网关-password <password>
 --remote-url <url>
---remote-token <token>
+--remote-token <令牌>
 --tailscale <off|serve|funnel>
 --tailscale-reset-on-exit
 --安装-daemon
@@ -575,12 +575,12 @@ openai
 (alias:
 --skip-daemon
 )
---daemon-运行时 <node|bun>
+--daemon-运行时 <节点|bun>
 --skip-频道
 --skip-技能
 --skip-health
 --skip-ui
---node-manager <npm|pnpm|bun>
+--节点-manager <npm|pnpm|bun>
 (pnpm recommended; bun not recommended为网关 运行时)
 --JSON
 ​
@@ -620,7 +620,7 @@ Subcommands:
 频道 list
 : show configured 频道与auth profiles.
 频道 status
-: check 网关 reachability与channel health (
+: check 网关 reachability与频道 health (
 --probe
 runs extra checks; use
 OpenClaw health
@@ -705,7 +705,7 @@ Telegram
 alerts
 --name
 "Alerts Bot"
---token
+--令牌
 $TELEGRAM_BOT_TOKEN
 OpenClaw
 频道
@@ -716,7 +716,7 @@ Discord
 work
 --name
 "Work Bot"
---token
+--令牌
 $DISCORD_BOT_TOKEN
 OpenClaw
 频道
@@ -781,13 +781,13 @@ webhooks gmail 设置
 ,
 --hook-url
 ,
---hook-token
+--hook-令牌
 ,
---push-token
+--push-令牌
 ,
 --bind
 ,
---port
+--端口
 ,
 --path
 ,
@@ -803,14 +803,14 @@ webhooks gmail 设置
 ,
 --tailscale-target
 ,
---push-endpoint
+--push-端点
 ,
 --JSON
 )
 webhooks gmail run
 (运行时 overrides为the same flags)
 ​
-dns 设置
+DNS 设置
 Wide-area discovery DNS helper (CoreDNS + Tailscale). See
 /网关/discovery
 .
@@ -826,7 +826,7 @@ See:
 /命令行界面/消息
 Subcommands:
 消息 send|poll|react|reactions|read|edit|delete|pin|unpin|pins|permissions|搜索|timeout|kick|ban
-消息 thread <create|list|reply>
+消息 线程 <create|list|reply>
 消息 emoji <list|upload>
 消息 sticker <send|upload>
 消息 role <info|add|remove>
@@ -887,7 +887,7 @@ accountId
 is omitted为WhatsApp, the default account id is used.
 ​
 智能体 delete <id>
-Delete an agent与prune its 工作空间 + state.
+Delete an 代理与prune its 工作空间 + state.
 Options:
 --force
 --JSON
@@ -915,7 +915,7 @@ Options:
 --verbose
 )
 Notes:
-概述 includes 网关 + node host service status when available.
+概述 includes 网关 + 节点 host service status when available.
 ​
 Usage tracking
 OpenClaw can surface provider usage/quota when OAuth/API creds are available.
@@ -989,10 +989,10 @@ and explicit scopes (or
 网关
 Run the WebSocket 网关.
 Options:
---port <port>
+--port <端口>
 --bind <loopback|tailnet|lan|auto|custom>
---token <token>
---auth <token|password>
+--token <令牌>
+--auth <令牌|password>
 --password <password>
 --tailscale <off|serve|funnel>
 --tailscale-reset-on-exit
@@ -1001,7 +1001,7 @@ Options:
 --reset
 (reset dev config + credentials + sessions + 工作空间)
 --force
-(kill existing listener在port)
+(kill existing listener在端口)
 --verbose
 --claude-命令行界面-logs
 --ws-log <auto|full|compact>
@@ -1009,14 +1009,14 @@ Options:
 (alias for
 --ws-log compact
 )
---raw-stream
---raw-stream-path <path>
+--raw-流
+--raw-流-path <path>
 ​
 网关 service
 Manage the 网关 service (launchd/systemd/schtasks).
 Subcommands:
 网关 status
-(probes the 网关 RPC通过default)
+(probes the 网关 远程过程调用通过default)
 网关 安装
 (service 安装)
 网关 uninstall
@@ -1047,16 +1047,16 @@ support
 --JSON
 for scripting (default output stays human-friendly).
 网关 安装
-defaults到Node 运行时; bun is
+defaults到节点 运行时; bun is
 not recommended
 (WhatsApp/Telegram bugs).
 网关 安装
 options:
---port
+--端口
 ,
 --运行时
 ,
---token
+--令牌
 ,
 --force
 ,
@@ -1064,7 +1064,7 @@ options:
 .
 ​
 logs
-Tail 网关 file logs via RPC.
+Tail 网关 file logs via 远程过程调用.
 Notes:
 TTY sessions render a colorized, structured view; non-TTY falls back到plain text.
 --JSON
@@ -1092,19 +1092,19 @@ logs
 网关 命令行界面 helpers (use
 --url
 ,
---token
+--令牌
 ,
 --password
 ,
 --timeout
 ,
 --expect-final
-for RPC subcommands).
+for 远程过程调用 subcommands).
 When you pass
 --url
 , the 命令行界面 does not auto-apply config或environment credentials.
 Include
---token
+--令牌
 or
 --password
 explicitly. Missing explicit credentials is an error.
@@ -1139,14 +1139,14 @@ if a config already exists.
 See
 /concepts/模型
 for fallback behavior与scanning strategy.
-Preferred Anthropic auth (设置-token):
+Preferred Anthropic auth (设置-令牌):
 Copy
 claude
-设置-token
+设置-令牌
 OpenClaw
 模型
 auth
-设置-token
+设置-令牌
 --provider
 anthropic
 OpenClaw
@@ -1189,7 +1189,7 @@ Options:
 --probe-profile <id>
 (repeat或comma-separated)
 --probe-timeout <ms>
---probe-concurrency <n>
+--probe-并发 <n>
 --probe-max-tokens <n>
 Always includes the auth 概述与OAuth expiry status为profiles在the auth store.
 --probe
@@ -1244,7 +1244,7 @@ Options:
 --provider <name>
 --max-candidates <n>
 --timeout <ms>
---concurrency <n>
+--并发 <n>
 --no-probe
 --yes
 --no-input
@@ -1252,18 +1252,18 @@ Options:
 --set-image
 --JSON
 ​
-模型 auth add|设置-token|paste-token
+模型 auth add|设置-token|paste-令牌
 Options:
 add
 : interactive auth helper
-设置-token
+设置-令牌
 :
 --provider <name>
 (default
 anthropic
 ),
 --yes
-paste-token
+paste-令牌
 :
 --provider <name>
 ,
@@ -1296,7 +1296,7 @@ clear
 System
 ​
 system event
-Enqueue a system event与optionally trigger a heartbeat (网关 RPC).
+Enqueue a system event与optionally trigger a heartbeat (网关 远程过程调用).
 Required:
 --text <text>
 Options:
@@ -1304,38 +1304,38 @@ Options:
 --JSON
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
 --expect-final
 ​
 system heartbeat last|enable|disable
-Heartbeat controls (网关 RPC).
+Heartbeat controls (网关 远程过程调用).
 Options:
 --JSON
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
 --expect-final
 ​
 system 在线状态
-List system 在线状态 entries (网关 RPC).
+List system 在线状态 entries (网关 远程过程调用).
 Options:
 --JSON
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
 --expect-final
 ​
 Cron
-Manage scheduled jobs (网关 RPC). See
+Manage scheduled jobs (网关 远程过程调用). See
 /automation/cron-jobs
 .
 Subcommands:
@@ -1377,27 +1377,27 @@ cron
 commands accept
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
 --expect-final
 .
 ​
-Node host
-node
+节点 host
+节点
 runs a
-headless node host
+headless 节点 host
 or manages it as a background service. See
-OpenClaw node
+OpenClaw 节点
 .
 Subcommands:
-node run --host <网关-host> --port 18789
-node status
-node 安装 [--host <网关-host>] [--port <port>] [--tls] [--tls-fingerprint <sha256>] [--node-id <id>] [--display-name <name>] [--运行时 <node|bun>] [--force]
-node uninstall
-node stop
-node restart
+节点 run --host <网关-host> --端口 18789
+节点 status
+节点 安装 [--host <网关-host>] [--port <端口>] [--tls] [--tls-fingerprint <sha256>] [--节点-id <id>] [--display-name <name>] [--运行时 <节点|bun>] [--force]
+节点 uninstall
+节点 stop
+节点 restart
 ​
 节点
 节点
@@ -1407,7 +1407,7 @@ talks到the 网关与targets paired 节点. See
 Common options:
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
@@ -1422,7 +1422,7 @@ Subcommands:
 节点 rename --node <id|name|ip> --name <displayName>
 节点 invoke --node <id|name|ip> --command <command> [--params <JSON>] [--invoke-timeout <ms>] [--idempotency-key <key>]
 节点 run --node <id|name|ip> [--cwd <path>] [--env KEY=VAL] [--command-timeout <ms>] [--needs-screen-recording] [--invoke-timeout <ms>] <command...>
-(mac node或headless node host)
+(mac node或headless 节点 host)
 节点 notify --node <id|name|ip> [--title <text>] [--body <text>] [--sound <name>] [--priority <passive|active|timeSensitive>] [--delivery <system|overlay|auto>] [--invoke-timeout <ms>]
 (mac only)
 Camera:
@@ -1433,7 +1433,7 @@ Camera:
 节点 画布 snapshot --node <id|name|ip> [--format png|jpg|jpeg] [--max-width <px>] [--quality <0-1>] [--invoke-timeout <ms>]
 节点 画布 present --node <id|name|ip> [--target <urlOrPath>] [--x <px>] [--y <px>] [--width <px>] [--height <px>] [--invoke-timeout <ms>]
 节点 画布 hide --node <id|name|ip> [--invoke-timeout <ms>]
-节点 画布 navigate <url> --node <id|name|ip> [--invoke-timeout <ms>]
+节点 画布 navigate <url> --节点 <id|name|ip> [--invoke-timeout <ms>]
 节点 画布 eval [<js>] --node <id|name|ip> [--js <code>] [--invoke-timeout <ms>]
 节点 画布 a2ui push --node <id|name|ip> (--jsonl <path> | --text <text>) [--invoke-timeout <ms>]
 节点 画布 a2ui reset --node <id|name|ip> [--invoke-timeout <ms>]
@@ -1450,7 +1450,7 @@ and the
 Common options:
 --url
 ,
---token
+--令牌
 ,
 --timeout
 ,
@@ -1474,7 +1474,7 @@ Inspect:
 Actions:
 浏览器 navigate <url> [--target-id <id>]
 浏览器 resize <width> <height> [--target-id <id>]
-浏览器 click <ref> [--double] [--button <left|right|middle>] [--modifiers <csv>] [--target-id <id>]
+浏览器 click <ref> [--double] [--button <left|right|middle>] [--modifiers <CSV>] [--target-id <id>]
 浏览器 type <ref> <text> [--submit] [--slowly] [--target-id <id>]
 浏览器 press <key> [--target-id <id>]
 浏览器 hover <ref> [--target-id <id>]
@@ -1498,7 +1498,7 @@ tui
 Open the terminal UI connected到the 网关.
 Options:
 --url <url>
---token <token>
+--token <令牌>
 --password <password>
 --会话 <key>
 --deliver

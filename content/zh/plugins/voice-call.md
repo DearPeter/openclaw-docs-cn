@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -75,7 +75,7 @@ More examples
 Inbound calls
 命令行界面
 智能体 工具
-网关 RPC
+网关 远程过程调用
 ​
 Voice Call (plugin)
 Voice calls为OpenClaw via a plugin. Supports outbound notifications and
@@ -196,7 +196,7 @@ authToken
 serve
 :
 {
-port
+端口
 :
 3334
 ,
@@ -263,10 +263,10 @@ streamPath
 Notes:
 Twilio/Telnyx require a
 publicly reachable
-webhook URL.
+Webhook URL.
 Plivo requires a
 publicly reachable
-webhook URL.
+Webhook URL.
 mock
 is a local dev provider (no network calls).
 skipSignatureVerification
@@ -287,7 +287,7 @@ publicUrl
 drifts, Twilio signatures will fail. For production, prefer a stable domain或Tailscale funnel.
 ​
 Webhook Security
-When a proxy或tunnel sits在front的the 网关, the plugin reconstructs the
+When a 代理服务器或tunnel sits在front的the 网关, the plugin reconstructs the
 public URL为signature verification. These options 控制 which forwarded
 headers are trusted.
 webhookSecurity.allowedHosts
@@ -594,7 +594,7 @@ This repo ships a matching skill doc at
 技能/voice-call/SKILL.md
 .
 ​
-网关 RPC
+网关 远程过程调用
 voicecall.initiate
 (
 to?

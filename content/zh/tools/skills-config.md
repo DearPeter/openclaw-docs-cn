@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -184,7 +184,7 @@ load.watchDebounceMs
 安装.preferBrew
 : prefer brew installers when available (default: true).
 安装.nodeManager
-: node installer preference (
+: 节点 installer preference (
 npm
 |
 pnpm
@@ -195,7 +195,7 @@ bun
 , default: npm).
 This only affects
 skill installs
-; the 网关 运行时 should still be Node
+; the 网关 运行时 should still be 节点
 (Bun not recommended为WhatsApp/Telegram).
 entries.<skillKey>
 : per-skill overrides.
@@ -227,9 +227,9 @@ inherit the host
 进程.env
 .
 Use one of:
-智能体.defaults.sandbox.docker.env
+智能体.defaults.sandbox.Docker.env
 (or per-智能体
-智能体.list[].sandbox.docker.env
+智能体.list[].sandbox.Docker.env
 )
 bake the env into your custom sandbox image
 Global

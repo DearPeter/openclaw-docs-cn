@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -44,11 +44,11 @@ OAuth
 会话修剪
 When it runs
 Smart defaults (Anthropic)
-What这improves (cost + cache behavior)
+What这improves (cost + 缓存 behavior)
 What can be pruned
 上下文 window estimation
 Mode
-cache-ttl
+缓存-ttl
 Soft vs hard 修剪
 工具 selection
 Interaction使用other limits
@@ -66,7 +66,7 @@ rewrite the on-disk 会话 history (
 ​
 When it runs
 When
-mode: "cache-ttl"
+mode: "缓存-ttl"
 is enabled与the last Anthropic call为the 会话 is older than
 ttl
 .
@@ -77,20 +77,20 @@ ttl
 to your 模型
 cacheControlTtl
 .
-After a prune, the TTL window resets so subsequent requests keep cache until
+After a prune, the TTL window resets so subsequent requests keep 缓存 until
 ttl
 expires again.
 ​
 Smart defaults (Anthropic)
-OAuth或设置-token
+OAuth或设置-令牌
 profiles: enable
-cache-ttl
+缓存-ttl
 pruning与set heartbeat to
 1h
 .
-API key
+API密钥
 profiles: enable
-cache-ttl
+缓存-ttl
 修剪, set heartbeat to
 30m
 ,与default
@@ -102,7 +102,7 @@ If you set any的these values explicitly, OpenClaw does
 not
 override them.
 ​
-What这improves (cost + cache behavior)
+What这improves (cost + 缓存 behavior)
 Why prune:
 Anthropic 提示词 caching only applies within the TTL. If a 会话 goes idle past the TTL, the next request re-caches the full 提示词 unless you trim it first.
 What gets cheaper:
@@ -110,7 +110,7 @@ What gets cheaper:
 cacheWrite
 size为that first request after the TTL expires.
 Why the TTL reset matters:
-once 修剪 runs, the cache window resets, so follow‑up requests can reuse the freshly cached 提示词 instead的re-caching the full history again.
+once 修剪 runs, the 缓存 window resets, so follow‑up requests can reuse the freshly cached 提示词 instead的re-caching the full history again.
 What it does not do:
 修剪 doesn’t add tokens或“double” costs; it only changes what gets cached在that first post‑TTL request.
 ​
@@ -145,7 +145,7 @@ is set, it is treated as a cap (min)在the resolved window.
 ​
 Mode
 ​
-cache-ttl
+缓存-ttl
 修剪 only runs if the last Anthropic call is older than
 ttl
 (default
@@ -234,7 +234,7 @@ contextPruning
 {
 mode
 :
-"cache-ttl"
+"缓存-ttl"
 ,
 ttl
 :
@@ -255,7 +255,7 @@ contextPruning
 {
 mode
 :
-"cache-ttl"
+"缓存-ttl"
 ,
 工具
 :

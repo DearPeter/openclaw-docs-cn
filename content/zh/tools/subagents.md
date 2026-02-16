@@ -1,4 +1,4 @@
-# Sub-Agent - OpenClaw - 中文翻译
+# Sub-代理 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -70,7 +70,7 @@ How It Works
 Setting a Default 模型
 Setting a Default Thinking Level
 Per-智能体 Overrides
-Concurrency
+并发
 Auto-Archive
 The sessions_spawn 工具
 Parameters
@@ -94,16 +94,16 @@ Sub-智能体 let you run background 任务 without blocking the main conversati
 Use cases:
 Research a topic while the main 智能体 continues answering questions
 Run multiple long 任务在parallel (网页 scraping, code analysis, file processing)
-Delegate 任务到specialized Agent在a multi-智能体 设置
+Delegate 任务到specialized 代理在a multi-智能体 设置
 ​
 Quick Start
 The simplest way到use sub-智能体 is到ask your 智能体 naturally:
-“Spawn a sub-agent到research the latest Node.js release notes”
+“Spawn a sub-代理到research the latest 节点.js release notes”
 The 智能体 will call the
 sessions_spawn
 工具 behind the scenes. When the sub-智能体 finishes, it announces its findings back into your chat.
 You can also be explicit about options:
-“Spawn a sub-agent到analyze the server logs从today. Use gpt-5.2与set a 5-minute timeout.”
+“Spawn a sub-代理到analyze the server logs从today. Use gpt-5.2与set a 5-minute timeout.”
 ​
 How It Works
 1
@@ -130,7 +130,7 @@ When the sub-智能体 finishes, it announces its findings back到the requester 
 The sub-智能体 会话 is auto-archived after 60 minutes (configurable). Transcripts are preserved.
 Each sub-智能体 has its
 own
-上下文与token usage. Set a cheaper model为sub-Agent到save costs — see
+上下文与令牌 usage. Set a cheaper model为sub-代理到save costs — see
 Setting a Default 模型
 below.
 ​
@@ -146,7 +146,7 @@ Max concurrent: 8
 Auto-archive: after 60 minutes
 ​
 Setting a Default 模型
-Use a cheaper model为sub-Agent到save在token costs:
+Use a cheaper model为sub-代理到save在令牌 costs:
 Copy
 {
 智能体
@@ -242,7 +242,7 @@ subagents
 ,
 }
 ​
-Concurrency
+并发
 控制 how many sub-智能体 can run在the same time:
 Copy
 {
@@ -377,7 +377,7 @@ Otherwise no sub-智能体-specific thinking override is applied
 Invalid 模型 values are silently skipped — the sub-智能体 runs在the next valid default使用a warning在the 工具 result.
 ​
 Cross-智能体 Spawning
-By default, sub-智能体 can only spawn under their own 智能体 id. To allow an agent到spawn sub-智能体 under other 智能体 ids:
+By default, sub-智能体 can only spawn under their own 智能体 id. To allow an 代理到spawn sub-智能体 under other 智能体 ids:
 Copy
 {
 智能体
@@ -414,7 +414,7 @@ allowAgent
 }
 Use the
 agents_list
-tool到discover which 智能体 ids are currently allowed for
+工具到discover which 智能体 ids are currently allowed for
 sessions_spawn
 .
 ​
@@ -436,7 +436,7 @@ View sub-智能体 transcript
 Show detailed run metadata
 /subagents send <id|#> <消息>
 Send a 消息到a 运行 sub-智能体
-You can 参考 sub-Agent通过list index (
+You can 参考 sub-代理通过list index (
 1
 ,
 2
@@ -518,7 +518,7 @@ NO_REPLY
 and nothing is posted.
 这是 different from
 ANNOUNCE_SKIP
-, which is used在agent-to-智能体 announce flow (
+, which is used在代理-to-智能体 announce flow (
 sessions_send
 ).
 ​
@@ -543,13 +543,13 @@ agents_list
 System admin
 whatsapp_login
 Interactive 设置 — not a task
-session_status
+会话_status
 Status/scheduling — main 智能体 coordinates
 cron
 Status/scheduling — main 智能体 coordinates
-memory_search
+记忆_search
 Pass relevant info在spawn 提示词 instead
-memory_get
+记忆_get
 Pass relevant info在spawn 提示词 instead
 ​
 Customizing Sub-智能体 工具
@@ -654,7 +654,7 @@ USER.md
 HEARTBEAT.md
 ,
 引导.md
-The sub-智能体 also receives a task-focused system prompt那instructs it到stay focused在the assigned task, complete it,与not act as the main 智能体.
+The sub-智能体 also receives a task-focused 系统提示那instructs it到stay focused在the assigned task, complete it,与not act as the main 智能体.
 ​
 Stopping Sub-智能体
 Method

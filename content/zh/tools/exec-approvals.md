@@ -51,10 +51,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -75,7 +75,7 @@ Safe bins (stdin-only)
 控制 UI editing
 Approval flow
 Approval forwarding到chat 频道
-macOS IPC flow
+macOS 进程间通信 flow
 System events
 Implications
 ​
@@ -86,7 +86,7 @@ for letting a sandboxed 智能体 run
 commands在a real host (
 网关
 or
-node
+节点
 ). Think的it like a safety interlock:
 commands are allowed only when policy + allowlist + (optional) user approval all agree.
 执行 approvals are
@@ -114,15 +114,15 @@ Where it applies
 →
 OpenClaw
 进程在the 网关 machine
-node host
-→ node runner (macOS companion app或headless node host)
+节点 host
+→ 节点 runner (macOS companion app或headless 节点 host)
 macOS split:
-node host service
+节点 host service
 forwards
 system.run
 to the
 macOS app
-over local IPC.
+over local 进程间通信.
 macOS app
 enforces approvals + executes the command在UI 上下文.
 ​
@@ -136,16 +136,16 @@ Copy
 :
 1
 ,
-"socket"
+"套接字"
 :
 {
 "path"
 :
 "~/.OpenClaw/执行-approvals.sock"
 ,
-"token"
+"令牌"
 :
-"base64url-token"
+"base64url-令牌"
 }
 ,
 "defaults"
@@ -283,9 +283,9 @@ Auto-allow skill CLIs
 When
 Auto-allow skill CLIs
 is enabled, executables referenced通过known 技能
-are treated as allowlisted在节点 (macOS node或headless node host). This uses
+are treated as allowlisted在节点 (macOS node或headless 节点 host). This uses
 技能.bins
-over the 网关 RPC到获取 the skill bin list. Disable这if you want strict manual allowlists.
+over the 网关 远程过程调用到获取 the skill bin list. Disable这if you want strict manual allowlists.
 ​
 Safe bins (stdin-only)
 工具.执行.safeBins
@@ -297,7 +297,7 @@ jq
 that can run在allowlist mode
 without
 explicit allowlist entries. Safe bins reject
-positional file args与path-like tokens, so they can only operate在the incoming stream.
+positional file args与path-like tokens, so they can only operate在the incoming 流.
 Shell chaining与redirections are not auto-allowed在allowlist mode.
 Shell chaining (
 &&
@@ -347,17 +347,17 @@ per pattern so you can keep the list tidy.
 The target selector chooses
 网关
 (local approvals)或a
-Node
+节点
 . 节点
 must advertise
 system.execApprovals.get/set
-(macOS app或headless node host).
-If a node does not advertise 执行 approvals yet, edit its local
+(macOS app或headless 节点 host).
+If a 节点 does not advertise 执行 approvals yet, edit its local
 ~/.OpenClaw/执行-approvals.JSON
 directly.
 命令行界面:
 OpenClaw approvals
-supports 网关或node editing (see
+supports 网关或节点 editing (see
 Approvals 命令行界面
 ).
 ​
@@ -368,7 +368,7 @@ to operator clients.
 The 控制 UI与macOS app resolve it via
 执行.approval.resolve
 , then the 网关 forwards the
-approved request到the node host.
+approved request到the 节点 host.
 When approvals are required, the 执行 工具 returns immediately使用an approval id. Use那id to
 correlate later system events (
 执行 finished
@@ -462,16 +462,16 @@ Copy
 /approve <id> allow-always
 /approve <id> deny
 ​
-macOS IPC flow
+macOS 进程间通信 flow
 Copy
-网关 -> Node Service (WS)
-|  IPC (UDS + token + HMAC + TTL)
+网关 -> 节点 Service (WS)
+|  进程间通信 (UDS + 令牌 + HMAC + TTL)
 v
 Mac App (UI + approvals + system.run)
 Security notes:
-Unix socket mode
+Unix 套接字 mode
 0600
-, token stored in
+, 令牌 stored in
 执行-approvals.JSON
 .
 Same-UID peer check.
@@ -483,7 +483,7 @@ System events
 (only if the command exceeds the 运行 notice threshold)
 执行 finished
 执行 denied
-These are posted到the 智能体’s 会话 after the node reports the event.
+These are posted到the 智能体’s 会话 after the 节点 reports the event.
 网关-host 执行 approvals emit the same lifecycle events when the command finishes (and optionally when 运行 longer than the threshold).
 Approval-gated execs reuse the approval id as the
 runId

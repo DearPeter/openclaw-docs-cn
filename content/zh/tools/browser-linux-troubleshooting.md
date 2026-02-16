@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -64,7 +64,7 @@ Voice Wake
 Location Command
 本页内容
 浏览器 Troubleshooting (Linux)
-Problem: “Failed到start Chrome CDP在port 18800”
+Problem: “Failed到start Chrome CDP在端口 18800”
 Root Cause
 Solution 1: 安装 Google Chrome (Recommended)
 Solution 2: Use Snap Chromium使用Attach-Only Mode
@@ -74,18 +74,18 @@ Problem: “Chrome extension relay is 运行, but no tab is connected”
 ​
 浏览器 Troubleshooting (Linux)
 ​
-Problem: “Failed到start Chrome CDP在port 18800”
+Problem: “Failed到start Chrome CDP在端口 18800”
 OpenClaw’s 浏览器 控制 server fails到launch Chrome/Brave/Edge/Chromium使用the error:
 Copy
-{"error":"Error: Failed到start Chrome CDP在port 18800为profile \"OpenClaw\"."}
+{"error":"Error: Failed到start Chrome CDP在端口 18800为profile \"OpenClaw\"."}
 ​
 Root Cause
 On Ubuntu (and many Linux distros), the default Chromium installation is a
-snap package
+snap 包
 . Snap’s AppArmor confinement interferes使用how OpenClaw spawns与monitors the 浏览器 进程.
 The
 apt 安装 chromium
-command installs a stub package那redirects到snap:
+command installs a stub 包那redirects到snap:
 Copy
 Note, selecting 'chromium-浏览器' instead的'chromium'
 chromium-浏览器 is already the newest version (2:1snap1-0ubuntu2).
@@ -94,7 +94,7 @@ chromium-浏览器 is already the newest version (2:1snap1-0ubuntu2).
 Solution 1: 安装 Google Chrome (Recommended)
 安装 the official Google Chrome
 .deb
-package, which is not sandboxed通过snap:
+包, which is not sandboxed通过snap:
 Copy
 wget
 https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -107,7 +107,7 @@ apt
 --fix-broken
 安装
 -y
-# if there are dependency errors
+# if there are 依赖 errors
 Then update your OpenClaw config (
 ~/.OpenClaw/OpenClaw.JSON
 ):
@@ -166,7 +166,7 @@ chromium-浏览器
 --no-sandbox
 --disable-gpu
 \
---remote-debugging-port=18800
+--remote-调试-端口=18800
 \
 --user-data-dir=$HOME/.OpenClaw/浏览器/OpenClaw/user-data
 \
@@ -183,7 +183,7 @@ network.target
 [Service]
 ExecStart=
 /snap/bin/chromium --headless --no-sandbox --disable-gpu --
-remote-debugging-port=
+remote-调试-端口=
 18800 --
 user-data-dir=
 %h/.OpenClaw/浏览器/OpenClaw/user-data about:blank
@@ -239,7 +239,7 @@ false
 Don’t launch 浏览器, only attach到existing
 false
 浏览器.cdpPort
-Chrome Dev工具 Protocol port
+Chrome Dev工具 Protocol 端口
 18800
 ​
 Problem: “Chrome extension relay is 运行, but no tab is connected”

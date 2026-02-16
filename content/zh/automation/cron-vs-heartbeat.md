@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -119,7 +119,7 @@ Piggybacks在existing cycle
 Heartbeat: Periodic Awareness
 Heartbeats run在the
 main 会话
-at a regular interval (default: 30 min). They’re designed为the agent到check在things与surface anything important.
+at a regular interval (default: 30 min). They’re designed为the 代理到check在things与surface anything important.
 ​
 When到use heartbeat
 Multiple periodic checks
@@ -128,7 +128,7 @@ Multiple periodic checks
 : The 智能体 has full main-会话 上下文, so it can make smart decisions about what’s urgent vs. what can wait.
 Conversational continuity
 : Heartbeat runs share the same 会话, so the 智能体 remembers recent conversations与can follow up naturally.
-Low-overhead monitoring
+Low-overhead 监控
 : One heartbeat replaces many small polling 任务.
 ​
 Heartbeat advantages
@@ -143,7 +143,7 @@ Smart suppression
 HEARTBEAT_OK
 and no 消息 is delivered.
 Natural timing
-: Drifts slightly based在queue load, which is fine为most monitoring.
+: Drifts slightly based在queue load, which is fine为most 监控.
 ​
 Heartbeat example: HEARTBEAT.md checklist
 Copy
@@ -327,7 +327,7 @@ The most efficient 设置 uses
 both
 :
 Heartbeat
-handles routine monitoring (inbox, calendar, notifications)在one batched turn every 30 minutes.
+handles routine 监控 (inbox, calendar, notifications)在one batched turn every 30 minutes.
 Cron
 handles precise schedules (daily reports, weekly reviews)与one-shot reminders.
 ​
@@ -393,7 +393,7 @@ Use it when the task is more than a single 智能体 turn,与you want a resumabl
 ​
 When Lobster fits
 Multi-step automation
-: You need a fixed pipeline的tool calls, not a one-off 提示词.
+: You need a fixed pipeline的工具 calls, not a one-off 提示词.
 Approval gates
 : Side effects should pause until you approve, then resume.
 Resumable runs
@@ -416,7 +416,7 @@ Lobster runs as a
 local subprocess
 (
 lobster
-命令行界面)在tool mode与returns a
+命令行界面)在工具 mode与returns a
 JSON envelope
 .
 If the 工具 returns
@@ -474,7 +474,7 @@ with
 --system-event
 when you want:
 The reminder/event到appear在main 会话 上下文
-The agent到handle it during the next heartbeat使用full 上下文
+The 代理到handle it during the next heartbeat使用full 上下文
 No separate isolated run
 Copy
 OpenClaw
@@ -542,7 +542,7 @@ Tips
 :
 Keep
 HEARTBEAT.md
-small到minimize token overhead.
+small到minimize 令牌 overhead.
 Batch similar checks into heartbeat instead的multiple cron jobs.
 Use
 target: "none"

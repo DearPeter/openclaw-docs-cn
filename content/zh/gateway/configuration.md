@@ -25,7 +25,7 @@ K
 Health Checks
 Heartbeat
 Doctor
-Logging
+日志记录
 网关 Lock
 Background 执行与进程 工具
 Multiple 网关s
@@ -42,7 +42,7 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
@@ -54,7 +54,7 @@ Common 任务
 Config hot reload
 Reload modes
 What hot-applies vs what needs a restart
-Config RPC (programmatic updates)
+Config 远程过程调用 (programmatic updates)
 Environment variables
 Full 参考
 ​
@@ -555,7 +555,7 @@ See
 Cron jobs
 for the feature 概述与命令行界面 examples.
 Set up webhooks (hooks)
-Enable HTTP webhook endpoints在the 网关:
+Enable HTTP Webhook endpoints在the 网关:
 Copy
 {
 hooks
@@ -565,7 +565,7 @@ enabled
 :
 true
 ,
-token
+令牌
 :
 "shared-secret"
 ,
@@ -622,7 +622,7 @@ See
 full 参考
 for all mapping options与Gmail 集成.
 配置 multi-智能体 routing
-Run multiple isolated Agent使用separate workspaces与sessions:
+Run multiple isolated 代理使用separate workspaces与sessions:
 Copy
 {
 智能体
@@ -714,7 +714,7 @@ Copy
 网关
 :
 {
-port
+端口
 :
 18789 }
 ,
@@ -839,7 +839,7 @@ No
 UI & misc
 ui
 ,
-logging
+日志记录
 ,
 identity
 ,
@@ -847,7 +847,7 @@ bindings
 No
 网关 server
 网关.*
-(port, bind, auth, tailscale, TLS, HTTP)
+(端口, bind, auth, tailscale, TLS, HTTP)
 Yes
 Infrastructure
 discovery
@@ -863,7 +863,7 @@ are exceptions — changing them does
 not
 trigger a restart.
 ​
-Config RPC (programmatic updates)
+Config 远程过程调用 (programmatic updates)
 config.apply (full replace)
 Validates + writes the full config与restarts the 网关在one step.
 config.apply
@@ -997,9 +997,9 @@ Copy
 auth
 :
 {
-token
+令牌
 :
-"${OPENCLAW_GATEWAY_TOKEN}"
+"${OPENCLAW_网关_令牌}"
 } }
 ,
 模型

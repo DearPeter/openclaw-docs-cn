@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -361,7 +361,7 @@ or
 ; when on, sends a separate 消息 prefixed
 Reasoning:
 ;
-stream
+流
 = Telegram draft only)
 /elevated on|off|ask|full
 (alias:
@@ -450,13 +450,13 @@ is disabled通过default; set
 commands.restart: true
 to enable it.
 /verbose
-is meant为debugging与extra visibility; keep it
+is meant为调试与extra visibility; keep it
 off
 in normal use.
 /reasoning
 (and
 /verbose
-) are risky在group settings: they may reveal internal reasoning或tool output you did not intend到expose. Prefer leaving them off, especially在group chats.
+) are risky在group settings: they may reveal internal reasoning或工具 output you did not intend到expose. Prefer leaving them off, especially在group chats.
 Fast path:
 command-only messages从allowlisted senders are handled immediately (bypass 队列 + 模型).
 Group mention gating:
@@ -536,10 +536,10 @@ show a compact, numbered picker (模型 family + available 提供者).
 /模型 <#>
 selects从that picker (and prefers the current provider when possible).
 /模型 status
-shows the detailed view, including configured provider endpoint (
+shows the detailed view, including configured provider 端点 (
 baseUrl
 )与API mode (
-api
+API
 ) when available.
 ​
 调试 overrides

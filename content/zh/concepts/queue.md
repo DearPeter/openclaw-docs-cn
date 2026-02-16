@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -51,14 +51,14 @@ Scope与guarantees
 Troubleshooting
 ​
 命令队列 (2026-01-16)
-We serialize inbound auto-reply runs (all 频道) through a tiny in-进程 queue到prevent multiple 智能体 runs从colliding, while still allowing safe parallelism across sessions.
+We serialize inbound auto-reply runs (all 频道) through a tiny in-进程 queue到prevent multiple 智能体 runs从colliding, while still allowing safe 并行 across sessions.
 ​
 Why
 Auto-reply runs can be expensive (LLM calls)与can collide when multiple inbound messages arrive close together.
 Serializing avoids competing为shared resources (会话 files, logs, 命令行界面 stdin)与reduces the chance的upstream rate limits.
 ​
 How it works
-A lane-aware FIFO 队列 drains each lane使用a configurable concurrency cap (default 1为unconfigured lanes; main defaults到4, subagent到8).
+A lane-aware FIFO 队列 drains each lane使用a configurable 并发 cap (default 1为unconfigured lanes; main defaults到4, subagent到8).
 runEmbeddedPiAgent
 enqueues by
 会话 key
@@ -69,10 +69,10 @@ Each 会话 run is then queued into a
 global lane
 (
 main
-by default) so overall parallelism is capped by
+by default) so overall 并行 is capped by
 智能体.defaults.maxConcurrent
 .
-When verbose logging is enabled, queued runs emit a short notice if they waited more than ~2s before starting.
+When verbose 日志记录 is enabled, queued runs emit a short notice if they waited more than ~2s before starting.
 Typing indicators still fire immediately在enqueue (when supported通过the 频道) so user experience is unchanged while we wait our turn.
 ​
 队列 modes (per 频道)

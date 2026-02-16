@@ -21,13 +21,13 @@ Troubleshooting
 FAQ
 Community
 OpenClaw Lore
-Environment与debugging
+Environment与调试
 Environment Variables
-Debugging
+调试
 Testing
 Scripts
-Node 运行时
-Node.js
+节点 运行时
+节点.js
 压缩 internals
 会话管理 Deep Dive
 Developer 设置
@@ -89,7 +89,7 @@ Source的truth: the 网关
 OpenClaw is designed around a single
 网关 进程
 that owns 会话 state.
-UIs (macOS app, 网页 控制 UI, TUI) should query the 网关为会话 lists与token counts.
+UIs (macOS app, 网页 控制 UI, TUI) should query the 网关为会话 lists与令牌 counts.
 In remote mode, 会话 files are在the remote host; “checking your local Mac files” won’t reflect what the 网关 is using.
 ​
 Two persistence layers
@@ -100,7 +100,7 @@ sessions.JSON
 Key/value map:
 sessionKey -> 会话Entry
 Small, mutable, safe到edit (or delete entries)
-Tracks 会话 metadata (current 会话 id, last activity, toggles, token counters, etc.)
+Tracks 会话 metadata (current 会话 id, last activity, toggles, 令牌 counters, etc.)
 Transcript (
 <sessionId>.jsonl
 )
@@ -281,7 +281,7 @@ parentId
 Notable entry types:
 消息
 : user/assistant/toolResult messages
-custom_message
+custom_消息
 : extension-injected messages that
 do
 enter 模型 上下文 (can be hidden从UI)
@@ -469,7 +469,7 @@ See
 记忆
 for the 工作空间 file layout与write patterns.
 Pi also exposes a
-session_before_compact
+会话_before_compact
 hook在the extension API, but OpenClaw’s
 flush logic lives在the 网关 side today.
 ​
@@ -492,8 +492,8 @@ too high为the 模型 window can cause earlier 压缩)
 工具-result bloat: enable/tune 会话 修剪
 Silent turns leaking? Confirm the reply starts with
 NO_REPLY
-(exact token)与you’re在a build那includes the 流式传输 suppression fix.
-Node.js
+(exact 令牌)与you’re在a build那includes the 流式传输 suppression fix.
+节点.js
 设置
 I
 [查看英文原版](https://docs.OpenClaw.ai/参考/会话-管理-压缩)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*

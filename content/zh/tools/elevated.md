@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -68,8 +68,8 @@ What it does
 What it controls (and what it doesn’t)
 Resolution order
 Setting a 会话 default
-Availability + allowlists
-Logging + status
+可用性 + allowlists
+日志记录 + status
 ​
 Elevated Mode (/elevated directives)
 ​
@@ -107,7 +107,7 @@ on|off|ask|full
 are accepted; anything else returns a hint与does not change state.
 ​
 What it controls (and what it doesn’t)
-Availability gates
+可用性 gates
 :
 工具.elevated
 is the global baseline.
@@ -140,11 +140,11 @@ on
 ask
 honor them when allowlist/ask rules require.
 Unsandboxed 智能体
-: no-op为location; only affects gating, logging,与status.
+: no-op为location; only affects gating, 日志记录,与status.
 工具 policy still applies
 : if
 执行
-is denied通过tool policy, elevated cannot be used.
+is denied通过工具 policy, elevated cannot be used.
 Separate from
 /执行
 :
@@ -176,7 +176,7 @@ Send
 /elevated:
 )使用no argument到see the current elevated level.
 ​
-Availability + allowlists
+可用性 + allowlists
 Feature gate:
 工具.elevated.enabled
 (default can be off via config even if the code supports it).
@@ -208,7 +208,7 @@ not
 use the fallback.
 All gates must pass; otherwise elevated is treated as unavailable.
 ​
-Logging + status
+日志记录 + status
 Elevated 执行 calls are logged在info level.
 会话 status includes elevated mode (e.g.
 elevated=ask

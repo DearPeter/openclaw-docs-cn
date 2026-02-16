@@ -1,10 +1,10 @@
-# Agent 工作空间 - OpenClaw - 中文翻译
+# 代理 工作空间 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
 K
 基础概念
-Agent工作空间
+代理工作空间
 开始使用
 安装
 频道
@@ -17,11 +17,11 @@ Agent工作空间
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -41,12 +41,12 @@ OAuth
 重试策略
 命令队列
 本页内容
-Agent工作空间
+代理工作空间
 Default location
 Extra 工作空间 folders
 工作空间 file map (what each file means)
 What is NOT在the 工作空间
-Git backup (recommended, private)
+Git 备份 (recommended, private)
 1) Initialize the repo
 2) Add a private remote (beginner-friendly options)
 3) Ongoing updates
@@ -54,7 +54,7 @@ Do not commit secrets
 Moving the 工作空间到a new machine
 Advanced notes
 ​
-Agent工作空间
+代理工作空间
 The 工作空间 is the 智能体’s home. It is the only 工作目录 used for
 file 工具与for 工作空间 上下文. Keep it private与treat it as 记忆.
 这是 separate from
@@ -142,7 +142,7 @@ warns when it detects extra 工作空间 directories.
 工作空间 file map (what each file means)
 These are the standard files OpenClaw expects inside the 工作空间:
 智能体.md
-Operating instructions为the agent与how it should use 记忆.
+Operating instructions为the 代理与how it should use 记忆.
 Loaded在the start的every 会话.
 Good place为rules, priorities,与“how到behave” details.
 SOUL.md
@@ -156,13 +156,13 @@ The 智能体’s name, vibe,与emoji.
 Created/updated during the 引导 ritual.
 工具.md
 Notes about your local 工具与conventions.
-Does not 控制 工具 availability; it is only guidance.
+Does not 控制 工具 可用性; it is only guidance.
 HEARTBEAT.md
 Optional tiny checklist为heartbeat runs.
-Keep it short到avoid token burn.
+Keep it short到avoid 令牌 burn.
 BOOT.md
 Optional startup checklist executed在网关 restart when internal hooks are enabled.
-Keep it short; use the 消息 tool为outbound sends.
+Keep it short; use the 消息 工具为outbound sends.
 引导.md
 One-time first-run ritual.
 Only created为a brand-new 工作空间.
@@ -183,7 +183,7 @@ for the workflow与automatic 记忆 flush.
 Overrides managed/bundled 技能 when names collide.
 画布/
 (optional)
-画布 UI files为node displays (for example
+画布 UI files为节点 displays (for example
 画布/index.html
 ).
 If any 引导 file is missing, OpenClaw injects a “missing file” marker into
@@ -210,23 +210,23 @@ and should NOT be committed到the 工作空间 repo:
 If you need到migrate sessions或config, copy them separately与keep them
 out的version 控制.
 ​
-Git backup (recommended, private)
+Git 备份 (recommended, private)
 Treat the 工作空间 as private 记忆. Put it在a
 private
-git repo so it is
+Git repo so it is
 backed up与recoverable.
 Run这些steps在the machine where the 网关 runs (that is where the
 工作空间 lives).
 ​
 1) Initialize the repo
-If git is installed, brand-new workspaces are initialized automatically. If this
+If Git is installed, brand-new workspaces are initialized automatically. If this
 工作空间 is not already a repo, run:
 Copy
 cd
 ~/.OpenClaw/工作空间
-git
+Git
 init
-git
+Git
 add
 智能体.md
 SOUL.md
@@ -235,7 +235,7 @@ IDENTITY.md
 USER.md
 HEARTBEAT.md
 记忆/
-git
+Git
 commit
 -m
 "Add 智能体 工作空间"
@@ -249,19 +249,19 @@ Do not initialize使用a README (avoids merge conflicts).
 Copy the HTTPS remote URL.
 Add the remote与push:
 Copy
-git
+Git
 branch
 -M
 main
-git
+Git
 remote
 add
 origin
 <
-https-ur
+HTTPS-ur
 l
 >
-git
+Git
 push
 -u
 origin
@@ -291,19 +291,19 @@ Do not initialize使用a README (avoids merge conflicts).
 Copy the HTTPS remote URL.
 Add the remote与push:
 Copy
-git
+Git
 branch
 -M
 main
-git
+Git
 remote
 add
 origin
 <
-https-ur
+HTTPS-ur
 l
 >
-git
+Git
 push
 -u
 origin
@@ -311,16 +311,16 @@ main
 ​
 3) Ongoing updates
 Copy
-git
+Git
 status
-git
+Git
 add
 .
-git
+Git
 commit
 -m
 "Update 记忆"
-git
+Git
 push
 ​
 Do not commit secrets
@@ -362,7 +362,7 @@ from the
 old machine separately.
 ​
 Advanced notes
-多Agent routing can use different workspaces per 智能体. See
+多代理 routing can use different workspaces per 智能体. See
 频道 routing
 for routing 配置.
 If

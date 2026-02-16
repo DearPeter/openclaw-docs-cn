@@ -1,1233 +1,546 @@
-# 工具 - OpenClaw - 中文翻译
-OpenClaw
-首页
-英文
-K
-概述
-工具
-开始使用
-安装
-频道
-智能体
-工具
-模型
-平台
-网关与运维
-参考
-帮助
-概述
-工具
-内置工具
-Lobster
-LLM任务
-执行 工具
-网页 工具
-apply_patch 工具
-Elevated Mode
-Thinking Levels
-Reactions
-浏览器
-浏览器 (OpenClaw-managed)
-浏览器 登录
-Chrome Extension
-浏览器 Troubleshooting
-智能体 coordination
-智能体 Send
-Sub-智能体
-Multi-智能体 Sandbox & 工具
-技能
-Slash Commands
-技能
-技能 Config
-ClawHub
-Plugins
-Extensions
-Voice Call Plugin
-Zalo Personal Plugin
-Automation
-Hooks
-Cron Jobs
-Cron vs Heartbeat
-Automation Troubleshooting
-Webhooks
-Gmail PubSub
-Polls
-Auth Monitoring
-Media与devices
-节点
-Node Troubleshooting
-Image与Media Support
-Audio与Voice Notes
-Camera Capture
-Talk Mode
-Voice Wake
-Location Command
-本页内容
-工具 (OpenClaw)
-Disabling 工具
-工具 profiles (base allowlist)
-Provider-specific 工具 policy
-工具 groups (shorthands)
-Plugins + 工具
-工具 inventory
-apply_patch
-执行
-进程
-web_search
-web_fetch
-浏览器
-画布
-节点
-image
-消息
-cron
-网关
-sessions_list / sessions_history / sessions_send / sessions_spawn / session_status
-agents_list
-Parameters (common)
-Recommended 智能体 flows
-Safety
-How 工具 are presented到the 智能体
-​
-工具 (OpenClaw)
-OpenClaw exposes
-first-class 智能体 工具
-for 浏览器, 画布, 节点,与cron.
-These replace the old
-OpenClaw-*
-技能: the 工具 are typed, no shelling,
-and the 智能体 should rely在them directly.
-​
-Disabling 工具
-You can globally allow/deny 工具 via
-工具.allow
-/
-工具.deny
-in
-OpenClaw.JSON
-(deny wins). This prevents disallowed 工具从being sent到model 提供者.
-Copy
+---
+title: "工具系统"
+description: "OpenClaw 工具系统 - 了解核心工具、配置选项、使用方法和最佳实践"
+date: 2026-02-15
+---
+
+# OpenClaw 工具系统
+
+工具是 OpenClaw 代理能力扩展的核心机制，使代理能够与外部系统交互、执行命令、处理文件、控制浏览器等。本文档介绍 OpenClaw 的核心工具集及其使用方法。
+
+## 概述
+
+### 什么是工具？
+
+在 OpenClaw 中，**工具**是代理可以调用的功能模块，每个工具都：
+
+- **提供特定功能**：如浏览器控制、命令执行、消息发送等
+- **定义清晰接口**：输入参数、输出格式、错误处理
+- **运行在安全环境**：沙箱隔离、权限控制、资源限制
+- **支持异步操作**：长时间任务可以异步执行和监控
+
+### 工具系统架构
+
+```
+用户请求 → 代理分析 → 工具选择 → 工具执行 → 结果处理 → 用户响应
+                    ↓
+              工具注册中心
+               ├── 浏览器工具
+               ├── 执行工具  
+               ├── 消息工具
+               ├── 文件工具
+               ├── 网络工具
+               └── 自定义工具
+```
+
+## 核心工具分类
+
+### 1. 浏览器工具
+
+浏览器工具允许代理控制网页浏览器，实现自动化网页操作。
+
+#### 主要功能：
+- **网页浏览**：导航到指定 URL
+- **内容提取**：提取网页文本、图片、链接
+- **表单操作**：填写表单、提交数据
+- **交互控制**：点击按钮、选择选项、滚动页面
+- **截图录制**：捕获屏幕截图、录制操作视频
+
+#### 配置示例：
+```json
 {
-工具
-:
-{
-deny
-:
-[
-"浏览器"
-] }
-,
+  "tools": {
+    "browser": {
+      "enabled": true,
+      "profile": "openclaw",
+      "sandbox": {
+        "timeout": 30000,
+        "resourceLimits": {
+          "memory": "512MB"
+        }
+      }
+    }
+  }
 }
-Notes:
-Matching is case-insensitive.
-*
-wildcards are supported (
-"*"
-means all 工具).
-If
-工具.allow
-only references unknown或unloaded plugin 工具 names, OpenClaw logs a warning与ignores the allowlist so core 工具 stay available.
-​
-工具 profiles (base allowlist)
-工具.profile
-sets a
-base 工具 allowlist
-before
-工具.allow
-/
-工具.deny
-.
-Per-智能体 override:
-智能体.list[].工具.profile
-.
-Profiles:
-minimal
-:
-session_status
-only
-coding
-:
-group:fs
-,
-group:运行时
-,
-group:sessions
-,
-group:记忆
-,
-image
-messaging
-:
-group:messaging
-,
-sessions_list
-,
-sessions_history
-,
-sessions_send
-,
-session_status
-full
-: no restriction (same as unset)
-Example (messaging-only通过default, allow Slack + Discord 工具 too):
-Copy
+```
+
+#### 使用场景：
+- 网页数据抓取和监控
+- 自动化测试和验证
+- 网页内容摘要和翻译
+- 交互式网页操作
+
+### 2. 执行工具
+
+执行工具允许代理在受控环境中运行 shell 命令和脚本。
+
+#### 主要功能：
+- **命令执行**：运行系统命令和脚本
+- **输出捕获**：捕获命令输出和错误
+- **环境控制**：设置工作目录和环境变量
+- **权限管理**：基于角色的命令执行权限
+- **超时控制**：防止长时间运行的命令
+
+#### 安全特性：
+- **沙箱环境**：隔离的命令执行环境
+- **资源限制**：CPU、内存、磁盘使用限制
+- **命令白名单**：只允许执行预批准的命令
+- **输出过滤**：过滤敏感信息输出
+- **审计日志**：记录所有命令执行
+
+#### 配置示例：
+```json
 {
-工具
-:
-{
-profile
-:
-"messaging"
-,
-allow
-:
-[
-"Slack"
-,
-"Discord"
-]
-,
+  "tools": {
+    "exec": {
+      "enabled": true,
+      "sandbox": {
+        "enabled": true,
+        "resourceLimits": {
+          "cpu": "50%",
+          "memory": "256MB",
+          "timeout": 60000
+        }
+      },
+      "allowList": [
+        "ls", "cat", "grep", "find",
+        "git status", "git log",
+        "npm install", "pnpm install"
+      ]
+    }
+  }
 }
-,
+```
+
+### 3. 消息工具
+
+消息工具使代理能够发送和接收跨平台消息。
+
+#### 支持平台：
+- **即时通讯**：WhatsApp、Telegram、Discord、Signal、iMessage
+- **协作工具**：Slack、Microsoft Teams、Mattermost
+- **电子邮件**：SMTP、IMAP、Gmail、Outlook
+- **社交媒体**：Twitter、Facebook、LinkedIn（通过插件）
+
+#### 主要功能：
+- **消息发送**：发送文本、图片、文件、富媒体
+- **消息接收**：监听和接收消息
+- **会话管理**：管理对话线程和上下文
+- **群组支持**：群组消息发送和接收
+- **附件处理**：上传和下载文件附件
+
+#### 配置示例：
+```json
+{
+  "tools": {
+    "message": {
+      "enabled": true,
+      "channels": {
+        "telegram": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_BOT_TOKEN}"
+        },
+        "whatsapp": {
+          "enabled": true,
+          "sessionPath": "~/.openclaw/whatsapp-session"
+        }
+      }
+    }
+  }
 }
-Example (coding profile, but deny 执行/进程 everywhere):
-Copy
+```
+
+### 4. 文件工具
+
+文件工具提供文件系统操作能力。
+
+#### 主要功能：
+- **文件读写**：读取和写入文本、二进制文件
+- **文件操作**：创建、删除、移动、复制文件
+- **目录管理**：列出目录内容、创建目录
+- **内容编辑**：在文件中搜索、替换、编辑内容
+- **权限检查**：检查文件权限和属性
+
+#### 安全限制：
+- **工作空间限制**：默认限制在工作空间内操作
+- **路径验证**：验证文件路径，防止目录遍历攻击
+- **大小限制**：限制操作的文件大小
+- **类型检查**：检查文件类型和扩展名
+
+#### 配置示例：
+```json
 {
-工具
-:
-{
-profile
-:
-"coding"
-,
-deny
-:
-[
-"group:运行时"
-]
-,
+  "tools": {
+    "file": {
+      "enabled": true,
+      "restrictions": {
+        "workspaceOnly": true,
+        "maxFileSize": 10485760,  // 10MB
+        "allowedExtensions": [".md", ".txt", ".json", ".yml", ".yaml"]
+      }
+    }
+  }
 }
-,
+```
+
+### 5. 网络工具
+
+网络工具提供 HTTP 请求和 API 调用能力。
+
+#### 主要功能：
+- **HTTP 请求**：GET、POST、PUT、DELETE 等请求
+- **API 调用**：调用 RESTful API、GraphQL 接口
+- **数据处理**：JSON、XML、表单数据处理
+- **身份验证**：Bearer Token、API Key、OAuth 支持
+- **错误处理**：重试机制、超时处理、错误解析
+
+#### 配置示例：
+```json
+{
+  "tools": {
+    "network": {
+      "enabled": true,
+      "defaults": {
+        "timeout": 30000,
+        "maxRetries": 3,
+        "retryDelay": 1000
+      },
+      "authentication": {
+        "apiKeys": {
+          "openai": "${OPENAI_API_KEY}",
+          "github": "${GITHUB_TOKEN}"
+        }
+      }
+    }
+  }
 }
-Example (global coding profile, messaging-only support 智能体):
-Copy
+```
+
+## 工具配置和管理
+
+### 全局工具配置
+
+```json
 {
-工具
-:
-{
-profile
-:
-"coding"
+  "tools": {
+    "profiles": {
+      "full": {
+        "browser": true,
+        "exec": true,
+        "message": true,
+        "file": true,
+        "network": true
+      },
+      "restricted": {
+        "browser": false,
+        "exec": false,
+        "message": true,
+        "file": "read-only",
+        "network": true
+      },
+      "coding": {
+        "browser": true,
+        "exec": true,
+        "message": false,
+        "file": true,
+        "network": true
+      }
+    },
+    "defaultProfile": "restricted"
+  }
 }
-,
-智能体
-:
+```
+
+### 每代理工具配置
+
+```json
 {
-list
-:
-[
-{
-id
-:
-"support"
-,
-工具
-:
-{
-profile
-:
-"messaging"
-,
-allow
-:
-[
-"Slack"
-] }
-,
+  "agent": {
+    "bindings": [
+      {
+        "id": "admin",
+        "tools": {
+          "profile": "full"
+        }
+      },
+      {
+        "id": "assistant",
+        "tools": {
+          "profile": "restricted",
+          "allow": ["message", "file"]
+        }
+      }
+    ]
+  }
 }
-,
-]
-,
-}
-,
-}
-​
-Provider-specific 工具 policy
-Use
-工具.byProvider
-to
-further restrict
-工具为specific 提供者
-(or a single
-provider/模型
-) without changing your global defaults.
-Per-智能体 override:
-智能体.list[].工具.byProvider
-.
-这是 applied
-after
-the base 工具 profile and
-before
-allow/deny lists,
-so it can only narrow the 工具 set.
-Provider keys accept either
-provider
-(e.g.
-google-antigravity
-) or
-provider/模型
-(e.g.
-openai/gpt-5.2
-).
-Example (keep global coding profile, but minimal 工具为Google Antigravity):
-Copy
+```
+
+### 运行时工具控制
+
+代理可以通过特殊命令控制工具访问：
+
+```
+/工具 enable browser      # 启用浏览器工具
+/工具 disable exec        # 禁用执行工具
+/工具 status              # 查看工具状态
+/工具 list                # 列出可用工具
+```
+
+## 工具开发
+
+### 自定义工具结构
+
+自定义工具需要实现以下结构：
+
+```javascript
+// custom-tool.js
+module.exports = {
+  name: "customTool",
+  description: "自定义工具描述",
+  parameters: {
+    param1: {
+      type: "string",
+      description: "参数1描述",
+      required: true
+    },
+    param2: {
+      type: "number",
+      description: "参数2描述",
+      required: false,
+      default: 0
+    }
+  },
+  execute: async (params, context) => {
+    // 工具执行逻辑
+    const result = await doSomething(params.param1, params.param2);
+    
+    return {
+      success: true,
+      data: result,
+      message: "操作成功完成"
+    };
+  }
+};
+```
+
+### 工具注册
+
+将自定义工具注册到 OpenClaw：
+
+```json
 {
-工具
-:
-{
-profile
-:
-"coding"
-,
-byProvider
-:
-{
-"google-antigravity"
-:
-{
-profile
-:
-"minimal"
+  "tools": {
+    "custom": {
+      "customTool": {
+        "path": "./tools/custom-tool.js",
+        "enabled": true
+      }
+    }
+  }
 }
-,
-}
-,
-}
-,
-}
-Example (provider/模型-specific allowlist为a flaky endpoint):
-Copy
+```
+
+### 工具测试
+
+测试自定义工具：
+
+```bash
+# 测试工具功能
+openclaw tool test customTool --params '{"param1": "value"}'
+
+# 查看工具文档
+openclaw tool docs customTool
+
+# 验证工具配置
+openclaw tool validate customTool
+```
+
+## 高级功能
+
+### 工具链
+
+多个工具可以组合成工具链，实现复杂工作流：
+
+```json
 {
-工具
-:
-{
-allow
-:
-[
-"group:fs"
-,
-"group:运行时"
-,
-"sessions_list"
-]
-,
-byProvider
-:
-{
-"openai/gpt-5.2"
-:
-{
-allow
-:
-[
-"group:fs"
-,
-"sessions_list"
-] }
-,
+  "tools": {
+    "chains": {
+      "dataPipeline": {
+        "steps": [
+          {
+            "tool": "network",
+            "action": "fetch",
+            "params": {
+              "url": "https://api.example.com/data"
+            }
+          },
+          {
+            "tool": "file",
+            "action": "save",
+            "params": {
+              "path": "data.json",
+              "content": "$.step1.result"
+            }
+          },
+          {
+            "tool": "exec",
+            "action": "process",
+            "params": {
+              "command": "jq '.items[]' data.json"
+            }
+          }
+        ]
+      }
+    }
+  }
 }
-,
-}
-,
-}
-Example (智能体-specific override为a single provider):
-Copy
+```
+
+### 工具监控
+
+监控工具使用情况和性能：
+
+```bash
+# 查看工具使用统计
+openclaw tools stats
+
+# 监控工具性能
+openclaw tools monitor --tool browser
+
+# 查看工具错误日志
+openclaw tools errors --since "1h"
+
+# 生成工具使用报告
+openclaw tools report --format html
+```
+
+### 工具权限系统
+
+基于角色的工具访问控制：
+
+```json
 {
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"support"
-,
-工具
-:
-{
-byProvider
-:
-{
-"google-antigravity"
-:
-{
-allow
-:
-[
-"消息"
-,
-"sessions_list"
-] }
-,
+  "tools": {
+    "permissions": {
+      "roles": {
+        "admin": {
+          "browser": "full",
+          "exec": "full",
+          "message": "full",
+          "file": "full",
+          "network": "full"
+        },
+        "user": {
+          "browser": "read-only",
+          "exec": false,
+          "message": "send-only",
+          "file": "workspace-only",
+          "network": "restricted"
+        },
+        "guest": {
+          "browser": false,
+          "exec": false,
+          "message": false,
+          "file": "read-only",
+          "network": false
+        }
+      }
+    }
+  }
 }
-,
-}
-,
-}
-,
-]
-,
-}
-,
-}
-​
-工具 groups (shorthands)
-工具 policies (global, 智能体, sandbox) support
-group:*
-entries那expand到multiple 工具.
-Use这些in
-工具.allow
-/
-工具.deny
-.
-Available groups:
-group:运行时
-:
-执行
-,
-bash
-,
-进程
-group:fs
-:
-read
-,
-write
-,
-edit
-,
-apply_patch
-group:sessions
-:
-sessions_list
-,
-sessions_history
-,
-sessions_send
-,
-sessions_spawn
-,
-session_status
-group:记忆
-:
-memory_search
-,
-memory_get
-group:网页
-:
-web_search
-,
-web_fetch
-group:ui
-:
-浏览器
-,
-画布
-group:automation
-:
-cron
-,
-网关
-group:messaging
-:
-消息
-group:节点
-:
-节点
-group:OpenClaw
-: all built-in OpenClaw 工具 (excludes provider plugins)
-Example (allow only file 工具 + 浏览器):
-Copy
-{
-工具
-:
-{
-allow
-:
-[
-"group:fs"
-,
-"浏览器"
-]
-,
-}
-,
-}
-​
-Plugins + 工具
-Plugins can register
-additional 工具
-(and 命令行界面 commands) beyond the core set.
-See
-Plugins
-for 安装 + config, and
-技能
-for how
-工具 usage guidance is injected into prompts. Some plugins ship their own 技能
-alongside 工具 (for example, the voice-call plugin).
-Optional plugin 工具:
-Lobster
-: typed workflow runtime使用resumable approvals (requires the Lobster 命令行界面在the 网关 host).
-LLM任务
-: JSON-only LLM step为structured workflow output (optional schema validation).
-​
-工具 inventory
-​
-apply_patch
-Apply structured patches across one或more files. Use为multi-hunk edits.
-Experimental: enable via
-工具.执行.applyPatch.enabled
-(OpenAI 模型 only).
-​
-执行
-Run shell commands在the 工作空间.
-Core parameters:
-command
-(required)
-yieldMs
-(auto-background after timeout, default 10000)
-background
-(immediate background)
-timeout
-(seconds; kills the 进程 if exceeded, default 1800)
-elevated
-(bool; run在host if elevated mode is enabled/allowed; only changes behavior when the 智能体 is sandboxed)
-host
-(
-sandbox | 网关 | node
-)
-security
-(
-deny | allowlist | full
-)
-ask
-(
-off | on-miss | always
-)
-node
-(node id/name for
-host=node
-)
-Need a real TTY? Set
-pty: true
-.
-Notes:
-Returns
-status: "运行"
-with a
-sessionId
-when backgrounded.
-Use
-进程
-to poll/log/write/kill/clear background sessions.
-If
-进程
-is disallowed,
-执行
-runs synchronously与ignores
-yieldMs
-/
-background
-.
-elevated
-is gated by
-工具.elevated
-plus any
-智能体.list[].工具.elevated
-override (both must allow)与is an alias for
-host=网关
-+
-security=full
-.
-elevated
-only changes behavior when the 智能体 is sandboxed (otherwise it’s a no-op).
-host=node
-can target a macOS companion app或a headless node host (
-OpenClaw node run
-).
-网关/node approvals与allowlists:
-执行 approvals
-.
-​
-进程
-Manage background 执行 sessions.
-Core actions:
-list
-,
-poll
-,
-log
-,
-write
-,
-kill
-,
-clear
-,
-remove
-Notes:
-poll
-returns new output与exit status when complete.
-log
-supports line-based
-offset
-/
-limit
-(omit
-offset
-to grab the last N lines).
-进程
-is scoped per 智能体; sessions从other 智能体 are not visible.
-​
-web_search
-Core parameters:
-query
-(required)
-count
-(1–10; default from
-工具.网页.搜索.maxResults
-)
-Notes:
-Requires a Brave API key (recommended:
-OpenClaw 配置 --section 网页
-,或set
-BRAVE_API_KEY
-).
-Enable via
-工具.网页.搜索.enabled
-.
-Responses are cached (default 15 min).
-See
-网页 工具
-for 设置.
-​
-web_fetch
-获取与extract readable content从a URL (HTML → Markdown/text).
-Core parameters:
-url
-(required)
-extractMode
-(
-Markdown
-|
-text
-)
-maxChars
-(truncate long pages)
-Notes:
-Enable via
-工具.网页.获取.enabled
-.
-maxChars
-is clamped by
-工具.网页.获取.maxCharsCap
-(default 50000).
-Responses are cached (default 15 min).
-For JS-heavy sites, prefer the 浏览器 工具.
-See
-网页 工具
-for 设置.
-See
-Firecrawl
-for the optional anti-bot fallback.
-​
-浏览器
-控制 the dedicated OpenClaw-managed 浏览器.
-Core actions:
-status
-,
-start
-,
-stop
-,
-tabs
-,
-open
-,
-focus
-,
-close
-snapshot
-(aria/ai)
-screenshot
-(returns image block +
-MEDIA:<path>
-)
-act
-(UI actions: click/type/press/hover/drag/select/fill/resize/wait/evaluate)
-navigate
-,
-console
-,
-pdf
-,
-upload
-,
-dialog
-Profile 管理:
-profiles
-— list all 浏览器 profiles使用status
-create-profile
-— create new profile使用auto-allocated port (or
-cdpUrl
-)
-delete-profile
-— stop 浏览器, delete user data, remove从config (local only)
-reset-profile
-— kill orphan 进程在profile’s port (local only)
-Common parameters:
-profile
-(optional; defaults to
-浏览器.defaultProfile
-)
-target
-(
-sandbox
-|
-host
-|
-node
-)
-node
-(optional; picks a specific node id/name)
-Notes:
-Requires
-浏览器.enabled=true
-(default is
-true
-; set
-false
-to disable).
-All actions accept optional
-profile
-parameter为multi-instance support.
-When
-profile
-is omitted, uses
-浏览器.defaultProfile
-(defaults到“chrome”).
-Profile names: lowercase alphanumeric + hyphens only (max 64 chars).
-Port range: 18800-18899 (~100 profiles max).
-Remote profiles are attach-only (no start/stop/reset).
-If a 浏览器-capable node is connected, the 工具 may auto-route到it (unless you pin
-target
-).
-snapshot
-defaults to
-ai
-when Playwright is installed; use
-aria
-for the accessibility tree.
-snapshot
-also supports role-snapshot options (
-interactive
-,
-compact
-,
-depth
-,
-selector
-) which return refs like
-e12
-.
-act
-requires
-ref
-from
-snapshot
-(numeric
-12
-from AI snapshots, or
-e12
-from role snapshots); use
-evaluate
-for rare CSS selector needs.
-Avoid
-act
-→
-wait
-by default; use it only在exceptional cases (no reliable UI state到wait on).
-upload
-can optionally pass a
-ref
-to auto-click after arming.
-upload
-also supports
-inputRef
-(aria ref) or
-element
-(CSS selector)到set
-<input type="file">
-directly.
-​
-画布
-Drive the node 画布 (present, eval, snapshot, A2UI).
-Core actions:
-present
-,
-hide
-,
-navigate
-,
-eval
-snapshot
-(returns image block +
-MEDIA:<path>
-)
-a2ui_push
-,
-a2ui_reset
-Notes:
-Uses 网关
-node.invoke
-under the hood.
-If no
-node
-is provided, the 工具 picks a default (single connected node或local mac node).
-A2UI is v0.8 only (no
-createSurface
-); the 命令行界面 rejects v0.9 JSONL使用line errors.
-Quick smoke:
-OpenClaw 节点 画布 a2ui push --node <id> --text "Hello从A2UI"
-.
-​
-节点
-Discover与target paired 节点; send notifications; capture camera/screen.
-Core actions:
-status
-,
-describe
-pending
-,
-approve
-,
-reject
-(pairing)
-notify
-(macOS
-system.notify
-)
-run
-(macOS
-system.run
-)
-camera_snap
-,
-camera_clip
-,
-screen_record
-location_get
-Notes:
-Camera/screen commands require the node app到be foregrounded.
-Images return image blocks +
-MEDIA:<path>
-.
-Videos return
-FILE:<path>
-(mp4).
-Location returns a JSON payload (lat/lon/accuracy/timestamp).
-run
-params:
-command
-argv array; optional
-cwd
-,
-env
-(
-KEY=VAL
-),
-commandTimeoutMs
-,
-invokeTimeoutMs
-,
-needsScreenRecording
-.
-Example (
-run
-):
-Copy
-{
-"action"
-:
-"run"
-,
-"node"
-:
-"office-mac"
-,
-"command"
-:
-[
-"echo"
-,
-"Hello"
-]
-,
-"env"
-:
-[
-"FOO=bar"
-]
-,
-"commandTimeoutMs"
-:
-12000
-,
-"invokeTimeoutMs"
-:
-45000
-,
-"needsScreenRecording"
-:
-false
-}
-​
-image
-Analyze an image使用the configured image 模型.
-Core parameters:
-image
-(required path或URL)
-提示词
-(optional; defaults到“Describe the image.”)
-模型
-(optional override)
-maxBytesMb
-(optional size cap)
-Notes:
-Only available when
-智能体.defaults.imageModel
-is configured (primary或fallbacks),或when an implicit image 模型 can be inferred从your default 模型 + configured auth (best-effort pairing).
-Uses the image 模型 directly (independent的the main chat 模型).
-​
-消息
-Send messages与channel actions across Discord/Google Chat/Slack/Telegram/WhatsApp/Signal/iMessage/MS Teams.
-Core actions:
-send
-(text + optional media; MS Teams also supports
-card
-for Adaptive Cards)
-poll
-(WhatsApp/Discord/MS Teams polls)
-react
-/
-reactions
-/
-read
-/
-edit
-/
-delete
-pin
-/
-unpin
-/
-list-pins
-permissions
-thread-create
-/
-thread-list
-/
-thread-reply
-搜索
-sticker
-member-info
-/
-role-info
-emoji-list
-/
-emoji-upload
-/
-sticker-upload
-role-add
-/
-role-remove
-频道-info
-/
-频道-list
-voice-status
-event-list
-/
-event-create
-timeout
-/
-kick
-/
-ban
-Notes:
-send
-routes WhatsApp via the 网关; other 频道 go direct.
-poll
-uses the 网关为WhatsApp与MS Teams; Discord polls go direct.
-When a 消息 工具 call is bound到an active chat 会话, sends are constrained到that 会话’s target到avoid cross-上下文 leaks.
-​
-cron
-Manage 网关 cron jobs与wakeups.
-Core actions:
-status
-,
-list
-add
-,
-update
-,
-remove
-,
-run
-,
-runs
-wake
-(enqueue system event + optional immediate heartbeat)
-Notes:
-add
-expects a full cron job object (same schema as
-cron.add
-RPC).
-update
-uses
-{ jobId, patch }
-(
-id
-accepted为compatibility).
-​
-网关
-Restart或apply updates到the 运行 网关 进程 (in-place).
-Core actions:
-restart
-(authorizes + sends
-SIGUSR1
-for in-进程 restart;
-OpenClaw 网关
-restart in-place)
-config.get
-/
-config.schema
-config.apply
-(validate + write config + restart + wake)
-config.patch
-(merge partial update + restart + wake)
-update.run
-(run update + restart + wake)
-Notes:
-Use
-delayMs
-(defaults到2000)到avoid interrupting an in-flight reply.
-restart
-is disabled通过default; enable with
-commands.restart: true
-.
-​
-sessions_list
-/
-sessions_history
-/
-sessions_send
-/
-sessions_spawn
-/
-session_status
-List sessions, inspect transcript history,或send到another 会话.
-Core parameters:
-sessions_list
-:
-kinds?
-,
-limit?
-,
-activeMinutes?
-,
-messageLimit?
-(0 = none)
-sessions_history
-:
-sessionKey
-(or
-sessionId
-),
-limit?
-,
-include工具?
-sessions_send
-:
-sessionKey
-(or
-sessionId
-),
-消息
-,
-timeoutSeconds?
-(0 = fire-and-forget)
-sessions_spawn
-:
-task
-,
-label?
-,
-agentId?
-,
-模型?
-,
-runTimeoutSeconds?
-,
-cleanup?
-session_status
-:
-sessionKey?
-(default current; accepts
-sessionId
-),
-模型?
-(
-default
-clears override)
-Notes:
-main
-is the canonical direct-chat key; global/unknown are hidden.
-messageLimit > 0
-fetches last N messages per 会话 (工具 messages filtered).
-sessions_send
-waits为final completion when
-timeoutSeconds > 0
-.
-Delivery/announce happens after completion与is best-effort;
-status: "ok"
-confirms the 智能体 run finished, not那the announce was delivered.
-sessions_spawn
-starts a sub-智能体 run与posts an announce reply back到the requester chat.
-sessions_spawn
-is non-blocking与returns
-status: "accepted"
-immediately.
-sessions_send
-runs a reply‑back ping‑pong (reply
-REPLY_SKIP
-to stop; max turns via
-会话.agentToAgent.maxPingPongTurns
-, 0–5).
-After the ping‑pong, the target 智能体 runs an
-announce step
-; reply
-ANNOUNCE_SKIP
-to suppress the announcement.
-​
-agents_list
-List 智能体 ids那the current 会话 may target with
-sessions_spawn
-.
-Notes:
-Result is restricted到per-智能体 allowlists (
-智能体.list[].subagents.allowAgent
-).
-When
-["*"]
-is configured, the 工具 includes all configured Agent与marks
-allowAny: true
-.
-​
-Parameters (common)
-网关-backed 工具 (
-画布
-,
-节点
-,
-cron
-):
-gatewayUrl
-(default
-ws://127.0.0.1:18789
-)
-gatewayToken
-(if auth enabled)
-timeoutMs
-Note: when
-gatewayUrl
-is set, include
-gatewayToken
-explicitly. 工具 do not inherit config
-or environment credentials为overrides,与missing explicit credentials is an error.
-浏览器 工具:
-profile
-(optional; defaults to
-浏览器.defaultProfile
-)
-target
-(
-sandbox
-|
-host
-|
-node
-)
-node
-(optional; pin a specific node id/name)
-​
-Recommended 智能体 flows
-浏览器 automation:
-浏览器
-→
-status
-/
-start
-snapshot
-(ai或aria)
-act
-(click/type/press)
-screenshot
-if you need visual confirmation
-画布 render:
-画布
-→
-present
-a2ui_push
-(optional)
-snapshot
-Node targeting:
-节点
-→
-status
-describe
-on the chosen node
-notify
-/
-run
-/
-camera_snap
-/
-screen_record
-​
-Safety
-Avoid direct
-system.run
-; use
-节点
-→
-run
-only使用explicit user consent.
-Respect user consent为camera/screen capture.
-Use
-status/describe
-to ensure permissions before invoking media commands.
-​
-How 工具 are presented到the 智能体
-工具 are exposed在two parallel 频道:
-System 提示词 text
-: a human-readable list + guidance.
-工具 schema
-: the structured function definitions sent到the 模型 API.
-That means the 智能体 sees both “what 工具 exist”与“how到call them.” If a 工具
-doesn’t appear在the system prompt或the schema, the 模型 cannot call it.
-Lobster
-I
-[查看英文原版](https://docs.OpenClaw.ai/工具#safety)-+-工具)esented-to-the-智能体)ssions_send-/-sessions_spawn-/-session_status)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-*本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*
+```
+
+## 最佳实践
+
+### 安全最佳实践
+
+1. **最小权限原则**：仅授予必要的最小工具权限
+2. **输入验证**：严格验证所有工具输入参数
+3. **输出过滤**：过滤敏感信息，防止数据泄露
+4. **沙箱隔离**：始终在沙箱环境中运行工具
+5. **审计日志**：记录所有工具调用和操作
+
+### 性能最佳实践
+
+1. **资源限制**：合理设置工具资源限制
+2. **缓存策略**：缓存频繁使用的工具结果
+3. **异步操作**：长时间操作使用异步模式
+4. **批量处理**：合并小操作提高效率
+5. **连接复用**：复用网络和数据库连接
+
+### 可靠性最佳实践
+
+1. **错误处理**：实现完善的错误处理和恢复机制
+2. **重试策略**：配置适当的重试机制
+3. **超时设置**：设置合理的操作超时时间
+4. **健康检查**：定期检查工具健康状况
+5. **备份策略**：备份重要工具配置和状态
+
+### 维护最佳实践
+
+1. **版本控制**：将工具配置纳入版本控制
+2. **文档完整**：为每个工具编写完整文档
+3. **测试覆盖**：为工具编写单元测试和集成测试
+4. **监控报警**：设置工具监控和报警机制
+5. **定期更新**：定期更新工具和安全补丁
+
+## 故障排除
+
+### 常见问题
+
+#### 工具无法调用
+- 检查工具是否启用：`openclaw tool status <toolName>`
+- 验证工具配置：`openclaw tool validate <toolName>`
+- 查看错误日志：`openclaw logs --tool <toolName>`
+- 检查权限设置：`openclaw permissions check`
+
+#### 工具执行失败
+- 检查输入参数格式
+- 验证依赖和环境配置
+- 查看资源限制是否足够
+- 检查网络连接和API密钥
+
+#### 工具性能问题
+- 监控资源使用情况
+- 检查是否有内存泄漏
+- 优化工具实现代码
+- 调整资源配置和限制
+
+### 调试命令
+
+```bash
+# 查看所有工具状态
+openclaw tools list
+
+# 测试特定工具
+openclaw tool test <toolName> [--params JSON]
+
+# 查看工具日志
+openclaw logs --tool <toolName> [--tail 100]
+
+# 重置工具状态
+openclaw tool reset <toolName>
+
+# 重新加载工具配置
+openclaw tools reload
+```
+
+### 获取帮助
+
+```bash
+# 查看工具帮助
+openclaw tools --help
+
+# 查看特定工具文档
+openclaw tool docs <toolName>
+
+# 搜索可用工具
+openclaw tools search <keyword>
+
+# 查看使用示例
+openclaw tools examples
+```
+
+---
+
+*本文档提供了 OpenClaw 工具系统的核心概念和使用指南。有关特定工具的详细文档，请参阅各工具的专门文档。工具系统正在积极开发中，功能可能随时间变化，请定期查看更新日志。*

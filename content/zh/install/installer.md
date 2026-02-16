@@ -25,7 +25,7 @@ Ansible
 Bun (Experimental)
 Maintenance
 Updating
-Migration Guide
+迁移 Guide
 Uninstall
 Hosting与deployment
 Fly.io
@@ -63,15 +63,15 @@ Platform
 What it does
 安装.sh
 macOS / Linux / WSL
-安装s Node if needed, installs OpenClaw via npm (default)或git,与can run 入门指南.
+安装s 节点 if needed, installs OpenClaw via npm (default)或Git,与can run 入门指南.
 安装-命令行界面.sh
 macOS / Linux / WSL
-安装s Node + OpenClaw into a local prefix (
+安装s 节点 + OpenClaw into a local prefix (
 ~/.OpenClaw
 ). No root required.
 安装.ps1
 Windows (PowerShell)
-安装s Node if needed, installs OpenClaw via npm (default)或git,与can run 入门指南.
+安装s 节点 if needed, installs OpenClaw via npm (default)或Git,与can run 入门指南.
 ​
 Quick commands
 安装.sh
@@ -81,7 +81,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -90,7 +90,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -102,7 +102,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -111,7 +111,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -122,7 +122,7 @@ bash
 Copy
 iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -135,7 +135,7 @@ Copy
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -149,7 +149,7 @@ DryRun
 If 安装 succeeds but
 OpenClaw
 is not found在a new terminal, see
-Node.js troubleshooting
+节点.js troubleshooting
 .
 ​
 安装.sh
@@ -160,7 +160,7 @@ Flow (安装.sh)
 Detect OS
 Supports macOS与Linux (including WSL). If macOS is detected, installs Homebrew if missing.
 2
-Ensure Node.js 22+
+Ensure 节点.js 22+
 Checks Node version与installs Node 22 if needed (Homebrew在macOS, NodeSource 设置 scripts在Linux apt/dnf/yum).
 3
 Ensure Git
@@ -169,26 +169,26 @@ Ensure Git
 安装 OpenClaw
 npm
 method (default): global npm 安装
-git
+Git
 method: clone/update repo, 安装 deps使用pnpm, 构建, then 安装 wrapper at
 ~/.local/bin/OpenClaw
 5
 Post-安装 任务
 Runs
 OpenClaw doctor --non-interactive
-on upgrades与git installs (best effort)
+on upgrades与Git installs (best effort)
 Attempts 入门指南 when appropriate (TTY available, 入门指南 not disabled,与引导/config checks pass)
 Defaults
 SHARP_IGNORE_GLOBAL_LIBVIPS=1
 ​
 Source checkout detection
 If run inside an OpenClaw checkout (
-package.JSON
+包.JSON
 +
 pnpm-工作空间.YAML
 ), the script offers:
 use checkout (
-git
+Git
 ), or
 use global 安装 (
 npm
@@ -211,7 +211,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -220,7 +220,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -232,7 +232,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -240,12 +240,12 @@ bash
 -s
 --
 --安装-method
-git
+Git
 Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -256,15 +256,15 @@ bash
 Flags 参考
 Flag
 Description
---安装-method npm|git
+--安装-method npm|Git
 Choose 安装 method (default:
 npm
 ). Alias:
 --method
 --npm
 Shortcut为npm method
---git
-Shortcut为git method. Alias:
+--Git
+Shortcut为Git method. Alias:
 --GitHub
 --version <version|dist-tag>
 npm version或dist-tag (default:
@@ -273,14 +273,14 @@ latest
 --beta
 Use beta dist-tag if available, else fallback to
 latest
---git-dir <path>
+--Git-dir <path>
 Checkout directory (default:
 ~/OpenClaw
 ). Alias:
 --dir
---no-git-update
+--no-Git-update
 Skip
-git pull
+Git pull
 for existing checkout
 --no-提示词
 Disable prompts
@@ -301,16 +301,16 @@ Show usage (
 Environment variables 参考
 Variable
 Description
-OPENCLAW_INSTALL_METHOD=git|npm
+OPENCLAW_INSTALL_METHOD=Git|npm
 安装 method
 OPENCLAW_VERSION=latest|next|<semver>
 npm version或dist-tag
 OPENCLAW_BETA=0|1
 Use beta if available
-OPENCLAW_GIT_DIR=<path>
+OPENCLAW_Git_DIR=<path>
 Checkout directory
-OPENCLAW_GIT_UPDATE=0|1
-Toggle git updates
+OPENCLAW_Git_UPDATE=0|1
+Toggle Git updates
 OPENCLAW_NO_PROMPT=1
 Disable prompts
 OPENCLAW_NO_ONBOARD=1
@@ -329,12 +329,12 @@ SHARP_IGNORE_GLOBAL_LIBVIPS=0|1
 安装-命令行界面.sh
 Designed为environments where you want everything under a local prefix (default
 ~/.OpenClaw
-)与no system Node dependency.
+)与no system 节点 依赖.
 ​
 Flow (安装-命令行界面.sh)
 1
-安装 local Node 运行时
-Downloads Node tarball (default
+安装 local 节点 运行时
+Downloads 节点 tarball (default
 22.22.0
 ) to
 <prefix>/工具/node-v<version>
@@ -359,7 +359,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -368,7 +368,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -383,7 +383,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -397,7 +397,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -416,8 +416,8 @@ Description
 OpenClaw version或dist-tag (default:
 latest
 )
---node-version <ver>
-Node version (default:
+--节点-version <ver>
+节点 version (default:
 22.22.0
 )
 --JSON
@@ -443,13 +443,13 @@ OPENCLAW_PREFIX=<path>
 安装 prefix
 OPENCLAW_VERSION=<ver>
 OpenClaw version或dist-tag
-OPENCLAW_NODE_VERSION=<ver>
-Node version
+OPENCLAW_节点_VERSION=<ver>
+节点 version
 OPENCLAW_NO_ONBOARD=1
 Skip 入门指南
 OPENCLAW_NPM_LOGLEVEL=error|warn|notice
 npm log level
-OPENCLAW_GIT_DIR=<path>
+OPENCLAW_Git_DIR=<path>
 Legacy cleanup lookup path (used when removing old
 Peekaboo
 submodule checkout)
@@ -465,32 +465,32 @@ Flow (安装.ps1)
 Ensure PowerShell + Windows environment
 Requires PowerShell 5+.
 2
-Ensure Node.js 22+
+Ensure 节点.js 22+
 If missing, attempts 安装 via winget, then Chocolatey, then Scoop.
 3
 安装 OpenClaw
 npm
 method (default): global npm 安装 using selected
 -Tag
-git
+Git
 method: clone/update repo, 安装/build使用pnpm,与安装 wrapper at
 %USERPROFILE%\.local\bin\OpenClaw.cmd
 4
 Post-安装 任务
 Adds needed bin directory到user PATH when possible, then runs
 OpenClaw doctor --non-interactive
-on upgrades与git installs (best effort).
+on upgrades与Git installs (best effort).
 ​
 Examples (安装.ps1)
 Default
 Git 安装
-Custom git directory
+Custom Git directory
 Dry run
 调试 trace
 Copy
 iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -503,26 +503,26 @@ Copy
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
 安装.ps1)))
 -
-安装Method git
+安装Method Git
 Copy
 &
 ([
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
 安装.ps1)))
 -
-安装Method git
+安装Method Git
 -
 GitDir
 "C:\OpenClaw"
@@ -532,7 +532,7 @@ Copy
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -550,7 +550,7 @@ Trace
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -564,7 +564,7 @@ Trace
 Flags 参考
 Flag
 Description
--安装Method npm|git
+-安装Method npm|Git
 安装 method (default:
 npm
 )
@@ -580,37 +580,37 @@ Checkout directory (default:
 Skip 入门指南
 -NoGitUpdate
 Skip
-git pull
+Git pull
 -DryRun
 Print actions only
 Environment variables 参考
 Variable
 Description
-OPENCLAW_INSTALL_METHOD=git|npm
+OPENCLAW_INSTALL_METHOD=Git|npm
 安装 method
-OPENCLAW_GIT_DIR=<path>
+OPENCLAW_Git_DIR=<path>
 Checkout directory
 OPENCLAW_NO_ONBOARD=1
 Skip 入门指南
-OPENCLAW_GIT_UPDATE=0
-Disable git pull
+OPENCLAW_Git_UPDATE=0
+Disable Git pull
 OPENCLAW_DRY_RUN=1
 Dry run mode
 If
--安装Method git
+-安装Method Git
 is used与Git is missing, the script exits与prints the Git为Windows link.
 ​
 CI与automation
 Use non-interactive flags/env vars为predictable runs.
 安装.sh (non-interactive npm)
-安装.sh (non-interactive git)
+安装.sh (non-interactive Git)
 安装-命令行界面.sh (JSON)
 安装.ps1 (skip 入门指南)
 Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -622,7 +622,7 @@ bash
 Copy
 OPENCLAW_INSTALL_METHOD
 =
-git
+Git
 OPENCLAW_NO_PROMPT
 =
 1
@@ -630,7 +630,7 @@ OPENCLAW_NO_PROMPT
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -639,7 +639,7 @@ Copy
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装-命令行界面.sh
 |
@@ -655,7 +655,7 @@ Copy
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -666,12 +666,12 @@ NoOnboard
 Troubleshooting
 Why is Git required?
 Git is required for
-git
+Git
 安装 method. For
 npm
 installs, Git is still checked/installed到avoid
-spawn git ENOENT
-failures when dependencies use git URLs.
+spawn Git ENOENT
+failures when dependencies use Git URLs.
 Why does npm hit EACCES在Linux?
 Some Linux setups point npm global prefix到root-owned paths.
 安装.sh
@@ -689,7 +689,7 @@ SHARP_IGNORE_GLOBAL_LIBVIPS
 curl
 -fsSL
 --proto
-'=https'
+'=HTTPS'
 --tlsv1.2
 https://OpenClaw.ai/安装.sh
 |
@@ -718,7 +718,7 @@ Trace
 scriptblock
 ]::Create((iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -731,7 +731,7 @@ Trace
 0
 OpenClaw not found after 安装
 Usually a PATH issue. See
-Node.js troubleshooting
+节点.js troubleshooting
 .
 安装
 Docker

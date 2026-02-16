@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -77,7 +77,7 @@ Cleanup
 Gmail Pub/Sub -> OpenClaw
 Goal: Gmail watch -> Pub/Sub push ->
 gog gmail watch serve
--> OpenClaw webhook.
+-> OpenClaw Webhook.
 ​
 Prereqs
 gcloud
@@ -94,7 +94,7 @@ Webhooks
 tailscale
 logged在(
 tailscale.com
-). Supported 设置 uses Tailscale Funnel为the public HTTPS endpoint.
+). Supported 设置 uses Tailscale Funnel为the public HTTPS 端点.
 Other tunnel services can work, but are DIY/unsupported与require manual wiring.
 Right now, Tailscale is what we support.
 Example hook config (enable Gmail preset mapping):
@@ -107,9 +107,9 @@ enabled
 :
 true
 ,
-token
+令牌
 :
-"OPENCLAW_HOOK_TOKEN"
+"OPENCLAW_HOOK_令牌"
 ,
 path
 :
@@ -141,9 +141,9 @@ enabled
 :
 true
 ,
-token
+令牌
 :
-"OPENCLAW_HOOK_TOKEN"
+"OPENCLAW_HOOK_令牌"
 ,
 presets
 :
@@ -282,7 +282,7 @@ gmail
 --account
 [email protected]
 Defaults:
-Uses Tailscale Funnel为the public push endpoint.
+Uses Tailscale Funnel为the public push 端点.
 Writes
 hooks.gmail
 config for
@@ -312,8 +312,8 @@ http://127.0.0.1:8788/gmail-pubsub
 and match
 hooks.gmail.serve.path
 .
-Want a custom endpoint? Use
---push-endpoint <url>
+Want a custom 端点? Use
+--push-端点 <url>
 or
 --tailscale off
 .
@@ -415,10 +415,10 @@ d
 /topics/gog-gmail-watch
 Save the
 history_id
-from the output (for debugging).
+from the output (for 调试).
 ​
 Run the push handler
-Local example (shared token auth):
+Local example (shared 令牌 auth):
 Copy
 gog
 gmail
@@ -431,13 +431,13 @@ serve
 --bind
 127.0.0.1
 \
---port
+--端口
 8788
 \
 --path
 /gmail-pubsub
 \
---token
+--令牌
 <
 share
 d
@@ -446,19 +446,19 @@ d
 --hook-url
 http://127.0.0.1:18789/hooks/gmail
 \
---hook-token
-OPENCLAW_HOOK_TOKEN
+--hook-令牌
+OPENCLAW_HOOK_令牌
 \
 --include-body
 \
 --max-bytes
 20000
 Notes:
---token
-protects the push endpoint (
-x-gog-token
+--令牌
+protects the push 端点 (
+x-gog-令牌
 or
-?token=
+?令牌=
 ).
 --hook-url
 points到OpenClaw
@@ -481,7 +481,7 @@ tunnel
 --url
 http://127.0.0.1:8788
 --no-autoupdate
-Use the generated URL as the push endpoint:
+Use the generated URL as the push 端点:
 Copy
 gcloud
 pubsub
@@ -492,7 +492,7 @@ gog-gmail-watch-push
 --topic
 gog-gmail-watch
 \
---push-endpoint
+--push-端点
 "https://<public-url>/gmail-pubsub?token=<shared>"
 Production: use a stable HTTPS endpoint与configure Pub/Sub OIDC JWT, then run:
 Copy

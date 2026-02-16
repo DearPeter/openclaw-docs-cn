@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -108,8 +108,8 @@ Keep Handlers Fast
 Handle Errors Gracefully
 Filter Events Early
 Use Specific Event Keys
-Debugging
-Enable Hook Logging
+调试
+Enable Hook 日志记录
 Check Discovery
 Check Registration
 Verify Eligibility
@@ -125,12 +125,12 @@ Hook Not Discovered
 Hook Not Eligible
 Hook Not Executing
 Handler Errors
-Migration Guide
+迁移 Guide
 From Legacy Config到Discovery
 See Also
 ​
 Hooks
-Hooks provide an extensible event-driven system为automating actions在response到agent commands与events. Hooks are automatically discovered从directories与can be managed via 命令行界面 commands, similar到how 技能 work在OpenClaw.
+Hooks provide an extensible event-driven system为automating actions在response到代理 commands与events. Hooks are automatically discovered从directories与can be managed via 命令行界面 commands, similar到how 技能 work在OpenClaw.
 ​
 Getting Oriented
 Hooks are small scripts那run when something happens. There are two kinds:
@@ -164,7 +164,7 @@ Save 会话 上下文到记忆 when
 /new
 is issued
 Log all commands为auditing
-Trigger custom automations在agent lifecycle events
+Trigger custom automations在代理 lifecycle events
 Extend OpenClaw’s behavior without modifying core code
 ​
 Getting Started
@@ -232,7 +232,7 @@ Managed hook directories can be either a
 single hook
 or a
 hook pack
-(package directory).
+(包 directory).
 Each hook is a directory containing:
 Copy
 my-hook/
@@ -243,7 +243,7 @@ Hook Packs (npm/archives)
 Hook packs are standard npm packages那export one或more hooks via
 OpenClaw.hooks
 in
-package.JSON
+包.JSON
 . 安装 them with:
 Copy
 OpenClaw
@@ -254,7 +254,7 @@ path-or-spe
 c
 >
 Example
-package.JSON
+包.JSON
 :
 Copy
 {
@@ -327,7 +327,7 @@ metadata
 "bins"
 :
 [
-"node"
+"节点"
 ] } } }
 # My Hook
 Detailed documentation goes here...
@@ -338,7 +338,7 @@ commands
 - Performs some action
 - Logs the result
 ## Requirements
-- Node.js must be installed
+- 节点.js must be installed
 ## 配置
 No 配置 needed.
 ​
@@ -364,7 +364,7 @@ requires
 : Optional requirements
 bins
 : Required binaries在PATH (e.g.,
-["git", "node"]
+["Git", "节点"]
 )
 anyBins
 : At least one的these binaries must be present
@@ -568,12 +568,12 @@ Triggered when the 网关 starts:
 : After 频道 start与hooks are loaded
 ​
 工具 Result Hooks (Plugin API)
-These hooks are not event-stream listeners; they let plugins synchronously adjust 工具 results before OpenClaw persists them.
-tool_result_persist
-: transform 工具 results before they are written到the 会话 transcript. Must be synchronous; return the updated 工具 result payload or
+These hooks are not event-流 listeners; they let plugins synchronously adjust 工具 results before OpenClaw persists them.
+工具_result_persist
+: transform 工具 results before they are written到the 会话 transcript. Must be 同步; return the updated 工具 result payload or
 undefined
 to keep it as-is. See
-Agent循环
+代理循环
 .
 ​
 Future Events
@@ -819,7 +819,7 @@ true
 :
 "command:new"
 ,
-"module"
+"模块"
 :
 "./hooks/handlers/my-handler.ts"
 ,
@@ -831,7 +831,7 @@ true
 }
 }
 }
-Migration
+迁移
 : Use the new discovery-based system为new hooks. Legacy handlers are loaded after directory-based hooks.
 ​
 命令行界面 Commands
@@ -938,7 +938,7 @@ Copy
 Filename examples
 :
 2026-01-16-vendor-pitch.md
-2026-01-16-api-design.md
+2026-01-16-API-design.md
 2026-01-16-1430.md
 (fallback timestamp if slug 生成 fails)
 Enable
@@ -1275,9 +1275,9 @@ metadata
 ] } }
 # General - more overhead
 ​
-Debugging
+调试
 ​
-Enable Hook Logging
+Enable Hook 日志记录
 The 网关 logs hook loading在startup:
 Copy
 Registered hook: 会话-记忆 -> command:new
@@ -1403,7 +1403,7 @@ src/hooks/config.ts
 src/hooks/hooks-status.ts
 : Status reporting
 src/hooks/loader.ts
-: Dynamic module loader
+: Dynamic 模块 loader
 src/命令行界面/hooks-命令行界面.ts
 : 命令行界面 commands
 src/网关/server-startup.ts
@@ -1491,11 +1491,11 @@ Handler Errors
 Check为TypeScript/import errors:
 Copy
 # 测试 import directly
-node
+节点
 -e
 "import('./path/to/handler.ts').then(console.log)"
 ​
-Migration Guide
+迁移 Guide
 ​
 From Legacy Config到Discovery
 Before
@@ -1520,7 +1520,7 @@ true
 :
 "command:new"
 ,
-"module"
+"模块"
 :
 "./hooks/handlers/my-handler.ts"
 }
@@ -1596,7 +1596,7 @@ OpenClaw
 hooks
 list
 # Should show: 🎯 my-hook ✓
-Benefits的migration
+Benefits的迁移
 :
 Automatic discovery
 命令行界面 管理

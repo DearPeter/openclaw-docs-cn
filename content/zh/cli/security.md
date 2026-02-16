@@ -24,9 +24,9 @@ approvals
 频道
 配置
 cron
-dashboard
+仪表板
 directory
-dns
+DNS
 docs
 doctor
 网关
@@ -52,9 +52,9 @@ tui
 uninstall
 update
 voicecall
-RPC与API
-RPC Adapters
-Device 模型 Database
+远程过程调用与API
+远程过程调用 Adapters
+Device 模型 数据库
 Templates
 Default 智能体.md
 智能体.md Template
@@ -67,7 +67,7 @@ SOUL.md Template
 USER
 Technical 参考
 向导 参考
-Token Use与Costs
+令牌 Use与Costs
 grammY
 Concept internals
 TypeBox
@@ -119,7 +119,7 @@ for multi-account 频道)为shared inboxes.
 It also warns when small 模型 (
 <=300B
 ) are used without sandboxing与with 网页/浏览器 工具 enabled.
-For webhook ingress, it warns when
+For Webhook ingress, it warns when
 hooks.default会话Key
 is unset, when request
 sessionKey
@@ -130,7 +130,7 @@ It also warns when sandbox Docker settings are configured while sandbox mode is 
 网关.节点.denyCommands
 uses ineffective pattern-like/unknown entries, when global
 工具.profile="minimal"
-is overridden通过agent 工具 profiles,与when installed extension plugin 工具 may be reachable under permissive 工具 policy.
+is overridden通过代理 工具 profiles,与when installed extension plugin 工具 may be reachable under permissive 工具 policy.
 Sandbox 命令行界面
 sessions
 I

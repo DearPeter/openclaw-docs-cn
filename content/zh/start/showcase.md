@@ -68,7 +68,7 @@ Wine Cellar Skill在Minutes
 •
 技能
 local
-csv
+CSV
 Asked “Robby” (@OpenClaw)为a local wine cellar skill. It requests a sample CSV export + where到store it, then builds/tests the skill fast (962 bottles在the example).
 Tesco Shop Autopilot
 @marchattonhere
@@ -208,7 +208,7 @@ Padel Court Booking
 automation
 booking
 命令行界面
-Playtomic availability checker + booking 命令行界面. Never miss an open court again.
+Playtomic 可用性 checker + booking 命令行界面. Never miss an open court again.
 Accounting Intake
 Community
 •
@@ -221,13 +221,13 @@ Couch Potato Dev Mode
 •
 Telegram
 website
-migration
+迁移
 astro
 Rebuilt entire personal site via Telegram while watching Netflix — Notion → Astro, 18 posts migrated, DNS到Cloudflare. Never opened a laptop.
 @attol8
 •
 automation
-api
+API
 skill
 Jira Skill Builder
 @jdrhyne
@@ -274,7 +274,7 @@ Community
 记忆
 transcription
 indexing
-Ingests full WhatsApp exports, transcribes 1k+ voice notes, cross-checks使用git logs, outputs linked Markdown reports.
+Ingests full WhatsApp exports, transcribes 1k+ voice notes, cross-checks使用Git logs, outputs linked Markdown reports.
 Karakeep Semantic 搜索
 @jamesbrooksco
 •
@@ -311,7 +311,7 @@ Home Assistant Add-on
 @ngutman
 •
 homeassistant
-docker
+Docker
 raspberry-pi
 OpenClaw 网关 运行在Home Assistant OS使用SSH tunnel support与persistent state.
 Home Assistant Skill

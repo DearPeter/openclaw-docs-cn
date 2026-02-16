@@ -30,7 +30,7 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
@@ -39,7 +39,7 @@ Webhooks
 Config (default-on)
 Tailscale access
 Integrated Serve (recommended)
-Tailnet bind + token
+Tailnet bind + 令牌
 Public internet (Funnel)
 Security notes
 Building the UI
@@ -47,7 +47,7 @@ Building the UI
 网页 (网关)
 The 网关 serves a small
 浏览器 控制 UI
-(Vite + Lit)从the same port as the 网关 WebSocket:
+(Vite + Lit)从the same 端口 as the 网关 WebSocket:
 default:
 http://<host>:18789/
 optional prefix: set
@@ -63,7 +63,7 @@ This page focuses在bind modes, security,与网页-facing surfaces.
 Webhooks
 When
 hooks.enabled=true
-, the 网关 also exposes a small webhook endpoint在the same HTTP server.
+, the 网关 also exposes a small Webhook 端点在the same HTTP server.
 See
 网关 配置
 →
@@ -102,7 +102,7 @@ basePath
 Tailscale access
 ​
 Integrated Serve (recommended)
-Keep the 网关在loopback与let Tailscale Serve proxy it:
+Keep the 网关在loopback与let Tailscale Serve 代理服务器 it:
 Copy
 {
 网关
@@ -133,7 +133,7 @@ https://<magicdns>/
 网关.controlUi.basePath
 )
 ​
-Tailnet bind + token
+Tailnet bind + 令牌
 Copy
 {
 网关
@@ -156,17 +156,17 @@ auth
 {
 mode
 :
-"token"
+"令牌"
 ,
-token
+令牌
 :
-"your-token"
+"your-令牌"
 }
 ,
 }
 ,
 }
-Then start the 网关 (token required为non-loopback binds):
+Then start the 网关 (令牌 required为non-loopback binds):
 Copy
 OpenClaw
 网关
@@ -214,14 +214,14 @@ require
 a shared token/password (
 网关.auth
 or env).
-The 向导 generates a 网关 token通过default (even在loopback).
+The 向导 generates a 网关 令牌通过default (even在loopback).
 The UI sends
-connect.params.auth.token
+connect.params.auth.令牌
 or
 connect.params.auth.password
 .
 The 控制 UI sends anti-clickjacking headers与only accepts same-origin 浏览器
-websocket connections unless
+WebSocket connections unless
 网关.controlUi.allowedOrigins
 is set.
 With Serve, Tailscale identity headers can satisfy auth when

@@ -1,10 +1,10 @@
-# Auth Monitoring - OpenClaw - 中文翻译
+# Auth 监控 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
 K
 Automation
-Auth Monitoring
+Auth 监控
 开始使用
 安装
 频道
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -63,11 +63,11 @@ Talk Mode
 Voice Wake
 Location Command
 本页内容
-Auth monitoring
+Auth 监控
 Preferred: 命令行界面 check (portable)
 Optional scripts (ops / phone workflows)
 ​
-Auth monitoring
+Auth 监控
 OpenClaw exposes OAuth expiry health via
 OpenClaw 模型 status
 . Use那for

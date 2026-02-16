@@ -30,7 +30,7 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
@@ -61,7 +61,7 @@ WebSocket
 The core idea
 The 网关 WebSocket binds to
 loopback
-on your configured port (defaults到18789).
+on your configured 端口 (defaults到18789).
 For remote use, you forward那loopback port over SSH (or use a tailnet/VPN与tunnel less).
 ​
 Common VPN/tailnet setups (where the 智能体 lives)
@@ -113,25 +113,25 @@ and
 ​
 Command flow (what runs where)
 One 网关 service owns state + 频道. 节点 are peripherals.
-Flow example (Telegram → node):
+Flow example (Telegram → 节点):
 Telegram 消息 arrives在the
 网关
 .
 网关 runs the
 智能体
-and decides whether到call a node 工具.
+and decides whether到call a 节点 工具.
 网关 calls the
-node
+节点
 over the 网关 WebSocket (
-node.*
-RPC).
-Node returns the result; 网关 replies back out到Telegram.
+节点.*
+远程过程调用).
+节点 returns the result; 网关 replies back out到Telegram.
 Notes:
 节点 do not run the 网关 service.
 Only one 网关 should run per host unless you intentionally run isolated profiles (see
 Multiple gateways
 ).
-macOS app “node mode” is just a node client over the 网关 WebSocket.
+macOS app “node mode” is just a 节点 client over the 网关 WebSocket.
 ​
 SSH tunnel (命令行界面 + 工具)
 Create a local tunnel到the remote 网关 WS:
@@ -155,17 +155,17 @@ when needed.
 Note: replace
 18789
 with your configured
-网关.port
+网关.端口
 (or
---port
+--端口
 /
-OPENCLAW_GATEWAY_PORT
+OPENCLAW_网关_端口
 ).
 Note: when you pass
 --url
 , the 命令行界面 does not fall back到config或environment credentials.
 Include
---token
+--令牌
 or
 --password
 explicitly. Missing explicit credentials is an error.
@@ -188,9 +188,9 @@ url
 :
 "ws://127.0.0.1:18789"
 ,
-token
+令牌
 :
-"your-token"
+"your-令牌"
 ,
 }
 ,
@@ -202,7 +202,7 @@ ws://127.0.0.1:18789
 and open the SSH tunnel first.
 ​
 Chat UI over SSH
-WebChat no longer uses a separate HTTP port. The SwiftUI chat UI connects directly到the 网关 WebSocket.
+WebChat no longer uses a separate HTTP 端口. The SwiftUI chat UI connects directly到the 网关 WebSocket.
 Forward
 18789
 over SSH (see above), then connect clients to
@@ -232,7 +232,7 @@ custom
 , or
 auto
 when loopback is unavailable) must use auth tokens/passwords.
-网关.remote.token
+网关.remote.令牌
 is
 only
 for remote 命令行界面 calls — it does
@@ -249,7 +249,7 @@ can authenticate via identity headers when
 Set it to
 false
 if you want tokens/passwords instead.
-Treat 浏览器 控制 like operator access: tailnet-only + deliberate node pairing.
+Treat 浏览器 控制 like operator access: tailnet-only + deliberate 节点 pairing.
 Deep dive:
 Security
 .

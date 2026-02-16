@@ -1,10 +1,10 @@
-# Agent Loop - OpenClaw - 中文翻译
+# 代理循环 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
 K
 基础概念
-Agent循环
+代理循环
 开始使用
 安装
 频道
@@ -17,11 +17,11 @@ Agent循环
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -41,10 +41,10 @@ OAuth
 重试策略
 命令队列
 本页内容
-Agent循环 (OpenClaw)
+代理循环 (OpenClaw)
 Entry points
 How it works (high-level)
-Queueing + concurrency
+Queueing + 并发
 会话 + 工作空间 preparation
 提示词 assembly + system 提示词
 Hook points (where you can intercept)
@@ -59,16 +59,16 @@ Chat 频道 handling
 Timeouts
 Where things can end early
 ​
-Agent循环 (OpenClaw)
+代理循环 (OpenClaw)
 An agentic loop is the full “real” run的an 智能体: intake → 上下文 assembly → 模型 inference →
 工具 execution → 流式传输 replies → persistence. It’s the authoritative path那turns a 消息
 into actions与a final reply, while keeping 会话 state consistent.
-In OpenClaw, a loop is a single, serialized run per 会话那emits lifecycle与stream events
+In OpenClaw, a loop is a single, serialized run per 会话那emits lifecycle与流 events
 as the 模型 thinks, calls 工具,与streams output. This doc explains how那authentic loop is
 wired end-to-end.
 ​
 Entry points
-网关 RPC:
+网关 远程过程调用:
 智能体
 and
 智能体.wait
@@ -102,13 +102,13 @@ returns payloads + usage metadata
 subscribeEmbeddedPi会话
 bridges pi-智能体-core events到OpenClaw
 智能体
-stream:
+流:
 工具 events =>
-stream: "工具"
+流: "工具"
 assistant deltas =>
-stream: "assistant"
+流: "assistant"
 lifecycle events =>
-stream: "lifecycle"
+流: "lifecycle"
 (
 phase: "start" | "end" | "error"
 )
@@ -123,7 +123,7 @@ runId
 returns
 { status: ok|error|timeout, startedAt, endedAt, error? }
 ​
-Queueing + concurrency
+Queueing + 并发
 Runs are serialized per 会话 key (会话 lane)与optionally through a global lane.
 This prevents 工具/会话 races与keeps 会话 history consistent.
 Messaging 频道 can choose 队列 modes (collect/steer/followup)那feed这lane system.
@@ -171,33 +171,33 @@ for 设置与examples.
 ​
 Plugin hooks (智能体 + 网关 lifecycle)
 These run inside the 智能体 loop或网关 pipeline:
-before_agent_start
+before_代理_start
 : inject 上下文或override system 提示词 before the run starts.
-agent_end
+代理_end
 : inspect the final 消息 list与run metadata after completion.
 before_compaction
 /
 after_compaction
 : observe或annotate 压缩 cycles.
-before_tool_call
+before_工具_call
 /
-after_tool_call
+after_工具_call
 : intercept 工具 params/results.
-tool_result_persist
+工具_result_persist
 : synchronously transform 工具 results before they are written到the 会话 transcript.
-message_received
+消息_received
 /
-message_sending
+消息_sending
 /
-message_sent
+消息_sent
 : inbound + outbound 消息 hooks.
-session_start
+会话_start
 /
-session_end
+会话_end
 : 会话 lifecycle boundaries.
-gateway_start
+网关_start
 /
-gateway_stop
+网关_stop
 : 网关 lifecycle events.
 See
 Plugins
@@ -210,9 +210,9 @@ events.
 Block 流式传输 can emit partial replies either on
 text_end
 or
-message_end
+消息_end
 .
-Reasoning 流式传输 can be emitted as a separate stream或as block replies.
+Reasoning 流式传输 can be emitted as a separate 流或as block replies.
 See
 流式传输
 for 分块与block reply behavior.
@@ -220,7 +220,7 @@ for 分块与block reply behavior.
 工具 execution + messaging 工具
 工具 start/update/end events are emitted在the
 工具
-stream.
+流.
 工具 results are sanitized为size与image payloads before logging/emitting.
 Messaging 工具 sends are tracked到suppress duplicate assistant confirmations.
 ​
@@ -230,7 +230,7 @@ assistant text (and optional reasoning)
 inline 工具 summaries (when verbose + allowed)
 assistant error text when the 模型 errors
 NO_REPLY
-is treated as a silent token与filtered从outgoing payloads.
+is treated as a silent 令牌与filtered从outgoing payloads.
 Messaging 工具 duplicates are removed从the final payload list.
 If no renderable payloads remain与a 工具 errored, a fallback 工具 error reply is emitted
 (unless a messaging 工具 already sent a user-visible reply).
@@ -238,8 +238,8 @@ If no renderable payloads remain与a 工具 errored, a fallback 工具 error rep
 压缩 + retries
 Auto-压缩 emits
 压缩
-stream events与can trigger a 重试.
-On 重试, in-记忆 buffers与tool summaries are reset到avoid duplicate output.
+流 events与can trigger a 重试.
+On 重试, in-记忆 buffers与工具 summaries are reset到avoid duplicate output.
 See
 压缩
 for the 压缩 pipeline.
@@ -271,7 +271,7 @@ Timeouts
 default: 30s (just the wait).
 timeoutMs
 param overrides.
-Agent运行时:
+代理运行时:
 智能体.defaults.timeoutSeconds
 default 600s; enforced in
 runEmbeddedPiAgent
@@ -280,10 +280,10 @@ abort timer.
 Where things can end early
 智能体 timeout (abort)
 AbortSignal (cancel)
-网关 disconnect或RPC timeout
+网关 disconnect或远程过程调用 timeout
 智能体.wait
 timeout (wait-only, does not stop 智能体)
-Agent运行时
+代理运行时
 系统提示
 I
 [查看英文原版](https://docs.OpenClaw.ai/concepts/智能体-loop)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*

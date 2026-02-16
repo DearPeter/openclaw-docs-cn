@@ -53,7 +53,7 @@ Telegram config 参考 pointers
 Related
 ​
 Telegram (Bot API)
-Status: production-ready为bot DMs + groups via grammY. Long polling is the default mode; webhook mode is optional.
+Status: production-ready为bot DMs + groups via grammY. Long polling is the default mode; Webhook mode is optional.
 Pairing
 Default DM policy为Telegram is pairing.
 频道 troubleshooting
@@ -63,7 +63,7 @@ Full 频道 config patterns与examples.
 ​
 Quick 设置
 1
-Create the bot token在BotFather
+Create the bot 令牌在BotFather
 Open Telegram与chat with
 @BotFather
 (confirm the handle is exactly
@@ -71,9 +71,9 @@ Open Telegram与chat with
 ).
 Run
 /newbot
-, follow prompts,与save the token.
+, follow prompts,与save the 令牌.
 2
-配置 token与DM policy
+配置 令牌与DM policy
 Copy
 {
 频道
@@ -111,7 +111,7 @@ true
 ,
 }
 Env fallback:
-TELEGRAM_BOT_TOKEN=...
+TELEGRAM_BOT_令牌=...
 (default account only).
 3
 Start 网关与approve first DM
@@ -138,8 +138,8 @@ Add the bot到your group, then set
 and
 groupPolicy
 to match your access 模型.
-Token resolution order is account-aware. In practice, config values win over env fallback, and
-TELEGRAM_BOT_TOKEN
+令牌 resolution order is account-aware. In practice, config values win over env fallback, and
+TELEGRAM_BOT_令牌
 only applies到the default account.
 ​
 Telegram side settings
@@ -318,8 +318,8 @@ Group sessions are isolated通过group ID. Forum topics append
 :topic:<threadId>
 to keep topics isolated.
 DM messages can carry
-message_thread_id
-; OpenClaw routes them使用thread-aware 会话 keys与preserves thread ID为replies.
+消息_线程_id
+; OpenClaw routes them使用线程-aware 会话 keys与preserves 线程 ID为replies.
 Long polling uses grammY runner使用per-chat/per-thread sequencing. Overall runner sink concurrency uses
 智能体.defaults.maxConcurrent
 .
@@ -329,7 +329,7 @@ does not apply).
 ​
 Feature 参考
 Draft 流式传输在Telegram DMs
-OpenClaw can stream partial replies使用Telegram draft bubbles (
+OpenClaw can 流 partial replies使用Telegram draft bubbles (
 sendMessageDraft
 ).
 Requirements:
@@ -341,7 +341,7 @@ is not
 )
 private chat
 inbound update includes
-message_thread_id
+消息_线程_id
 bot topics are enabled (
 getMe().has_topics_enabled
 )
@@ -366,7 +366,7 @@ Draft 流式传输 is DM-only; groups/频道 do not use draft bubbles.
 If you want early real Telegram messages instead的draft updates, use block 流式传输 (
 频道.Telegram.blockStreaming: true
 ).
-Telegram-only reasoning stream:
+Telegram-only reasoning 流:
 /reasoning stream
 sends reasoning到the draft bubble while generating
 final answer is sent without reasoning text
@@ -402,11 +402,11 @@ customCommands
 {
 command
 :
-"backup"
+"备份"
 ,
 description
 :
-"Git backup"
+"Git 备份"
 }
 ,
 {
@@ -447,7 +447,7 @@ If native commands are disabled, built-ins are removed. Custom/plugin commands m
 Common 设置 failure:
 setMyCommands failed
 usually means outbound DNS/HTTPS to
-api.Telegram.org
+API.Telegram.org
 is blocked.
 ​
 Device pairing commands (
@@ -561,7 +561,7 @@ text
 :
 "Yes"
 ,
-callback_data
+回调函数_data
 :
 "yes"
 }
@@ -571,7 +571,7 @@ text
 :
 "No"
 ,
-callback_data
+回调函数_data
 :
 "no"
 }
@@ -583,7 +583,7 @@ text
 :
 "Cancel"
 ,
-callback_data
+回调函数_data
 :
 "cancel"
 }]
@@ -591,9 +591,9 @@ callback_data
 ]
 ,
 }
-Callback clicks are passed到the 智能体 as text:
-callback_data: <value>
-Telegram 消息 actions为Agent与automation
+回调函数 clicks are passed到the 智能体 as text:
+回调函数_data: <value>
+Telegram 消息 actions为代理与automation
 Telegram 工具 actions include:
 sendMessage
 (
@@ -663,23 +663,23 @@ first
 (default)
 all
 off
-Forum topics与thread behavior
+Forum topics与线程 behavior
 Forum supergroups:
 topic 会话 keys append
 :topic:<threadId>
-replies与typing target the topic thread
+replies与typing target the topic 线程
 topic config path:
 频道.Telegram.groups.<chatId>.topics.<threadId>
 General topic (
 threadId=1
 ) special-case:
 消息 sends omit
-message_thread_id
+消息_线程_id
 (Telegram rejects
-sendMessage(...thread_id=1)
+sendMessage(...线程_id=1)
 )
 typing actions still include
-message_thread_id
+消息_线程_id
 Topic inheritance: topic entries inherit group settings unless overridden (
 requireMention
 ,
@@ -696,9 +696,9 @@ groupPolicy
 Template 上下文 includes:
 MessageThreadId
 IsForum
-DM thread behavior:
+DM 线程 behavior:
 private chats with
-message_thread_id
+消息_线程_id
 keep DM routing but use thread-aware 会话 keys/reply targets.
 Audio, video,与stickers
 ​
@@ -774,7 +774,7 @@ Sticker.setName
 Sticker.fileId
 Sticker.fileUniqueId
 Sticker.cachedDescription
-Sticker cache file:
+Sticker 缓存 file:
 ~/.OpenClaw/Telegram/sticker-cache.JSON
 Stickers are described once (when possible)与cached到reduce repeated vision calls.
 Enable sticker actions:
@@ -841,7 +841,7 @@ limit
 }
 Reaction notifications
 Telegram reactions arrive as
-message_reaction
+消息_reaction
 updates (separate从消息 payloads).
 When enabled, OpenClaw enqueues system events like:
 Telegram reaction added: 👍通过Alice (@alice)在msg 42
@@ -860,22 +860,22 @@ minimal
 )
 Notes:
 own
-means user reactions到bot-sent messages only (best-effort via sent-消息 cache).
-Telegram does not provide thread IDs在reaction updates.
+means user reactions到bot-sent messages only (best-effort via sent-消息 缓存).
+Telegram does not provide 线程 IDs在reaction updates.
 non-forum groups route到group chat 会话
 forum groups route到the group general-topic 会话 (
 :topic:1
 ), not the exact originating topic
 allowed_updates
 for polling/webhook include
-message_reaction
+消息_reaction
 automatically.
 Config writes从Telegram events与commands
 频道 config writes are enabled通过default (
 configWrites !== false
 ).
 Telegram-triggered writes include:
-group migration events (
+group 迁移 events (
 migrate_to_chat_id
 )到update
 频道.Telegram.groups
@@ -901,14 +901,14 @@ false
 }
 ,
 }
-Long polling vs webhook
+Long polling vs Webhook
 Default: long polling.
 Webhook mode:
 set
 频道.Telegram.webhookUrl
 set
 频道.Telegram.webhookSecret
-(required when webhook URL is set)
+(required when Webhook URL is set)
 optional
 频道.Telegram.webhookPath
 (default
@@ -919,10 +919,10 @@ optional
 (default
 127.0.0.1
 )
-Default local listener为webhook mode binds to
+Default local listener为Webhook mode binds to
 127.0.0.1:8787
 .
-If your public endpoint differs, place a reverse proxy在front与point
+If your public 端点 differs, place a reverse 代理服务器在front与point
 webhookUrl
 at the public URL.
 Set
@@ -1009,21 +1009,21 @@ command 授权 still applies even when group policy is
 open
 setMyCommands failed
 usually indicates DNS/HTTPS reachability issues to
-api.Telegram.org
+API.Telegram.org
 Polling或network instability
 Node 22+ + custom 获取/proxy can trigger immediate abort behavior if AbortSignal types mismatch.
 Some hosts resolve
-api.Telegram.org
+API.Telegram.org
 to IPv6 first; broken IPv6 egress can cause intermittent Telegram API failures.
 Validate DNS answers:
 Copy
 dig
 +short
-api.Telegram.org
+API.Telegram.org
 A
 dig
 +short
-api.Telegram.org
+API.Telegram.org
 AAAA
 More 帮助:
 频道 troubleshooting
@@ -1034,9 +1034,9 @@ Primary 参考:
 频道.Telegram.enabled
 : enable/disable 频道 startup.
 频道.Telegram.botToken
-: bot token (BotFather).
+: bot 令牌 (BotFather).
 频道.Telegram.tokenFile
-: read token从file path.
+: read 令牌从file path.
 频道.Telegram.dmPolicy
 :
 pairing | allowlist | open | disabled
@@ -1068,7 +1068,7 @@ open | allowlist | disabled
 频道.Telegram.groups.<id>.allowFrom
 : per-group sender allowlist override.
 频道.Telegram.groups.<id>.systemPrompt
-: extra system prompt为the group.
+: extra 系统提示为the group.
 频道.Telegram.groups.<id>.enabled
 : disable the group when
 false
@@ -1112,21 +1112,21 @@ off | partial | block
 频道.Telegram.重试
 : 重试 policy为outbound Telegram API calls (attempts, minDelayMs, maxDelayMs, jitter).
 频道.Telegram.network.autoSelectFamily
-: override Node autoSelectFamily (true=enable, false=disable). Defaults到disabled在Node 22到avoid Happy Eyeballs timeouts.
-频道.Telegram.proxy
+: override 节点 autoSelectFamily (true=enable, false=disable). Defaults到disabled在节点 22到avoid Happy Eyeballs timeouts.
+频道.Telegram.代理服务器
 : proxy URL为Bot API calls (SOCKS/HTTP).
 频道.Telegram.webhookUrl
-: enable webhook mode (requires
+: enable Webhook mode (requires
 频道.Telegram.webhookSecret
 ).
 频道.Telegram.webhookSecret
-: webhook secret (required when webhookUrl is set).
+: Webhook secret (required when webhookUrl is set).
 频道.Telegram.webhookPath
-: local webhook path (default
+: local Webhook path (default
 /Telegram-webhook
 ).
 频道.Telegram.webhookHost
-: local webhook bind host (default
+: local Webhook bind host (default
 127.0.0.1
 ).
 频道.Telegram.actions.reactions
@@ -1200,8 +1200,8 @@ timeoutSeconds
 ,
 network.autoSelectFamily
 ,
-proxy
-webhook:
+代理服务器
+Webhook:
 webhookUrl
 ,
 webhookSecret

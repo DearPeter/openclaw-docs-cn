@@ -21,13 +21,13 @@ Troubleshooting
 FAQ
 Community
 OpenClaw Lore
-Environment与debugging
+Environment与调试
 Environment Variables
-Debugging
+调试
 Testing
 Scripts
-Node 运行时
-Node.js
+节点 运行时
+节点.js
 压缩 internals
 会话管理 Deep Dive
 Developer 设置
@@ -80,7 +80,7 @@ pnpm 网关:watch
 , then let the macOS app attach在Local mode.
 ​
 Prereqs (from source)
-Node
+节点
 >=22
 pnpm
 Docker (optional; only为containerized 设置/e2e — see
@@ -96,7 +96,7 @@ Config:
 (JSON/JSON5-ish)
 工作空间:
 ~/.OpenClaw/工作空间
-(技能, prompts, memories; make it a private git repo)
+(技能, prompts, memories; make it a private Git repo)
 引导 once:
 Copy
 OpenClaw
@@ -114,10 +114,10 @@ After
 pnpm 构建
 , you can run the packaged 命令行界面 directly:
 Copy
-node
+节点
 OpenClaw.mjs
 网关
---port
+--端口
 18789
 --verbose
 ​
@@ -170,7 +170,7 @@ OpenClaw.app
 :
 Connection Mode:
 Local
-The app will attach到the 运行 网关在the configured port.
+The app will attach到the 运行 网关在the configured 端口.
 ​
 3) Verify
 In-app 网关 status should read
@@ -181,10 +181,10 @@ OpenClaw
 health
 ​
 Common footguns
-Wrong port:
+Wrong 端口:
 网关 WS defaults to
 ws://127.0.0.1:18789
-; keep app + 命令行界面在the same port.
+; keep app + 命令行界面在the same 端口.
 Where state lives:
 Credentials:
 ~/.OpenClaw/credentials/
@@ -194,14 +194,14 @@ Logs:
 /tmp/OpenClaw/
 ​
 Credential storage map
-Use这when debugging auth或deciding what到back up:
+Use这when 调试 auth或deciding what到back up:
 WhatsApp
 :
 ~/.OpenClaw/credentials/WhatsApp/<accountId>/creds.JSON
-Telegram bot token
+Telegram bot 令牌
 : config/env or
 频道.Telegram.tokenFile
-Discord bot token
+Discord bot 令牌
 : config/env (token file not yet supported)
 Slack tokens
 : config/env (
@@ -229,7 +229,7 @@ as “your stuff”; don’t put personal prompts/config into the
 OpenClaw
 repo.
 Updating source:
-git pull
+Git pull
 +
 pnpm 安装
 (when lockfile changed) + keep using

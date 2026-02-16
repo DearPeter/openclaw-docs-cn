@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -71,9 +71,9 @@ Use it (no extra config)
 Attach / detach (toolbar button)
 Which tab does it 控制?
 Badge + common errors
-Remote 网关 (use a node host)
+Remote 网关 (use a 节点 host)
 Local 网关 (same machine as Chrome) — usually no extra steps
-Remote 网关 (网关 runs elsewhere) — run a node host
+Remote 网关 (网关 runs elsewhere) — run a 节点 host
 Sandboxing (工具 containers)
 Remote access tips
 How “extension path” works
@@ -123,7 +123,7 @@ Enable “Developer mode”
 Pin the extension.
 ​
 Updates (no 构建 step)
-The extension ships inside the OpenClaw release (npm package) as static files. There is no separate “构建” step.
+The extension ships inside the OpenClaw release (npm 包) as static files. There is no separate “构建” step.
 After upgrading OpenClaw:
 Re-run
 OpenClaw 浏览器 extension 安装
@@ -135,7 +135,7 @@ chrome://extensions
 Use it (no extra config)
 OpenClaw ships使用a built-in 浏览器 profile named
 chrome
-that targets the extension relay在the default port.
+that targets the extension relay在the default 端口.
 Use it:
 命令行界面:
 OpenClaw 浏览器 --浏览器-profile chrome tabs
@@ -143,7 +143,7 @@ OpenClaw 浏览器 --浏览器-profile chrome tabs
 浏览器
 with
 profile="chrome"
-If you want a different name或a different relay port, create your own profile:
+If you want a different name或a different relay 端口, create your own profile:
 Copy
 OpenClaw
 浏览器
@@ -188,10 +188,10 @@ ON
 If you see
 !
 :
-Make sure the 网关 is 运行 locally (default 设置),或run a node host在this machine if the 网关 runs elsewhere.
+Make sure the 网关 is 运行 locally (default 设置),或run a 节点 host在this machine if the 网关 runs elsewhere.
 Open the extension Options page; it shows whether the relay is reachable.
 ​
-Remote 网关 (use a node host)
+Remote 网关 (use a 节点 host)
 ​
 Local 网关 (same machine as Chrome) — usually
 no extra steps
@@ -199,9 +199,9 @@ If the 网关 runs在the same machine as Chrome, it starts the 浏览器 控制 
 and auto-starts the relay server. The extension talks到the local relay; the 命令行界面/工具 calls go到the 网关.
 ​
 Remote 网关 (网关 runs elsewhere) —
-run a node host
-If your 网关 runs在another machine, start a node host在the machine那runs Chrome.
-The 网关 will proxy 浏览器 actions到that node; the extension + relay stay local到the 浏览器 machine.
+run a 节点 host
+If your 网关 runs在another machine, start a 节点 host在the machine那runs Chrome.
+The 网关 will 代理服务器 浏览器 actions到that 节点; the extension + relay stay local到the 浏览器 machine.
 If multiple 节点 are connected, pin one with
 网关.节点.浏览器.node
 or set
@@ -259,12 +259,12 @@ Then ensure the 工具 isn’t denied通过tool policy,与(if needed) call
 with
 target="host"
 .
-Debugging:
+调试:
 OpenClaw sandbox explain
 ​
 Remote access tips
-Keep the 网关与node host在the same tailnet; avoid exposing relay ports到LAN或public Internet.
-Pair 节点 intentionally; disable 浏览器 proxy routing if you don’t want remote 控制 (
+Keep the 网关与节点 host在the same tailnet; avoid exposing relay ports到LAN或public Internet.
+Pair 节点 intentionally; disable 浏览器 代理服务器 routing if you don’t want remote 控制 (
 网关.节点.浏览器.mode="off"
 ).
 ​
@@ -276,7 +276,7 @@ on-disk directory containing the extension files.
 The 命令行界面 intentionally does
 not
 print a
-node_modules
+节点_modules
 path. Always run
 OpenClaw 浏览器 extension 安装
 first到copy the extension到a stable location under your OpenClaw state directory.
@@ -295,11 +295,11 @@ like the dedicated OpenClaw-managed profile.
 If you attach到your daily-driver profile/tab, you’re granting access到that account state.
 Recommendations:
 Prefer a dedicated Chrome profile (separate从your personal browsing)为extension relay usage.
-Keep the 网关与any node hosts tailnet-only; rely在网关 auth + node pairing.
+Keep the 网关与any 节点 hosts tailnet-only; rely在网关 auth + 节点 pairing.
 Avoid exposing relay ports over LAN (
 0.0.0.0
 )与avoid Funnel (public).
-The relay blocks non-extension origins与requires an internal auth token为CDP clients.
+The relay blocks non-extension origins与requires an internal auth 令牌为CDP clients.
 Related:
 浏览器 工具 概述:
 浏览器

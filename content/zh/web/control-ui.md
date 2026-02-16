@@ -30,7 +30,7 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
@@ -41,7 +41,7 @@ What it can do (today)
 Chat behavior
 Tailnet access (recommended)
 Integrated Tailscale Serve (preferred)
-Bind到tailnet + token
+Bind到tailnet + 令牌
 Insecure HTTP
 Building the UI
 Debugging/testing: dev server + remote 网关
@@ -59,7 +59,7 @@ optional prefix: set
 )
 It speaks
 directly到the 网关 WebSocket
-on the same port.
+on the same 端口.
 ​
 Quick open (local)
 If the 网关 is 运行在the same computer, open:
@@ -71,10 +71,10 @@ If the page fails到load, start the 网关 first:
 OpenClaw 网关
 .
 Auth is supplied during the WebSocket handshake via:
-connect.params.auth.token
+connect.params.auth.令牌
 connect.params.auth.password
-The dashboard settings panel lets you store a token; passwords are not persisted.
-The 入门指南 向导 generates a 网关 token通过default, so paste it here在first connect.
+The 仪表板 settings panel lets you store a 令牌; passwords are not persisted.
+The 入门指南 向导 generates a 网关 令牌通过default, so paste it here在first connect.
 ​
 Device pairing (first connection)
 When you connect到the 控制 UI从a new 浏览器或device, the 网关
@@ -106,7 +106,7 @@ you revoke it with
 OpenClaw devices revoke --device <id> --role <role>
 . See
 Devices 命令行界面
-for token rotation与revocation.
+for 令牌 rotation与revocation.
 Notes:
 Local connections (
 127.0.0.1
@@ -125,7 +125,7 @@ chat.abort
 ,
 chat.inject
 )
-Stream 工具 calls + live 工具 output cards在Chat (智能体 events)
+流 工具 calls + live 工具 output cards在Chat (智能体 events)
 频道: WhatsApp/Telegram/Discord/Slack + plugin 频道 (Mattermost, etc.) status + QR 登录 + per-频道 config (
 频道.status
 ,
@@ -148,9 +148,9 @@ cron.*
 技能.*
 )
 节点: list + caps (
-node.list
+节点.list
 )
-执行 approvals: edit 网关或node allowlists + ask policy for
+执行 approvals: edit 网关或节点 allowlists + ask policy for
 执行 host=网关/node
 (
 执行.approvals.*
@@ -227,7 +227,7 @@ runId
 Tailnet access (recommended)
 ​
 Integrated Tailscale Serve (preferred)
-Keep the 网关在loopback与let Tailscale Serve proxy it使用HTTPS:
+Keep the 网关在loopback与let Tailscale Serve 代理服务器 it使用HTTPS:
 Copy
 OpenClaw
 网关
@@ -260,13 +260,13 @@ headers. Set
 )
 if you want到require a token/password even为Serve traffic.
 ​
-Bind到tailnet + token
+Bind到tailnet + 令牌
 Copy
 OpenClaw
 网关
 --bind
 tailnet
---token
+--令牌
 "$(
 openssl
 rand
@@ -278,12 +278,12 @@ http://<tailscale-ip>:18789/
 (or your configured
 网关.controlUi.basePath
 )
-Paste the token into the UI settings (sent as
-connect.params.auth.token
+Paste the 令牌 into the UI settings (sent as
+connect.params.auth.令牌
 ).
 ​
 Insecure HTTP
-If you open the dashboard over plain HTTP (
+If you open the 仪表板 over plain HTTP (
 http://<lan-ip>
 or
 http://<tailscale-ip>
@@ -300,7 +300,7 @@ https://<magicdns>/
 (Serve)
 http://127.0.0.1:18789/
 (on the 网关 host)
-Downgrade example (token-only over HTTP):
+Downgrade example (令牌-only over HTTP):
 Copy
 {
 网关
@@ -323,9 +323,9 @@ auth
 {
 mode
 :
-"token"
+"令牌"
 ,
-token
+令牌
 :
 "replace-me"
 }
@@ -378,7 +378,7 @@ http://localhost:5173/?gatewayUrl=wss://<网关-host>:18789&token=<网关-token>
 Notes:
 gatewayUrl
 is stored在localStorage after load与removed从the URL.
-token
+令牌
 is stored在localStorage;
 password
 is kept在记忆 only.
@@ -386,13 +386,13 @@ When
 gatewayUrl
 is set, the UI does not fall back到config或environment credentials.
 Provide
-token
+令牌
 (or
 password
 ) explicitly. Missing explicit credentials is an error.
 Use
 wss://
-when the 网关 is behind TLS (Tailscale Serve, HTTPS proxy, etc.).
+when the 网关 is behind TLS (Tailscale Serve, HTTPS 代理服务器, etc.).
 gatewayUrl
 is only accepted在a top-level window (not embedded)到prevent clickjacking.
 For cross-origin dev setups (e.g.
@@ -425,7 +425,7 @@ Remote access 设置 details:
 Remote access
 .
 网页
-Dashboard
+仪表板
 I
 [查看英文原版](https://docs.OpenClaw.ai/网页/控制-ui)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

@@ -185,10 +185,10 @@ WhatsApp 网页-only 频道 scope
 The messaging platform 频道 is WhatsApp 网页-based (
 Baileys
 )在current OpenClaw 频道 架构.
-There is no separate Twilio WhatsApp messaging channel在the built-in chat-频道 registry.
+There is no separate Twilio WhatsApp messaging 频道在the built-in chat-频道 registry.
 ​
 运行时 模型
-网关 owns the WhatsApp socket与reconnect loop.
+网关 owns the WhatsApp 套接字与reconnect loop.
 Outbound sends require an active WhatsApp listener为the target account.
 Status与broadcast chats are ignored (
 @status
@@ -223,7 +223,7 @@ disabled
 allowFrom
 accepts E.164-style numbers (normalized internally).
 运行时 behavior details:
-pairings are persisted在channel allow-store与merged使用configured
+pairings are persisted在频道 allow-store与merged使用configured
 allowFrom
 if no allowlist is configured, the linked self number is allowed通过default
 outbound
@@ -477,7 +477,7 @@ account ids are normalized internally为lookup
 Credential paths与legacy compatibility
 current auth path:
 ~/.OpenClaw/credentials/WhatsApp/<accountId>/creds.JSON
-backup file:
+备份 file:
 creds.JSON.bak
 legacy default auth in
 ~/.OpenClaw/credentials/

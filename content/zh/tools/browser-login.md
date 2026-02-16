@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -91,7 +91,7 @@ dedicated Chrome profile
 OpenClaw
 , orange‑tinted UI). 这是 separate从your daily 浏览器 profile.
 Two easy ways到access it:
-Ask the agent到open the 浏览器
+Ask the 代理到open the 浏览器
 and then log在yourself.
 Open it via 命令行界面
 :
@@ -167,7 +167,7 @@ https://x.com
 OpenClaw
 --target
 host
-Or disable sandboxing为the agent那posts updates.
+Or disable sandboxing为the 代理那posts updates.
 浏览器 (OpenClaw-managed)
 Chrome Extension
 I

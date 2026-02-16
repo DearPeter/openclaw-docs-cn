@@ -3,7 +3,7 @@ OpenClaw
 首页
 英文
 K
-Environment与debugging
+Environment与调试
 Environment Variables
 开始使用
 安装
@@ -21,13 +21,13 @@ Troubleshooting
 FAQ
 Community
 OpenClaw Lore
-Environment与debugging
+Environment与调试
 Environment Variables
-Debugging
+调试
 Testing
 Scripts
-Node 运行时
-Node.js
+节点 运行时
+节点.js
 压缩 internals
 会话管理 Deep Dive
 Developer 设置
@@ -154,7 +154,7 @@ Copy
 {
 apiKey
 :
-"${VERCEL_GATEWAY_API_KEY}"
+"${VERCEL_网关_API_KEY}"
 ,
 }
 ,
@@ -235,7 +235,7 @@ Related
 FAQ: env vars与.env loading
 模型 概述
 OpenClaw Lore
-Debugging
+调试
 I
 [查看英文原版](https://docs.OpenClaw.ai/帮助/environment)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

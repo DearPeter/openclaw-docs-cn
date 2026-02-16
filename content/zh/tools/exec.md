@@ -1,4 +1,4 @@
-# 执行 Tool - OpenClaw - 中文翻译
+# 执行 工具 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -108,7 +108,7 @@ pty
 (bool): run在a pseudo-terminal when available (TTY-only CLIs, coding 智能体, terminal UIs)
 host
 (
-sandbox | 网关 | node
+sandbox | 网关 | 节点
 ): where到execute
 security
 (
@@ -116,17 +116,17 @@ deny | allowlist | full
 ): enforcement mode for
 网关
 /
-node
+节点
 ask
 (
 off | on-miss | always
 ): approval prompts for
 网关
 /
-node
-node
+节点
+节点
 (string): node id/name for
-host=node
+host=节点
 elevated
 (bool): request elevated mode (网关 host);
 security=full
@@ -141,16 +141,16 @@ elevated
 is ignored when sandboxing is off (执行 already runs在the host).
 网关
 /
-node
+节点
 approvals are controlled by
 ~/.OpenClaw/执行-approvals.JSON
 .
-node
-requires a paired node (companion app或headless node host).
+节点
+requires a paired 节点 (companion app或headless 节点 host).
 If multiple 节点 are available, set
-执行.node
+执行.节点
 or
-工具.执行.node
+工具.执行.节点
 to select one.
 On non-Windows hosts, 执行 uses
 SHELL
@@ -171,7 +171,7 @@ if neither exists.
 Host execution (
 网关
 /
-node
+节点
 ) rejects
 env.PATH
 and loader overrides (
@@ -185,7 +185,7 @@ off通过default
 . If sandboxing is off,
 host=sandbox
 runs directly on
-the 网关 host (no container) and
+the 网关 host (no 容器) and
 does not require approvals
 . To require approvals, run with
 host=网关
@@ -205,12 +205,12 @@ sandbox
 deny
 for sandbox,
 allowlist
-for 网关 + node when unset)
+for 网关 + 节点 when unset)
 工具.执行.ask
 (default:
 on-miss
 )
-工具.执行.node
+工具.执行.节点
 (default: unset)
 工具.执行.pathPrepend
 : list的directories到prepend to
@@ -268,7 +268,7 @@ Linux:
 host=sandbox
 : runs
 sh -lc
-(登录 shell) inside the container, so
+(登录 shell) inside the 容器, so
 /etc/profile
 may reset
 PATH
@@ -278,17 +278,17 @@ env.PATH
 after profile sourcing via an internal env var (no shell interpolation);
 工具.执行.pathPrepend
 applies here too.
-host=node
-: only non-blocked env overrides you pass are sent到the node.
+host=节点
+: only non-blocked env overrides you pass are sent到the 节点.
 env.PATH
 overrides are
-rejected为host execution. Headless node hosts accept
+rejected为host execution. Headless 节点 hosts accept
 PATH
-only when it prepends the node host
+only when it prepends the 节点 host
 PATH (no replacement). macOS 节点 drop
 PATH
 overrides entirely.
-Per-智能体 node binding (use the 智能体 list index在config):
+Per-智能体 节点 binding (use the 智能体 list index在config):
 Copy
 OpenClaw
 config
@@ -297,9 +297,9 @@ get
 OpenClaw
 config
 set
-智能体.list[0].工具.执行.node
-"node-id-or-name"
-控制 UI: the 节点 tab includes a small “执行 node binding” panel为the same settings.
+智能体.list[0].工具.执行.节点
+"节点-id-or-name"
+控制 UI: the 节点 tab includes a small “执行 节点 binding” panel为the same settings.
 ​
 会话 overrides (
 /执行
@@ -315,7 +315,7 @@ security
 ,
 ask
 , and
-node
+节点
 .
 Send
 /执行
@@ -345,7 +345,7 @@ ask=off
 执行 approvals (companion app / node host)
 Sandboxed 智能体 can require per-request approval before
 执行
-runs在the 网关或node host.
+runs在the 网关或节点 host.
 See
 执行 approvals
 for the policy, allowlist,与UI flow.

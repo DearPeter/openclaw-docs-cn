@@ -32,13 +32,13 @@ WebChat
 网关 Lifecycle
 Health Checks
 Menu Bar Icon
-macOS Logging
+macOS 日志记录
 macOS Permissions
 Remote 控制
 macOS Signing
 macOS Release
 网关在macOS
-macOS IPC
+macOS 进程间通信
 技能
 Peekaboo Bridge
 本页内容
@@ -50,7 +50,7 @@ Common links
 ​
 平台
 OpenClaw core is written在TypeScript.
-Node is the recommended 运行时
+节点 is the recommended 运行时
 .
 Bun is not recommended为the 网关 (WhatsApp/Telegram bugs).
 Companion apps exist为macOS (menu bar app)与mobile 节点 (iOS/Android). Windows and
@@ -78,7 +78,7 @@ Hetzner (Docker):
 Hetzner
 GCP (Compute Engine):
 GCP
-exe.dev (VM + HTTPS proxy):
+exe.dev (VM + HTTPS 代理服务器):
 exe.dev
 ​
 Common links

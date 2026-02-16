@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -144,7 +144,7 @@ lang
 ,
 output_format
 ,
-latency_tier
+延迟_tier
 once
 ​
 Config (
@@ -169,7 +169,7 @@ outputFormat
 ,
 apiKey
 :
-"elevenlabs_api_key"
+"elevenlabs_API_key"
 ,
 interruptOnSpeech
 :
@@ -186,7 +186,7 @@ voiceId
 ELEVENLABS_VOICE_ID
 /
 SAG_VOICE_ID
-(or first ElevenLabs voice when API key is available)
+(or first ElevenLabs voice when API密钥 is available)
 modelId
 : defaults to
 eleven_v3
@@ -242,7 +242,7 @@ is validated to
 ; other 模型 accept
 0..1
 .
-latency_tier
+延迟_tier
 is validated to
 0..4
 when set.
@@ -254,7 +254,7 @@ pcm_22050
 pcm_24000
 , and
 pcm_44100
-output formats为low-latency AudioTrack 流式传输.
+output formats为low-延迟 AudioTrack 流式传输.
 Camera Capture
 Voice Wake
 I

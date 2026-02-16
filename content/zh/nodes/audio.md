@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -98,7 +98,7 @@ CommandBody
 /
 RawBody
 are set到the transcript so slash commands still work.
-Verbose logging
+Verbose 日志记录
 : In
 --verbose
 , we log when transcription runs与when it replaces the body.

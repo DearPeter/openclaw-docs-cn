@@ -1,4 +1,4 @@
-# Agent 引导启动 - OpenClaw - 中文翻译
+# 代理 引导启动 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -93,7 +93,7 @@ Related docs
 macOS app 入门指南:
 入门指南
 工作空间 layout:
-Agent工作空间
+代理工作空间
 OAuth
 会话管理
 I

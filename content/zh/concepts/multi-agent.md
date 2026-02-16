@@ -1,1070 +1,527 @@
-# Multi-Agent Routing - OpenClaw - 中文翻译
-OpenClaw
-首页
-英文
-K
-多Agent
-多Agent路由
-开始使用
-安装
-频道
-智能体
-工具
-模型
-平台
-网关与运维
-参考
-帮助
-基础概念
-网关架构
-Agent运行时
-Agent循环
-系统提示
-上下文
-Agent工作空间
-OAuth
-引导启动
-引导启动
-会话与记忆
-会话管理
-会话
-会话修剪
-会话 工具
-记忆
-压缩
-多Agent
-多Agent路由
-在线状态
-消息与传递
-消息
-流式传输与分块
-重试策略
-命令队列
-本页内容
-多Agent路由
-What is “one 智能体”?
-Paths (quick map)
-Single-智能体 mode (default)
-智能体 helper
-Multiple 智能体 = multiple people, multiple personalities
-One WhatsApp number, multiple people (DM split)
-Routing rules (how messages pick an 智能体)
-Multiple accounts / phone numbers
-概念
-示例： two WhatsApps → two 智能体
-示例： WhatsApp daily chat + Telegram deep work
-示例： same 频道, one peer到Opus
-Family 智能体 bound到a WhatsApp group
-Per-智能体 Sandbox与Tool 配置
-​
-多Agent路由
-Goal: multiple
-isolated
-智能体 (separate 工作空间 +
-agentDir
-+ sessions), plus multiple 频道 accounts (e.g. two WhatsApps)在one 运行 网关. Inbound is routed到an 智能体 via bindings.
-​
-What is “one 智能体”?
-An
-智能体
-is a fully scoped brain使用its own:
-工作空间
-(files, 智能体.md/SOUL.md/USER.md, local notes, persona rules).
-State directory
-(
-agentDir
-)为auth profiles, 模型 registry,与per-智能体 config.
-会话 store
-(chat history + routing state) under
-~/.OpenClaw/智能体/<agentId>/sessions
-.
-Auth profiles are
-per-智能体
-. Each 智能体 reads从its own:
-Copy
-~/.OpenClaw/智能体/<agentId>/智能体/auth-profiles.JSON
-Main 智能体 credentials are
-not
-shared automatically. Never reuse
-agentDir
-across 智能体 (it causes auth/会话 collisions). If you want到share creds,
-copy
-auth-profiles.JSON
-into the other 智能体’s
-agentDir
-.
-技能 are per-智能体 via each 工作空间’s
-技能/
-folder,使用shared 技能
-available from
-~/.OpenClaw/技能
-. See
-技能: per-智能体 vs shared
-.
-The 网关 can host
-one 智能体
-(default) or
-many 智能体
-side-by-side.
-工作空间 note:
-each 智能体’s 工作空间 is the
-default cwd
-, not a hard
-sandbox. Relative paths resolve inside the 工作空间, but absolute paths can
-reach other host locations unless sandboxing is enabled. See
-Sandboxing
-.
-​
-Paths (quick map)
-Config:
-~/.OpenClaw/OpenClaw.JSON
-(or
-OPENCLAW_CONFIG_PATH
-)
-State dir:
-~/.OpenClaw
-(or
-OPENCLAW_STATE_DIR
-)
-工作空间:
-~/.OpenClaw/工作空间
-(or
-~/.OpenClaw/工作空间-<agentId>
-)
-智能体 dir:
-~/.OpenClaw/智能体/<agentId>/智能体
-(or
-智能体.list[].agentDir
-)
-会话:
-~/.OpenClaw/智能体/<agentId>/sessions
-​
-Single-智能体 mode (default)
-If you do nothing, OpenClaw runs a single 智能体:
-agentId
-defaults to
-main
-.
-会话 are keyed as
-智能体:main:<mainKey>
-.
-工作空间 defaults to
-~/.OpenClaw/工作空间
-(or
-~/.OpenClaw/工作空间-<profile>
-when
-OPENCLAW_PROFILE
-is set).
-State defaults to
-~/.OpenClaw/智能体/main/智能体
-.
-​
-智能体 helper
-Use the 智能体 向导到add a new isolated 智能体:
-Copy
-OpenClaw
-智能体
-add
-work
-Then add
-bindings
-(or let the 向导 do it)到route inbound messages.
-Verify with:
-Copy
-OpenClaw
-智能体
-list
---bindings
-​
-Multiple 智能体 = multiple people, multiple personalities
-With
-multiple 智能体
-, each
-agentId
-becomes a
-fully isolated persona
-:
-Different phone numbers/accounts
-(per 频道
-accountId
-).
-Different personalities
-(per-智能体 工作空间 files like
-智能体.md
-and
-SOUL.md
-).
-Separate auth + sessions
-(no cross-talk unless explicitly enabled).
-This lets
-multiple people
-share one 网关 server while keeping their AI “brains”与data isolated.
-​
-One WhatsApp number, multiple people (DM split)
-You can route
-different WhatsApp DMs
-to different 智能体 while staying on
-one WhatsApp account
-. Match在sender E.164 (like
-+15551234567
-) with
-peer.kind: "direct"
-. Replies still come从the same WhatsApp number (no per‑智能体 sender identity).
-Important detail: direct chats collapse到the 智能体’s
-main 会话 key
-, so true isolation requires
-one 智能体 per person
-.
-示例：
-Copy
+---
+title: "多代理系统与路由"
+description: "OpenClaw 多代理系统 - 了解多代理配置、路由规则、隔离机制和协作工作流"
+date: 2026-02-15
+---
+
+# 多代理系统与路由
+
+OpenClaw 的多代理系统允许您在同一网关中运行多个独立的代理，每个代理拥有自己的工作空间、配置和会话状态。这种设计使得不同代理可以专注于特定任务，同时保持完全隔离。
+
+## 概述
+
+### 什么是多代理系统？
+
+多代理系统是指在同一 OpenClaw 网关实例中运行**多个独立代理**的能力。每个代理都是一个完全独立的大脑，拥有：
+
+- 独立的工作空间和文件系统
+- 专用的状态目录和配置
+- 隔离的会话存储和聊天历史
+- 单独的身份验证配置文件
+
+### 核心目标
+
+1. **隔离性**：不同代理之间的完全状态隔离
+2. **专业化**：每个代理专注于特定领域或任务
+3. **并发性**：多个代理可以同时处理不同请求
+4. **灵活性**：灵活的路由规则将消息导向最合适的代理
+
+## 核心概念
+
+### 什么是"一个代理"？
+
+在 OpenClaw 中，一个**代理**是一个完全独立的作用域大脑，拥有：
+
+1. **工作空间**：包含文件、`agent.md`/`SOUL.md`/`USER.md`、本地笔记和角色规则
+2. **状态目录**：用于身份验证配置文件、模型注册表和每代理配置的 `agentDir`
+3. **会话存储**：聊天历史记录和路由状态，位于 `~/.openclaw/agent/<agentId>/sessions`
+
+### 身份验证配置文件
+
+身份验证配置文件是**每代理**的。每个代理从自己的位置读取：
+
+```
+~/.openclaw/agent/<agentId>/agent/auth-profiles.json
+```
+
+**重要**：主代理凭证不会自动共享。切勿跨代理重用 `agentDir`（这会导致身份验证/会话冲突）。如果要共享凭证，请将 `auth-profiles.json` 复制到其他代理的 `agentDir` 中。
+
+### 技能
+
+技能通过每个工作空间的 `skills/` 文件夹实现每代理，共享技能可从 `~/.openclaw/skills` 获取。
+
+## 路由机制
+
+### 默认路由行为
+
+默认情况下，OpenClaw 运行在**单代理模式**下。所有传入消息都路由到默认代理（通常名为 `main`）。
+
+### 启用多代理路由
+
+要启用多代理路由，需要在配置中定义多个代理和路由规则：
+
+```json
 {
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"alex"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-alex"
+  "代理": {
+    "bindings": [
+      {
+        "id": "main",
+        "label": "General Assistant",
+        "workspace": "~/.openclaw/workspace/main"
+      },
+      {
+        "id": "coding",
+        "label": "Coding Specialist",
+        "workspace": "~/.openclaw/workspace/coding"
+      },
+      {
+        "id": "research",
+        "label": "Research Assistant", 
+        "workspace": "~/.openclaw/workspace/research"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "match": {
+            "频道": "Telegram",
+            "text": "/code"
+          },
+          "target": "coding"
+        },
+        {
+          "match": {
+            "频道": "Discord",
+            "chatType": "group"
+          },
+          "target": "main"
+        }
+      ],
+      "default": "main"
+    }
+  }
 }
-,
+```
+
+### 路由规则类型
+
+#### 1. 基于频道的路由
+```json
 {
-id
-:
-"mia"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-mia"
+  "match": {
+    "频道": "WhatsApp"
+  },
+  "target": "personal"
 }
-,
-]
-,
+```
+
+#### 2. 基于内容的路由
+```json
+{
+  "match": {
+    "text": "/research"
+  },
+  "target": "research"
 }
-,
-bindings
-:
-[
+```
+
+#### 3. 基于发送者的路由
+```json
 {
-agentId
-:
-"alex"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-,
-peer
-:
-{
-kind
-:
-"direct"
-,
-id
-:
-"+15551230001"
-} }
-,
+  "match": {
+    "sender": "alice@company.com"
+  },
+  "target": "work"
 }
-,
+```
+
+#### 4. 组合条件路由
+```json
 {
-agentId
-:
-"mia"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-,
-peer
-:
-{
-kind
-:
-"direct"
-,
-id
-:
-"+15551230002"
-} }
-,
+  "match": {
+    "频道": "Telegram",
+    "chatType": "direct",
+    "text": "/code"
+  },
+  "target": "coding"
 }
-,
-]
-,
-频道
-:
+```
+
+## 配置示例
+
+### 示例 1：两个 WhatsApp 账户 → 两个代理
+
+```json
 {
-WhatsApp
-:
-{
-dmPolicy
-:
-"allowlist"
-,
-allowFrom
-:
-[
-"+15551230001"
-,
-"+15551230002"
-]
-,
+  "代理": {
+    "bindings": [
+      {
+        "id": "personal",
+        "label": "Personal Assistant",
+        "workspace": "~/.openclaw/workspace/personal"
+      },
+      {
+        "id": "work", 
+        "label": "Work Assistant",
+        "workspace": "~/.openclaw/workspace/work"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "match": {
+            "频道": "WhatsApp",
+            "account": "personal"
+          },
+          "target": "personal"
+        },
+        {
+          "match": {
+            "频道": "WhatsApp", 
+            "account": "work"
+          },
+          "target": "work"
+        }
+      ]
+    }
+  }
 }
-,
+```
+
+### 示例 2：WhatsApp 日常聊天 + Telegram 深度工作
+
+```json
+{
+  "代理": {
+    "bindings": [
+      {
+        "id": "casual",
+        "label": "Casual Chat",
+        "workspace": "~/.openclaw/workspace/casual"
+      },
+      {
+        "id": "deepwork",
+        "label": "Deep Work",
+        "workspace": "~/.openclaw/workspace/deepwork"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "match": {
+            "频道": "WhatsApp"
+          },
+          "target": "casual"
+        },
+        {
+          "match": {
+            "频道": "Telegram"
+          },
+          "target": "deepwork"
+        }
+      ]
+    }
+  }
 }
-,
+```
+
+### 示例 3：同一频道，不同发送者到不同代理
+
+```json
+{
+  "代理": {
+    "bindings": [
+      {
+        "id": "family",
+        "label": "Family Assistant",
+        "workspace": "~/.openclaw/workspace/family"
+      },
+      {
+        "id": "friends",
+        "label": "Friends Assistant",
+        "workspace": "~/.openclaw/workspace/friends"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "match": {
+            "频道": "WhatsApp",
+            "sender": "+1234567890"
+          },
+          "target": "family"
+        },
+        {
+          "match": {
+            "频道": "WhatsApp",
+            "sender": "+0987654321"
+          },
+          "target": "friends"
+        }
+      ],
+      "default": "family"
+    }
+  }
 }
-Notes:
-DM access 控制 is
-global per WhatsApp account
-(pairing/allowlist), not per 智能体.
-For shared groups, bind the group到one agent或use
-Broadcast groups
-.
-​
-Routing rules (how messages pick an 智能体)
-Bindings are
-deterministic
-and
-most-specific wins
-:
-peer
-match (exact DM/group/频道 id)
-parentPeer
-match (thread inheritance)
-guildId + roles
-(Discord role routing)
-guildId
-(Discord)
-teamId
-(Slack)
-accountId
-match为a 频道
-频道-level match (
-accountId: "*"
-)
-fallback到default 智能体 (
-智能体.list[].default
-, else first list entry, default:
-main
-)
-If a binding sets multiple match fields (for example
-peer
-+
-guildId
-), all specified fields are required (
-AND
-semantics).
-​
-Multiple accounts / phone numbers
-频道那support
-multiple accounts
-(e.g. WhatsApp) use
-accountId
-to identify
-each 登录. Each
-accountId
-can be routed到a different 智能体, so one server can host
-multiple phone numbers without mixing sessions.
-​
-概念
-agentId
-: one “brain” (工作空间, per-智能体 auth, per-智能体 会话 store).
-accountId
-: one 频道 account instance (e.g. WhatsApp account
-"personal"
-vs
-"biz"
-).
-binding
-: routes inbound messages到an
-agentId
-by
-(频道, accountId, peer)
-and optionally guild/team ids.
-Direct chats collapse to
-智能体:<agentId>:<mainKey>
-(per-智能体 “main”;
-会话.mainKey
-).
-​
-示例： two WhatsApps → two 智能体
-~/.OpenClaw/OpenClaw.JSON
-(JSON5):
-Copy
+```
+
+## 每代理沙箱和工具配置
+
+### 沙箱隔离
+
+每个代理在独立的沙箱环境中运行：
+
+```json
 {
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"home"
-,
-default
-:
-true
-,
-name
-:
-"Home"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-home"
-,
-agentDir
-:
-"~/.OpenClaw/智能体/home/智能体"
-,
+  "代理": {
+    "bindings": [
+      {
+        "id": "secure",
+        "label": "Secure 代理",
+        "workspace": "~/.openclaw/workspace/secure",
+        "sandbox": {
+          "enabled": true,
+          "resourceLimits": {
+            "cpu": "50%",
+            "记忆": "512MB",
+            "network": "restricted"
+          },
+          "toolPermissions": {
+            "执行": false,
+            "浏览器": false,
+            "write": "workspace-only"
+          }
+        }
+      }
+    ]
+  }
 }
-,
+```
+
+### 工具配置
+
+不同代理可以有不同的工具访问权限：
+
+```json
 {
-id
-:
-"work"
-,
-name
-:
-"Work"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-work"
-,
-agentDir
-:
-"~/.OpenClaw/智能体/work/智能体"
-,
+  "代理": {
+    "bindings": [
+      {
+        "id": "admin",
+        "label": "Admin 代理",
+        "workspace": "~/.openclaw/workspace/admin",
+        "tools": {
+          "profile": "full",
+          "allow": ["执行", "浏览器", "write", "read"]
+        }
+      },
+      {
+        "id": "restricted",
+        "label": "Restricted 代理",
+        "workspace": "~/.openclaw/workspace/restricted",
+        "tools": {
+          "profile": "messaging",
+          "allow": ["消息", "read"]
+        }
+      }
+    ]
+  }
 }
-,
-]
-,
+```
+
+## 多代理协作
+
+### 代理间通信
+
+代理可以通过消息传递进行协作：
+
+```json
+{
+  "代理": {
+    "bindings": [
+      {
+        "id": "coordinator",
+        "label": "Coordinator",
+        "workspace": "~/.openclaw/workspace/coordinator"
+      },
+      {
+        "id": "specialist1",
+        "label": "Specialist 1",
+        "workspace": "~/.openclaw/workspace/specialist1"
+      },
+      {
+        "id": "specialist2",
+        "label": "Specialist 2",
+        "workspace": "~/.openclaw/workspace/specialist2"
+      }
+    ],
+    "collaboration": {
+      "enabled": true,
+      "channels": {
+        "internal": "agent://collaboration"
+      }
+    }
+  }
 }
-,
-// Deterministic routing: first match wins (most-specific first).
-bindings
-:
-[
-{ agentId
-:
-"home"
-,
-match
-:
-{ 频道
-:
-"WhatsApp"
-,
-accountId
-:
-"personal"
-} }
-,
-{ agentId
-:
-"work"
-,
-match
-:
-{ 频道
-:
-"WhatsApp"
-,
-accountId
-:
-"biz"
-} }
-,
-// Optional per-peer override (example: send a specific group到work 智能体).
+```
+
+### 工作流示例
+
+1. **接收用户请求**：协调代理接收用户消息
+2. **任务分解**：分析请求并分解为子任务
+3. **代理分配**：将子任务分配给专业代理
+4. **结果收集**：收集各代理的结果
+5. **综合响应**：整合结果并返回给用户
+
+## 最佳实践
+
+### 代理设计原则
+
+1. **单一职责**：每个代理应专注于特定领域
+2. **明确边界**：明确定义代理的职责和能力边界
+3. **适度隔离**：在隔离和协作之间找到平衡
+4. **可扩展设计**：设计易于添加新代理的系统
+
+### 路由策略
+
+1. **渐进式路由**：从简单规则开始，逐步增加复杂性
+2. **回退机制**：始终配置默认路由目标
+3. **监控路由决策**：记录路由决策以便调试
+4. **定期评估**：定期审查路由规则的效果
+
+### 性能考虑
+
+1. **资源分配**：合理分配 CPU、内存和存储资源
+2. **冷启动优化**：考虑代理的启动时间
+3. **会话管理**：有效管理多个代理的会话状态
+4. **故障恢复**：设计代理故障时的恢复机制
+
+## 故障排除
+
+### 常见问题
+
+#### 1. 路由失败
+- **症状**：消息未路由到预期代理
+- **检查项**：
+  - 验证路由规则语法
+  - 检查代理绑定配置
+  - 查看网关日志中的路由决策
+
+#### 2. 代理启动失败
+- **症状**：代理无法启动或立即崩溃
+- **检查项**：
+  - 验证工作空间路径
+  - 检查权限设置
+  - 查看代理特定配置
+
+#### 3. 工具访问问题
+- **症状**：代理无法访问预期工具
+- **检查项**：
+  - 检查工具配置文件
+  - 验证沙箱权限
+  - 查看工具注册状态
+
+#### 4. 会话混乱
+- **症状**：不同代理的会话状态混淆
+- **检查项**：
+  - 验证 `agentDir` 隔离
+  - 检查会话存储路径
+  - 确保没有共享状态目录
+
+### 调试命令
+
+```bash
+# 查看所有代理状态
+openclaw 代理 list
+
+# 检查特定代理状态
+openclaw 代理 status <agentId>
+
+# 测试路由规则
+openclaw 代理 route-test --频道 WhatsApp --text "test 消息"
+
+# 查看路由日志
+openclaw logs --filter routing
+
+# 手动路由消息
+openclaw agent route --代理 <agentId> --消息 "manual routing test"
+```
+
+### 监控指标
+
+1. **路由成功率**：消息正确路由的比例
+2. **代理响应时间**：每个代理的平均响应时间
+3. **资源使用率**：CPU、内存和存储使用情况
+4. **错误率**：路由和代理执行错误率
+5. **会话统计**：活跃会话数和平均会话长度
+
+## 高级配置
+
+### 动态路由
+
+支持基于运行时条件的动态路由：
+
+```json
 {
-agentId
-:
-"work"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-,
-accountId
-:
-"personal"
-,
-peer
-:
-{ kind
-:
-"group"
-,
-id
-:
-"
-[email protected]
-"
+  "代理": {
+    "routing": {
+      "dynamic": {
+        "enabled": true,
+        "factors": [
+          {
+            "name": "workload",
+            "type": "代理-load",
+            "threshold": 0.8,
+            "action": "reroute"
+          },
+          {
+            "name": "time-of-day",
+            "type": "schedule",
+            "schedule": {
+              "work-hours": "09:00-17:00",
+              "target": "work",
+              "other": "personal"
+            }
+          }
+        ]
+      }
+    }
+  }
 }
-,
+```
+
+### 代理健康检查
+
+自动监控代理健康状况：
+
+```json
+{
+  "代理": {
+    "health": {
+      "enabled": true,
+      "checkInterval": "30s",
+      "timeout": "10s",
+      "failureThreshold": 3,
+      "successThreshold": 2,
+      "actions": {
+        "unhealthy": "reroute",
+        "recovered": "恢复"
+      }
+    }
+  }
 }
-,
-}
-,
-]
-,
-// Off通过default: 智能体-to-智能体 messaging must be explicitly enabled + allowlisted.
-工具
-:
-{
-agentToAgent
-:
-{
-enabled
-:
-false
-,
-allow
-:
-[
-"home"
-,
-"work"
-]
-,
-}
-,
-}
-,
-频道
-:
-{
-WhatsApp
-:
-{
-accounts
-:
-{
-personal
-:
-{
-// Optional override. Default: ~/.OpenClaw/credentials/WhatsApp/personal
-// authDir: "~/.OpenClaw/credentials/WhatsApp/personal",
-}
-,
-biz
-:
-{
-// Optional override. Default: ~/.OpenClaw/credentials/WhatsApp/biz
-// authDir: "~/.OpenClaw/credentials/WhatsApp/biz",
-}
-,
-}
-,
-}
-,
-}
-,
-}
-​
-示例： WhatsApp daily chat + Telegram deep work
-Split通过channel: route WhatsApp到a fast everyday agent与Telegram到an Opus 智能体.
-Copy
-{
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"chat"
-,
-name
-:
-"Everyday"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-chat"
-,
-模型
-:
-"anthropic/claude-sonnet-4-5"
-,
-}
-,
-{
-id
-:
-"opus"
-,
-name
-:
-"Deep Work"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-opus"
-,
-模型
-:
-"anthropic/claude-opus-4-6"
-,
-}
-,
-]
-,
-}
-,
-bindings
-:
-[
-{
-agentId
-:
-"chat"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-} }
-,
-{
-agentId
-:
-"opus"
-,
-match
-:
-{
-频道
-:
-"Telegram"
-} }
-,
-]
-,
-}
-Notes:
-If you have multiple accounts为a 频道, add
-accountId
-to the binding (for example
-{ 频道: "WhatsApp", accountId: "personal" }
-).
-To route a single DM/group到Opus while keeping the rest在chat, add a
-match.peer
-binding为that peer; peer matches always win over 频道-wide rules.
-​
-示例： same 频道, one peer到Opus
-Keep WhatsApp在the fast 智能体, but route one DM到Opus:
-Copy
-{
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"chat"
-,
-name
-:
-"Everyday"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-chat"
-,
-模型
-:
-"anthropic/claude-sonnet-4-5"
-,
-}
-,
-{
-id
-:
-"opus"
-,
-name
-:
-"Deep Work"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-opus"
-,
-模型
-:
-"anthropic/claude-opus-4-6"
-,
-}
-,
-]
-,
-}
-,
-bindings
-:
-[
-{
-agentId
-:
-"opus"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-,
-peer
-:
-{
-kind
-:
-"direct"
-,
-id
-:
-"+15551234567"
-} }
-,
-}
-,
-{
-agentId
-:
-"chat"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-} }
-,
-]
-,
-}
-Peer bindings always win, so keep them above the 频道-wide rule.
-​
-Family 智能体 bound到a WhatsApp group
-Bind a dedicated family agent到a single WhatsApp group,使用mention gating
-and a tighter 工具 policy:
-Copy
-{
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"family"
-,
-name
-:
-"Family"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-family"
-,
-identity
-:
-{
-name
-:
-"Family Bot"
-}
-,
-groupChat
-:
-{
-mentionPatterns
-:
-[
-"@family"
-,
-"@familybot"
-,
-"@Family Bot"
-]
-,
-}
-,
-sandbox
-:
-{
-mode
-:
-"all"
-,
-scope
-:
-"智能体"
-,
-}
-,
-工具
-:
-{
-allow
-:
-[
-"执行"
-,
-"read"
-,
-"sessions_list"
-,
-"sessions_history"
-,
-"sessions_send"
-,
-"sessions_spawn"
-,
-"session_status"
-,
-]
-,
-deny
-:
-[
-"write"
-,
-"edit"
-,
-"apply_patch"
-,
-"浏览器"
-,
-"画布"
-,
-"节点"
-,
-"cron"
-]
-,
-}
-,
-}
-,
-]
-,
-}
-,
-bindings
-:
-[
-{
-agentId
-:
-"family"
-,
-match
-:
-{
-频道
-:
-"WhatsApp"
-,
-peer
-:
-{
-kind
-:
-"group"
-,
-id
-:
-"
-[email protected]
-"
-}
-,
-}
-,
-}
-,
-]
-,
-}
-Notes:
-工具 allow/deny lists are
-工具
-, not 技能. If a skill needs到run a
-binary, ensure
-执行
-is allowed与the binary exists在the sandbox.
-For stricter gating, set
-智能体.list[].groupChat.mentionPatterns
-and keep
-group allowlists enabled为the 频道.
-​
-Per-智能体 Sandbox与Tool 配置
-Starting使用v2026.1.6, each 智能体 can have its own sandbox与tool restrictions:
-Copy
-{
-智能体
-:
-{
-list
-:
-[
-{
-id
-:
-"personal"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-personal"
-,
-sandbox
-:
-{
-mode
-:
-"off"
-,
-// No sandbox为personal 智能体
-}
-,
-// No 工具 restrictions - all 工具 available
-}
-,
-{
-id
-:
-"family"
-,
-工作空间
-:
-"~/.OpenClaw/工作空间-family"
-,
-sandbox
-:
-{
-mode
-:
-"all"
-,
-// Always sandboxed
-scope
-:
-"智能体"
-,
-// One container per 智能体
-docker
-:
-{
-// Optional one-time 设置 after container creation
-setupCommand
-:
-"apt-get update && apt-get 安装 -y git curl"
-,
-}
-,
-}
-,
-工具
-:
-{
-allow
-:
-[
-"read"
-]
-,
-// Only read 工具
-deny
-:
-[
-"执行"
-,
-"write"
-,
-"edit"
-,
-"apply_patch"
-]
-,
-// Deny others
-}
-,
-}
-,
-]
-,
-}
-,
-}
-Note:
-setupCommand
-lives under
-sandbox.docker
-and runs once在container creation.
-Per-智能体
-sandbox.docker.*
-overrides are ignored when the resolved scope is
-"shared"
-.
-Benefits:
-Security isolation
-: Restrict 工具为untrusted 智能体
-Resource 控制
-: Sandbox specific 智能体 while keeping others在host
-Flexible policies
-: Different permissions per 智能体
-Note:
-工具.elevated
-is
-global
-and sender-based; it is not configurable per 智能体.
-If you need per-智能体 boundaries, use
-智能体.list[].工具
-to deny
-执行
-.
-For group targeting, use
-智能体.list[].groupChat.mentionPatterns
-so @mentions map cleanly到the intended 智能体.
-See
-Multi-智能体 Sandbox & 工具
-for detailed examples.
-压缩
-在线状态
-I
-[查看英文原版](https://docs.OpenClaw.ai/concepts/multi-智能体)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
-*本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*
+```
+
+## 未来扩展
+
+OpenClaw 多代理系统正在积极开发中，未来计划的功能包括：
+
+1. **自动代理发现**：动态发现和注册新代理
+2. **负载均衡**：智能分配工作负载
+3. **故障转移**：自动切换到备用代理
+4. **版本管理**：代理版本控制和滚动更新
+5. **性能分析**：详细的代理性能分析工具
+
+---
+
+*本文档已根据 OpenClaw 技术术语表进行专业重译，确保术语一致性。有关最新信息，请参考[英文原版文档](https://docs.openclaw.ai/concepts/multi-agent)。*

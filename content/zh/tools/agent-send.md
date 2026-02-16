@@ -1,4 +1,4 @@
-# Agent Send - OpenClaw - 中文翻译
+# 代理 Send - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -92,10 +92,10 @@ or
 reuses an existing 会话通过id,
 or
 --智能体 <id>
-targets a configured 智能体 directly (uses那agent’s
+targets a configured 智能体 directly (uses那代理’s
 main
 会话 key)
-Runs the same embedded Agent运行时 as normal inbound replies.
+Runs the same embedded 代理运行时 as normal inbound replies.
 Thinking/verbose flags persist into the 会话 store.
 Output:
 default: prints reply text (plus

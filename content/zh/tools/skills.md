@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -69,21 +69,21 @@ Per-智能体 vs shared 技能
 Plugins + 技能
 ClawHub (安装 + sync)
 Security notes
-Format (Agent技能 + Pi-compatible)
+Format (代理技能 + Pi-compatible)
 Gating (load-time filters)
 Config overrides (~/.OpenClaw/OpenClaw.JSON)
 Environment injection (per 智能体 run)
-会话 snapshot (performance)
+会话 snapshot (性能)
 Remote macOS 节点 (Linux 网关)
 技能 watcher (auto-refresh)
-Token impact (技能 list)
+令牌 impact (技能 list)
 Managed 技能 lifecycle
 Config 参考
 Looking为more 技能?
 ​
 技能 (OpenClaw)
 OpenClaw uses
-Agent技能
+代理技能
 -compatible
 skill folders到teach the 智能体 how到use 工具. Each skill is a directory containing a
 SKILL.md
@@ -96,7 +96,7 @@ Locations与precedence
 three
 places:
 Bundled 技能
-: shipped使用the 安装 (npm package或OpenClaw.app)
+: shipped使用the 安装 (npm 包或OpenClaw.app)
 Managed/local 技能
 :
 ~/.OpenClaw/技能
@@ -121,7 +121,7 @@ setups, each 智能体 has its own 工作空间. That means:
 Per-智能体 技能
 live in
 <工作空间>/技能
-for那agent only.
+for那代理 only.
 Shared 技能
 live in
 ~/.OpenClaw/技能
@@ -191,12 +191,12 @@ and
 inject secrets into the
 host
 进程
-for那agent turn (not the sandbox). Keep secrets out的prompts与logs.
+for那代理 turn (not the sandbox). Keep secrets out的prompts与logs.
 For a broader threat model与checklists, see
 Security
 .
 ​
-Format (Agent技能 + Pi-compatible)
+Format (代理技能 + Pi-compatible)
 SKILL.md
 must include在least:
 Copy
@@ -349,14 +349,14 @@ is checked在the
 host
 at skill load time.
 If an 智能体 is sandboxed, the binary must also exist
-inside the container
+inside the 容器
 .
 安装 it via
-智能体.defaults.sandbox.docker.setupCommand
+智能体.defaults.sandbox.Docker.setupCommand
 (or a custom image).
 setupCommand
-runs once after the container is created.
-Package installs also require network egress, a writable root FS,与a root user在the sandbox.
+runs once after the 容器 is created.
+包 installs also require network egress, a writable root FS,与a root user在the sandbox.
 示例： the
 summarize
 skill (
@@ -364,7 +364,7 @@ skill (
 ) needs the
 summarize
 命令行界面
-in the sandbox container到run there.
+in the sandbox 容器到run there.
 安装er example:
 Copy
 name
@@ -428,21 +428,21 @@ metadata
 Notes:
 If multiple installers are listed, the 网关 picks a
 single
-preferred option (brew when available, otherwise node).
+preferred option (brew when available, otherwise 节点).
 If all installers are
 download
 , OpenClaw lists each entry so you can see the available artifacts.
 安装er specs can include
 os: ["darwin"|"linux"|"win32"]
 to filter options通过platform.
-Node installs honor
+节点 installs honor
 技能.安装.nodeManager
 in
 OpenClaw.JSON
 (default: npm; options: npm/pnpm/yarn/bun).
 This only affects
 skill installs
-; the 网关 运行时 should still be Node
+; the 网关 运行时 should still be 节点
 (Bun is not recommended为WhatsApp/Telegram).
 Go installs: if
 go
@@ -514,7 +514,7 @@ GEMINI_API_KEY
 config
 :
 {
-endpoint
+端点
 :
 "https://example.invalid"
 ,
@@ -592,31 +592,31 @@ Restores the original environment after the run ends.
 scoped到the 智能体 run
 , not a global shell environment.
 ​
-会话 snapshot (performance)
+会话 snapshot (性能)
 OpenClaw snapshots the eligible 技能
 when a 会话 starts
 and reuses那list为subsequent turns在the same 会话. Changes到技能或config take effect在the next new 会话.
-技能 can also refresh mid-会话 when the 技能 watcher is enabled或when a new eligible remote node appears (see below). Think的this as a
+技能 can also refresh mid-会话 when the 技能 watcher is enabled或when a new eligible remote 节点 appears (see below). Think的this as a
 hot reload
 : the refreshed list is picked up在the next 智能体 turn.
 ​
 Remote macOS 节点 (Linux 网关)
 If the 网关 is 运行在Linux but a
-macOS node
+macOS 节点
 is connected
 with
 system.run
 allowed
 (执行 approvals security not set to
 deny
-), OpenClaw can treat macOS-only 技能 as eligible when the required binaries are present在that node. The 智能体 should execute那些技能 via the
+), OpenClaw can treat macOS-only 技能 as eligible when the required binaries are present在that 节点. The 智能体 should execute那些技能 via the
 节点
 工具 (typically
 节点.run
 ).
-This relies在the node reporting its command support与on a bin probe via
+This relies在the 节点 reporting its command support与on a bin probe via
 system.run
-. If the macOS node goes offline later, the 技能 remain visible; invocations may fail until the node reconnects.
+. If the macOS 节点 goes offline later, the 技能 remain visible; invocations may fail until the 节点 reconnects.
 ​
 技能 watcher (auto-refresh)
 By default, OpenClaw watches skill folders与bumps the 技能 snapshot when
@@ -646,7 +646,7 @@ watchDebounceMs
 ,
 }
 ​
-Token impact (技能 list)
+令牌 impact (技能 list)
 When 技能 are eligible, OpenClaw injects a compact XML list的available 技能 into the system 提示词 (via
 format技能ForPrompt
 in
@@ -681,7 +681,7 @@ Managed 技能 lifecycle
 OpenClaw ships a baseline set的技能 as
 bundled 技能
 as part的the
-安装 (npm package或OpenClaw.app).
+安装 (npm 包或OpenClaw.app).
 ~/.OpenClaw/技能
 exists为local
 overrides (for example, pinning/patching a skill without changing the bundled

@@ -48,7 +48,7 @@ Pi
 智能体. Plugins add Mattermost. This guide is the “personal assistant” 设置: one dedicated WhatsApp number那behaves like your always-on 智能体.
 ​
 ⚠️ Safety first
-You’re putting an agent在a position to:
+You’re putting an 代理在a position to:
 run commands在your machine (depending在your Pi 工具 设置)
 read/write files在your 工作空间
 send messages back out via WhatsApp/Telegram/Discord/Mattermost (plugin)
@@ -81,7 +81,7 @@ Start the 网关 (leave it 运行):
 Copy
 OpenClaw
 网关
---port
+--端口
 18789
 Put a minimal config in
 ~/.OpenClaw/OpenClaw.JSON
@@ -102,10 +102,10 @@ allowFrom
 ,
 }
 Now 消息 the assistant number从your allowlisted phone.
-When 入门指南 finishes, we auto-open the dashboard与print a clean (non-tokenized) link. If it prompts为auth, paste the token from
-网关.auth.token
+When 入门指南 finishes, we auto-open the 仪表板与print a clean (non-tokenized) link. If it prompts为auth, paste the 令牌 from
+网关.auth.令牌
 into 控制 UI settings. To reopen later:
-OpenClaw dashboard
+OpenClaw 仪表板
 .
 ​
 Give the 智能体 a 工作空间 (智能体)
@@ -133,14 +133,14 @@ is optional (not auto-created); when present, it is loaded为normal sessions. Su
 and
 工具.md
 .
-提示： treat这folder like OpenClaw’s “记忆”与make it a git repo (ideally private) so your
+提示： treat这folder like OpenClaw’s “记忆”与make it a Git repo (ideally private) so your
 智能体.md
-+ 记忆 files are backed up. If git is installed, brand-new workspaces are auto-initialized.
++ 记忆 files are backed up. If Git is installed, brand-new workspaces are auto-initialized.
 Copy
 OpenClaw
 设置
 完整的工作空间布局 + 备份指南:
-Agent工作空间
+代理工作空间
 记忆 workflow:
 记忆
 Optional: choose a different 工作空间 with
@@ -183,7 +183,7 @@ heartbeats (once you trust it)
 示例：
 Copy
 {
-logging
+日志记录
 :
 {
 level
@@ -307,7 +307,7 @@ idleMinutes
 会话与记忆
 会话 files:
 ~/.OpenClaw/智能体/<agentId>/sessions/{{会话Id}}.jsonl
-会话 metadata (token usage, last route, etc):
+会话 metadata (令牌 usage, last route, etc):
 ~/.OpenClaw/智能体/<agentId>/sessions/sessions.JSON
 (legacy:
 ~/.OpenClaw/sessions/sessions.JSON
@@ -329,7 +329,7 @@ Set
 to disable.
 If
 HEARTBEAT.md
-exists but is effectively empty (only blank lines与markdown headers like
+exists but is effectively empty (only blank lines与Markdown headers like
 # Heading
 ), OpenClaw skips the heartbeat run到save API calls.
 If the file is missing, the heartbeat still runs与the 模型 decides what到do.
@@ -404,9 +404,9 @@ Cron + wakeups:
 Cron jobs
 macOS menu bar companion:
 OpenClaw macOS app
-iOS node app:
+iOS 节点 app:
 iOS app
-Android node app:
+Android 节点 app:
 Android app
 Windows status:
 Windows (WSL2)

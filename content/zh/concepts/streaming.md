@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -46,22 +46,22 @@ Block 流式传输 (频道 messages)
 分块 algorithm (low/high bounds)
 Coalescing (merge streamed blocks)
 Human-like pacing between blocks
-“Stream chunks或everything”
-Telegram draft 流式传输 (token-ish)
+“流 chunks或everything”
+Telegram draft 流式传输 (令牌-ish)
 ​
 流式传输 + 分块
 OpenClaw has two separate “流式传输” layers:
 Block 流式传输 (频道):
 emit completed
 blocks
-as the assistant writes. These are normal 频道 messages (not token deltas).
-Token-ish 流式传输 (Telegram only):
+as the assistant writes. These are normal 频道 messages (not 令牌 deltas).
+令牌-ish 流式传输 (Telegram only):
 update a
 draft bubble
 with partial text while generating; final 消息 is sent在the end.
 There is
-no real token 流式传输
-to external 频道 messages today. Telegram draft 流式传输 is the only partial-stream surface.
+no real 令牌 流式传输
+to external 频道 messages today. Telegram draft 流式传输 is the only partial-流 surface.
 ​
 Block 流式传输 (频道 messages)
 Block 流式传输 sends assistant output在coarse chunks as it becomes available.
@@ -69,13 +69,13 @@ Copy
 模型 output
 └─ text_delta/events
 ├─ (blockStreamingBreak=text_end)
-│    └─ chunker emits blocks as buffer grows
-└─ (blockStreamingBreak=message_end)
-└─ chunker flushes在message_end
+│    └─ chunker emits blocks as 缓冲区 grows
+└─ (blockStreamingBreak=消息_end)
+└─ chunker flushes在消息_end
 └─ 频道 send (block replies)
 Legend:
 text_delta/events
-: 模型 stream events (may be sparse为non-流式传输 模型).
+: 模型 流 events (may be sparse为non-流式传输 模型).
 chunker
 :
 EmbeddedBlockChunker
@@ -100,7 +100,7 @@ per 频道.
 :
 "text_end"
 or
-"message_end"
+"消息_end"
 .
 智能体.defaults.blockStreamingChunk
 :
@@ -127,12 +127,12 @@ Discord soft cap:
 (default 17) splits tall replies到avoid UI clipping.
 Boundary semantics:
 text_end
-: stream blocks as soon as chunker emits; flush在each
+: 流 blocks as soon as chunker emits; flush在each
 text_end
 .
-message_end
+消息_end
 : wait until assistant 消息 finishes, then flush buffered output.
-message_end
+消息_end
 still uses the chunker if the buffered text exceeds
 maxChars
 , so it can emit multiple chunks在the end.
@@ -142,7 +142,7 @@ Block 分块 is implemented by
 EmbeddedBlockChunker
 :
 Low bound:
-don’t emit until buffer >=
+don’t emit until 缓冲区 >=
 minChars
 (unless forced).
 High bound:
@@ -229,19 +229,19 @@ maxMs
 ).
 Applies only to
 block replies
-, not final replies或tool summaries.
+, not final replies或工具 summaries.
 ​
-“Stream chunks或everything”
+“流 chunks或everything”
 This maps to:
-Stream chunks:
+流 chunks:
 blockStreamingDefault: "on"
 +
 blockStreamingBreak: "text_end"
 (emit as you go). Non-Telegram 频道 also need
 *.blockStreaming: true
 .
-Stream everything在end:
-blockStreamingBreak: "message_end"
+流 everything在end:
+blockStreamingBreak: "消息_end"
 (flush once, possibly multiple chunks if very long).
 No block 流式传输:
 blockStreamingDefault: "off"
@@ -252,7 +252,7 @@ off unless
 *.blockStreaming
 is explicitly set to
 true
-. Telegram can stream drafts
+. Telegram can 流 drafts
 (
 频道.Telegram.streamMode
 ) without block replies.
@@ -262,8 +262,8 @@ defaults live under
 智能体.defaults
 , not the root config.
 ​
-Telegram draft 流式传输 (token-ish)
-Telegram is the only channel使用draft 流式传输:
+Telegram draft 流式传输 (令牌-ish)
+Telegram is the only 频道使用draft 流式传输:
 Uses Bot API
 sendMessageDraft
 in
@@ -272,7 +272,7 @@ private chats使用topics
 频道.Telegram.streamMode: "partial" | "block" | "off"
 .
 partial
-: draft updates使用the latest stream text.
+: draft updates使用the latest 流 text.
 block
 : draft updates在chunked blocks (same chunker rules).
 off

@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -77,7 +77,7 @@ Use a different 模型
 Security
 ​
 Webhooks
-网关 can expose a small HTTP webhook endpoint为external triggers.
+网关 can expose a small HTTP Webhook 端点为external triggers.
 ​
 Enable
 Copy
@@ -89,7 +89,7 @@ enabled
 :
 true
 ,
-token
+令牌
 :
 "shared-secret"
 ,
@@ -112,7 +112,7 @@ allowedAgentIds
 ,
 }
 Notes:
-hooks.token
+hooks.令牌
 is required when
 hooks.enabled=true
 .
@@ -122,12 +122,12 @@ defaults to
 .
 ​
 Auth
-Every request must include the hook token. Prefer headers:
-授权: Bearer <token>
+Every request must include the hook 令牌. Prefer headers:
+授权: Bearer <令牌>
 (recommended)
-x-OpenClaw-token: <token>
+x-OpenClaw-token: <令牌>
 Query-string tokens are rejected (
-?token=...
+?令牌=...
 returns
 400
 ).
@@ -215,7 +215,7 @@ true
 }
 消息
 required
-(string): The prompt或消息为the agent到进程.
+(string): The prompt或消息为the 代理到进程.
 name
 optional (string): Human-readable name为the hook (e.g., “GitHub”), used as a prefix在会话 summaries.
 agentId
@@ -239,7 +239,7 @@ true
 true
 . Responses那are only heartbeat acknowledgments are automatically skipped.
 频道
-optional (string): The messaging channel为delivery. One of:
+optional (string): The messaging 频道为delivery. One of:
 last
 ,
 WhatsApp
@@ -306,9 +306,9 @@ enabled
 :
 true
 ,
-token
+令牌
 :
-"${OPENCLAW_HOOKS_TOKEN}"
+"${OPENCLAW_HOOKS_令牌}"
 ,
 default会话Key
 :
@@ -337,9 +337,9 @@ enabled
 :
 true
 ,
-token
+令牌
 :
-"${OPENCLAW_HOOKS_TOKEN}"
+"${OPENCLAW_HOOKS_令牌}"
 ,
 allowRequest会话Key
 :
@@ -378,11 +378,11 @@ action
 ,与templates在config.
 hooks.transformsDir
 +
-transform.module
+transform.模块
 loads a JS/TS module为custom logic.
 Use
 match.source
-to keep a generic ingest endpoint (payload-driven routing).
+to keep a generic ingest 端点 (payload-driven routing).
 TS transforms require a TS loader (e.g.
 bun
 or
@@ -482,7 +482,7 @@ POST
 http://127.0.0.1:18789/hooks/智能体
 \
 -H
-'x-OpenClaw-token: SECRET'
+'x-OpenClaw-令牌: SECRET'
 \
 -H
 'Content-Type: 应用/JSON'
@@ -501,7 +501,7 @@ POST
 http://127.0.0.1:18789/hooks/智能体
 \
 -H
-'x-OpenClaw-token: SECRET'
+'x-OpenClaw-令牌: SECRET'
 \
 -H
 'Content-Type: 应用/JSON'
@@ -527,8 +527,8 @@ http://127.0.0.1:18789/hooks/gmail
 '{"source":"gmail","messages":[{"from":"Ada","subject":"Hello","snippet":"Hi"}]}'
 ​
 Security
-Keep hook endpoints behind loopback, tailnet,或trusted reverse proxy.
-Use a dedicated hook token; do not reuse 网关 auth tokens.
+Keep hook endpoints behind loopback, tailnet,或trusted reverse 代理服务器.
+Use a dedicated hook 令牌; do not reuse 网关 auth tokens.
 Repeated auth failures are rate-limited per client address到slow brute-force attempts.
 If you use multi-智能体 routing, set
 hooks.allowedAgentIds
@@ -545,7 +545,7 @@ hooks.allowed会话KeyPrefixes
 (for example,
 ["hook:"]
 ).
-Avoid including sensitive raw payloads在webhook logs.
+Avoid including sensitive raw payloads在Webhook logs.
 Hook payloads are treated as untrusted与wrapped使用safety boundaries通过default.
 If you must disable this为a specific hook, set
 allowUnsafeExternalContent: true

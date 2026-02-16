@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -70,8 +70,8 @@ Methods
 Events
 Client behavior
 macOS app
-iOS node
-Android node
+iOS 节点
+Android 节点
 ​
 Voice Wake (Global Wake Words)
 OpenClaw treats
@@ -80,7 +80,7 @@ owned通过the
 网关
 .
 There are
-no per-node custom wake words
+no per-节点 custom wake words
 .
 Any node/app UI may edit
 the list; changes are persisted通过the 网关与broadcast到everyone.
@@ -142,7 +142,7 @@ Editing “Trigger words”在Voice Wake settings calls
 voicewake.set
 and then relies在the broadcast到keep other clients在sync.
 ​
-iOS node
+iOS 节点
 Uses the global list for
 VoiceWakeManager
 trigger detection.
@@ -150,7 +150,7 @@ Editing Wake Words在Settings calls
 voicewake.set
 (over the 网关 WS)与also keeps local wake-word detection responsive.
 ​
-Android node
+Android 节点
 Exposes a Wake Words editor在Settings.
 Calls
 voicewake.set

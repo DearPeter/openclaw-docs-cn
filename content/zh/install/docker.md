@@ -25,7 +25,7 @@ Ansible
 Bun (Experimental)
 Maintenance
 Updating
-Migration Guide
+迁移 Guide
 Uninstall
 Hosting与deployment
 Fly.io
@@ -46,9 +46,9 @@ Containerized 网关 (Docker Compose)
 Quick start (recommended)
 Shell 帮助ers (optional)
 Manual flow (compose)
-控制 UI token + pairing (Docker)
+控制 UI 令牌 + pairing (Docker)
 Extra mounts (optional)
-Persist the entire container home (optional)
+Persist the entire 容器 home (optional)
 安装 extra apt packages (optional)
 Power-user / full-featured container (opt-in)
 Permissions + EACCES
@@ -110,10 +110,10 @@ builds the 网关 image
 runs the 入门指南 向导
 prints optional provider 设置 hints
 starts the 网关 via Docker Compose
-generates a 网关 token与writes it to
+generates a 网关 令牌与writes it to
 .env
 Optional env vars:
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 — 安装 extra apt packages during 构建
 OPENCLAW_EXTRA_MOUNTS
 — add extra host bind mounts
@@ -125,9 +125,9 @@ After it finishes:
 Open
 http://127.0.0.1:18789/
 in your 浏览器.
-Paste the token into the 控制 UI (Settings → token).
+Paste the 令牌 into the 控制 UI (Settings → 令牌).
 Need the URL again? Run
-docker compose run --rm OpenClaw-命令行界面 dashboard --no-open
+Docker compose run --rm OpenClaw-命令行界面 仪表板 --no-open
 .
 It writes config/工作空间在the host:
 ~/.OpenClaw/
@@ -164,7 +164,7 @@ clawdock-start
 ,
 clawdock-stop
 ,
-clawdock-dashboard
+clawdock-仪表板
 , etc. Run
 clawdock-帮助
 for all commands.
@@ -175,64 +175,64 @@ for details.
 ​
 Manual flow (compose)
 Copy
-docker
+Docker
 构建
 -t
 OpenClaw:local
 -f
 Dockerfile
 .
-docker
+Docker
 compose
 run
 --rm
 OpenClaw-命令行界面
 onboard
-docker
+Docker
 compose
 up
 -d
 OpenClaw-网关
 Note: run
-docker compose ...
+Docker compose ...
 from the repo root. If you enabled
 OPENCLAW_EXTRA_MOUNTS
 or
 OPENCLAW_HOME_VOLUME
 , the 设置 script writes
-docker-compose.extra.yml
+Docker-compose.extra.yml
 ; include it when 运行 Compose elsewhere:
 Copy
-docker
+Docker
 compose
 -f
-docker-compose.yml
+Docker-compose.yml
 -f
-docker-compose.extra.yml
+Docker-compose.extra.yml
 <
 comman
 d
 >
 ​
-控制 UI token + pairing (Docker)
+控制 UI 令牌 + pairing (Docker)
 If you see “unauthorized”或“disconnected (1008): pairing required”, 获取 a
-fresh dashboard link与approve the 浏览器 device:
+fresh 仪表板 link与approve the 浏览器 device:
 Copy
-docker
+Docker
 compose
 run
 --rm
 OpenClaw-命令行界面
-dashboard
+仪表板
 --no-open
-docker
+Docker
 compose
 run
 --rm
 OpenClaw-命令行界面
 devices
 list
-docker
+Docker
 compose
 run
 --rm
@@ -244,7 +244,7 @@ requestI
 d
 >
 More detail:
-Dashboard
+仪表板
 ,
 Devices
 .
@@ -253,14 +253,14 @@ Extra mounts (optional)
 If you want到mount additional host directories into the containers, set
 OPENCLAW_EXTRA_MOUNTS
 before 运行
-docker-设置.sh
+Docker-设置.sh
 . This accepts a
 comma-separated list的Docker bind mounts与applies them到both
 OpenClaw-网关
 and
 OpenClaw-命令行界面
 by generating
-docker-compose.extra.yml
+Docker-compose.extra.yml
 .
 示例：
 Copy
@@ -274,16 +274,16 @@ Paths must be shared使用Docker Desktop在macOS/Windows.
 If you edit
 OPENCLAW_EXTRA_MOUNTS
 , rerun
-docker-设置.sh
+Docker-设置.sh
 to regenerate the
 extra compose file.
-docker-compose.extra.yml
+Docker-compose.extra.yml
 is generated. Don’t hand-edit it.
 ​
-Persist the entire container home (optional)
+Persist the entire 容器 home (optional)
 If you want
 /home/node
-to persist across container recreation, set a named
+to persist across 容器 recreation, set a named
 volume via
 OPENCLAW_HOME_VOLUME
 . This creates a Docker volume与mounts it at
@@ -314,35 +314,35 @@ Notes:
 If you change
 OPENCLAW_HOME_VOLUME
 , rerun
-docker-设置.sh
+Docker-设置.sh
 to regenerate the
 extra compose file.
 The named volume persists until removed with
-docker volume rm <name>
+Docker volume rm <name>
 .
 ​
 安装 extra apt packages (optional)
 If you need system packages inside the image (for example, 构建 工具或media
 libraries), set
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 before 运行
-docker-设置.sh
+Docker-设置.sh
 .
 This installs the packages during the image 构建, so they persist even if the
-container is deleted.
+容器 is deleted.
 示例：
 Copy
 export
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 =
 "ffmpeg 构建-essential"
 ./docker-设置.sh
 Notes:
-This accepts a space-separated list的apt package names.
+This accepts a space-separated list的apt 包 names.
 If you change
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 , rerun
-docker-设置.sh
+Docker-设置.sh
 to rebuild
 the image.
 ​
@@ -350,15 +350,15 @@ Power-user / full-featured container (opt-in)
 The default Docker image is
 security-first
 and runs as the non-root
-node
+节点
 user. This keeps the attack surface small, but it means:
-no system package installs在runtime
+no system 包 installs在runtime
 no Homebrew通过default
 no bundled Chromium/Playwright browsers
-If you want a more full-featured container, use这些opt-in knobs:
+If you want a more full-featured 容器, use这些opt-in knobs:
 Persist
 /home/node
-so 浏览器 downloads与tool caches survive:
+so 浏览器 downloads与工具 caches survive:
 Copy
 export
 OPENCLAW_HOME_VOLUME
@@ -369,26 +369,26 @@ Bake system deps into the image
 (repeatable + persistent):
 Copy
 export
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 =
-"git curl jq"
+"Git curl jq"
 ./docker-设置.sh
 安装 Playwright browsers without
 npx
 (avoids npm override conflicts):
 Copy
-docker
+Docker
 compose
 run
 --rm
 OpenClaw-命令行界面
 \
-node
+节点
 /app/node_modules/playwright-core/命令行界面.js
 安装
 chromium
 If you need Playwright到安装 system deps, rebuild the image with
-OPENCLAW_DOCKER_APT_PACKAGES
+OPENCLAW_Docker_APT_PACKAGES
 instead的using
 --with-deps
 at 运行时.
@@ -397,7 +397,7 @@ Persist Playwright 浏览器 downloads
 Set
 PLAYWRIGHT_BROWSERS_PATH=/home/node/.cache/ms-playwright
 in
-docker-compose.yml
+Docker-compose.yml
 .
 Ensure
 /home/node
@@ -411,7 +411,7 @@ OPENCLAW_EXTRA_MOUNTS
 ​
 Permissions + EACCES
 The image runs as
-node
+节点
 (uid 1000). If you see permission errors on
 /home/node/.OpenClaw
 , make sure your host bind mounts are owned通过uid 1000.
@@ -426,13 +426,13 @@ chown
 If you choose到run as root为convenience, you accept the security tradeoff.
 ​
 Faster rebuilds (recommended)
-To speed up rebuilds, order your Dockerfile so dependency layers are cached.
+To speed up rebuilds, order your Dockerfile so 依赖 layers are cached.
 This avoids re-运行
 pnpm 安装
 unless lockfiles change:
 Copy
 FROM
-node:22-bookworm
+节点:22-bookworm
 # 安装 Bun (required为build scripts)
 RUN
 curl -fsSL https://bun.sh/安装 | bash
@@ -443,7 +443,7 @@ RUN
 corepack enable
 WORKDIR
 /app
-# Cache dependencies unless package metadata changes
+# 缓存 dependencies unless 包 metadata changes
 COPY
 package.JSON pnpm-lock.YAML pnpm-工作空间.YAML .npmrc ./
 COPY
@@ -461,28 +461,28 @@ pnpm ui:安装
 RUN
 pnpm ui:构建
 ENV
-NODE_ENV=production
+节点_ENV=production
 CMD
 [
-"node"
+"节点"
 ,
 "dist/index.js"
 ]
 ​
 频道 设置 (optional)
-Use the 命令行界面 container到configure 频道, then restart the 网关 if needed.
+Use the 命令行界面 容器到configure 频道, then restart the 网关 if needed.
 WhatsApp (QR):
 Copy
-docker
+Docker
 compose
 run
 --rm
 OpenClaw-命令行界面
 频道
 登录
-Telegram (bot token):
+Telegram (bot 令牌):
 Copy
-docker
+Docker
 compose
 run
 --rm
@@ -491,11 +491,11 @@ OpenClaw-命令行界面
 add
 --频道
 Telegram
---token
-"<token>"
-Discord (bot token):
+--令牌
+"<令牌>"
+Discord (bot 令牌):
 Copy
-docker
+Docker
 compose
 run
 --rm
@@ -504,8 +504,8 @@ OpenClaw-命令行界面
 add
 --频道
 Discord
---token
-"<token>"
+--令牌
+"<令牌>"
 Docs:
 WhatsApp
 ,
@@ -515,23 +515,23 @@ Discord
 ​
 OpenAI Codex OAuth (headless Docker)
 If you pick OpenAI Codex OAuth在the 向导, it opens a 浏览器 URL与tries
-to capture a callback on
+to capture a 回调函数 on
 http://127.0.0.1:1455/auth/callback
 . In Docker or
-headless setups那callback can show a 浏览器 error. Copy the full redirect
+headless setups那回调函数 can show a 浏览器 error. Copy the full redirect
 URL you land on与paste it back into the 向导到finish auth.
 ​
 Health check
 Copy
-docker
+Docker
 compose
 执行
 OpenClaw-网关
-node
+节点
 dist/index.js
 health
---token
-"$OPENCLAW_GATEWAY_TOKEN"
+--令牌
+"$OPENCLAW_网关_令牌"
 ​
 E2E smoke 测试 (Docker)
 Copy
@@ -540,12 +540,12 @@ scripts/e2e/onboard-docker.sh
 QR import smoke 测试 (Docker)
 Copy
 pnpm
-测试:docker:qr
+测试:Docker:qr
 ​
 Notes
 网关 bind defaults to
 lan
-for container use.
+for 容器 use.
 Dockerfile CMD uses
 --allow-unconfigured
 ; mounted config with
@@ -553,7 +553,7 @@ Dockerfile CMD uses
 not
 local
 will still start. Override CMD到enforce the guard.
-The 网关 container is the source的truth为sessions (
+The 网关 容器 is the source的truth为sessions (
 ~/.OpenClaw/智能体/<agentId>/sessions/
 ).
 ​
@@ -567,10 +567,10 @@ When
 is enabled,
 non-main sessions
 run 工具 inside a Docker
-container. The 网关 stays在your host, but the 工具 execution is isolated:
+容器. The 网关 stays在your host, but the 工具 execution is isolated:
 scope:
 "智能体"
-by default (one container + 工作空间 per 智能体)
+by default (one 容器 + 工作空间 per 智能体)
 scope:
 "会话"
 for per-会话 isolation
@@ -588,7 +588,7 @@ workspaceAccess: "rw"
 警告：
 scope: "shared"
 disables cross-会话 isolation. All sessions share
-one container与one 工作空间.
+one 容器与one 工作空间.
 ​
 Per-智能体 sandbox profiles (multi-智能体)
 If you use multi-智能体 routing, each 智能体 can override sandbox + 工具 settings:
@@ -610,8 +610,8 @@ precedence,与troubleshooting.
 Default behavior
 Image:
 OpenClaw-sandbox:bookworm-slim
-One container per 智能体
-Agent工作空间 access:
+One 容器 per 智能体
+代理工作空间 access:
 workspaceAccess: "none"
 (default) uses
 ~/.OpenClaw/sandboxes
@@ -653,7 +653,7 @@ sessions_send
 ,
 sessions_spawn
 ,
-session_status
+会话_status
 Default deny:
 浏览器
 ,
@@ -672,12 +672,12 @@ If you plan到安装 packages in
 setupCommand
 , note:
 Default
-docker.network
+Docker.network
 is
 "none"
 (no egress).
 readOnlyRoot: true
-blocks package installs.
+blocks 包 installs.
 user
 must be root for
 apt-get
@@ -688,8 +688,8 @@ user: "0:0"
 ).
 OpenClaw auto-recreates containers when
 setupCommand
-(or docker config) changes
-unless the container was
+(or Docker config) changes
+unless the 容器 was
 recently used
 (within ~5 minutes). Hot containers
 log a warning使用the exact
@@ -725,7 +725,7 @@ workspaceRoot
 :
 "~/.OpenClaw/sandboxes"
 ,
-docker
+Docker
 :
 {
 image
@@ -774,7 +774,7 @@ LANG
 ,
 setupCommand
 :
-"apt-get update && apt-get 安装 -y git curl jq"
+"apt-get update && apt-get 安装 -y Git curl jq"
 ,
 pidsLimit
 :
@@ -820,7 +820,7 @@ apparmorProfile
 :
 "OpenClaw-sandbox"
 ,
-dns
+DNS
 :
 [
 "1.1.1.1"
@@ -887,7 +887,7 @@ allow
 ,
 "sessions_spawn"
 ,
-"session_status"
+"会话_status"
 ,
 ]
 ,
@@ -915,7 +915,7 @@ deny
 ,
 }
 Hardening knobs live under
-智能体.defaults.sandbox.docker
+智能体.defaults.sandbox.Docker
 :
 network
 ,
@@ -935,14 +935,14 @@ seccompProfile
 ,
 apparmorProfile
 ,
-dns
+DNS
 ,
 extraHosts
 .
-多Agent: override
-智能体.defaults.sandbox.{docker,浏览器,prune}.*
+多代理: override
+智能体.defaults.sandbox.{Docker,浏览器,prune}.*
 per 智能体 via
-智能体.list[].sandbox.{docker,浏览器,prune}.*
+智能体.list[].sandbox.{Docker,浏览器,prune}.*
 (ignored when
 智能体.defaults.sandbox.scope
 /
@@ -961,7 +961,7 @@ Dockerfile.sandbox
 .
 ​
 Sandbox common image (optional)
-If you want a sandbox image使用common 构建 tooling (Node, Go, Rust, etc.), 构建 the common image:
+If you want a sandbox image使用common 构建 tooling (节点, Go, Rust, etc.), 构建 the common image:
 Copy
 scripts/sandbox-common-设置.sh
 This builds
@@ -978,7 +978,7 @@ defaults
 sandbox
 :
 {
-docker
+Docker
 :
 {
 image
@@ -1000,7 +1000,7 @@ This builds
 OpenClaw-sandbox-浏览器:bookworm-slim
 using
 Dockerfile.sandbox-浏览器
-. The container runs Chromium使用CDP enabled and
+. The 容器 runs Chromium使用CDP enabled and
 an optional noVNC observer (headful via Xvfb).
 Notes:
 Headful (Xvfb) reduces bot blocking vs headless.
@@ -1076,7 +1076,7 @@ Prune rules (
 Custom sandbox image
 构建 your own image与point config到it:
 Copy
-docker
+Docker
 构建
 -t
 my-OpenClaw-sbx
@@ -1094,7 +1094,7 @@ defaults
 sandbox
 :
 {
-docker
+Docker
 :
 {
 image
@@ -1153,11 +1153,11 @@ Troubleshooting
 Image missing: 构建 with
 scripts/sandbox-设置.sh
 or set
-智能体.defaults.sandbox.docker.image
+智能体.defaults.sandbox.Docker.image
 .
-Container not 运行: it will auto-create per 会话在demand.
+容器 not 运行: it will auto-create per 会话在demand.
 Permission errors在sandbox: set
-docker.user
+Docker.user
 to a UID:GID那matches your
 mounted 工作空间 ownership (or chown the 工作空间 folder).
 Custom 工具 not found: OpenClaw runs commands with
@@ -1166,7 +1166,7 @@ sh -lc
 sources
 /etc/profile
 and may reset PATH. Set
-docker.env.PATH
+Docker.env.PATH
 to prepend your
 custom 工具 paths (e.g.,
 /custom/bin:/usr/local/share/npm-global/bin

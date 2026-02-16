@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -67,7 +67,7 @@ Location command (节点)
 TL;DR
 Why a selector (not just a switch)
 Settings 模型
-Permissions mapping (node.permissions)
+Permissions mapping (节点.permissions)
 Command: location.get
 Background behavior (future)
 模型/tooling 集成
@@ -77,8 +77,8 @@ Location command (节点)
 ​
 TL;DR
 location.get
-is a node command (via
-node.invoke
+is a 节点 command (via
+节点.invoke
 ).
 Off通过default.
 Settings use a selector: Off / While Using / Always.
@@ -96,7 +96,7 @@ Precise location is a separate grant (iOS 14+ “Precise”, Android “fine” 
 Selector在UI drives our requested mode; actual grant lives在OS settings.
 ​
 Settings 模型
-Per node device:
+Per 节点 device:
 location.enabledMode
 :
 off | whileUsing | always
@@ -113,15 +113,15 @@ whileUsing
 , then requests background (or sends user到Settings if required).
 If OS denies requested level, revert到the highest granted level与show status.
 ​
-Permissions mapping (node.permissions)
-Optional. macOS node reports
+Permissions mapping (节点.permissions)
+Optional. macOS 节点 reports
 location
 via the permissions map; iOS/Android may omit it.
 ​
 Command:
 location.get
 Called via
-node.invoke
+节点.invoke
 .
 Params (suggested):
 Copy
@@ -190,16 +190,16 @@ LOCATION_UNAVAILABLE
 : system failure / no 提供者.
 ​
 Background behavior (future)
-Goal: 模型 can request location even when node is backgrounded, but only when:
+Goal: 模型 can request location even when 节点 is backgrounded, but only when:
 User selected
 Always
 .
 OS grants background location.
 App is allowed到run在background为location (iOS background mode / Android foreground service或special allowance).
 Push-triggered flow (future):
-网关 sends a push到the node (silent push或FCM data).
-Node wakes briefly与requests location从the device.
-Node forwards payload到网关.
+网关 sends a push到the 节点 (silent push或FCM data).
+节点 wakes briefly与requests location从the device.
+节点 forwards payload到网关.
 Notes:
 iOS: Always permission + background location mode required. Silent push may be throttled; expect intermittent failures.
 Android: background location may require a foreground service; otherwise, expect denial.
@@ -209,7 +209,7 @@ Android: background location may require a foreground service; otherwise, expect
 节点
 工具 adds
 location_get
-action (node required).
+action (节点 required).
 命令行界面:
 OpenClaw 节点 location get --node <id>
 .

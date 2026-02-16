@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -99,14 +99,14 @@ One call instead的many
 Approvals built in
 : Side effects (send email, post comment) halt the workflow until explicitly approved.
 Resumable
-: Halted workflows return a token; approve与resume without re-运行 everything.
+: Halted workflows return a 令牌; approve与resume without re-运行 everything.
 ​
 Why a DSL instead的plain programs?
 Lobster is intentionally small. The goal is not “a new language,” it’s a predictable, AI-friendly pipeline spec使用first-class approvals与resume tokens.
 Approve/resume is built in
 : A normal program can 提示词 a human, but it can’t
 pause与resume
-with a durable token without you inventing那runtime yourself.
+with a durable 令牌 without you inventing那runtime yourself.
 Determinism + auditability
 : Pipelines are data, so they’re easy到log, diff, replay,与review.
 Constrained surface为AI
@@ -154,14 +154,14 @@ Copy
 :
 30000
 }
-If the pipeline requests approval, resume使用the token:
+If the pipeline requests approval, resume使用the 令牌:
 Copy
 {
 "action"
 :
 "resume"
 ,
-"token"
+"令牌"
 :
 "<resumeToken>"
 ,
@@ -193,7 +193,7 @@ For workflows那need a
 structured LLM step
 , enable the optional
 llm-task
-plugin tool与call it从Lobster. This keeps the workflow
+plugin 工具与call it从Lobster. This keeps the workflow
 deterministic while still letting you classify/summarize/draft使用a 模型.
 Enable the 工具:
 Copy
@@ -480,7 +480,7 @@ Copy
 :
 "resume"
 ,
-"token"
+"令牌"
 :
 "<resumeToken>"
 ,
@@ -493,7 +493,7 @@ One workflow. Deterministic. Safe.
 工具 parameters
 ​
 run
-Run a pipeline在tool mode.
+Run a pipeline在工具 mode.
 Copy
 {
 "action"
@@ -540,7 +540,7 @@ Copy
 :
 "resume"
 ,
-"token"
+"令牌"
 :
 "<resumeToken>"
 ,
@@ -598,7 +598,7 @@ OpenProse pairs well使用Lobster: use
 /prose
 to orchestrate multi-智能体 prep, then run a Lobster pipeline为deterministic approvals. If a Prose program needs Lobster, allow the
 lobster
-tool为sub-智能体 via
+工具为sub-智能体 via
 工具.subagents.工具
 . See
 OpenProse
@@ -626,7 +626,7 @@ lobster output exceeded maxStdoutBytes
 maxStdoutBytes
 or reduce output size.
 lobster returned invalid JSON
-→ ensure the pipeline runs在tool mode与prints only JSON.
+→ ensure the pipeline runs在工具 mode与prints only JSON.
 lobster failed (code …)
 → run the same pipeline在a terminal到inspect stderr.
 ​
@@ -644,7 +644,7 @@ inbox-triage
 , and
 shared-task-sync
 , each使用approval gates. AI handles judgment (categorization) when available与falls back到deterministic rules when not.
-Thread:
+线程:
 https://x.com/plattenschieber/status/2014508656335770033
 Repo:
 https://GitHub.com/bloomedai/brain-命令行界面

@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -66,7 +66,7 @@ Location Command
 Polls
 Supported 频道
 命令行界面
-网关 RPC
+网关 远程过程调用
 频道 differences
 智能体 工具 (消息)
 ​
@@ -169,7 +169,7 @@ msteams
 --poll-duration-hours
 : Discord-only (defaults到24 when omitted)
 ​
-网关 RPC
+网关 远程过程调用
 Method:
 poll
 Params:
@@ -231,7 +231,7 @@ to record votes in
 ~/.OpenClaw/msteams-polls.JSON
 .
 Gmail PubSub
-Auth Monitoring
+Auth 监控
 I
 [查看英文原版](https://docs.OpenClaw.ai/automation/poll)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

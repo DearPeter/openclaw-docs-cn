@@ -30,14 +30,14 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
 网关 runbook
 5-minute local startup
 运行时 模型
-Port与bind precedence
+端口与bind precedence
 Hot reload modes
 Operator command set
 Remote access
@@ -65,15 +65,15 @@ Start the 网关
 Copy
 OpenClaw
 网关
---port
+--端口
 18789
 # 调试/trace mirrored到stdio
 OpenClaw
 网关
---port
+--端口
 18789
 --verbose
-# force-kill listener在selected port, then start
+# force-kill listener在selected 端口, then start
 OpenClaw
 网关
 --force
@@ -91,7 +91,7 @@ logs
 Healthy baseline:
 运行时: 运行
 and
-RPC probe: ok
+远程过程调用 probe: ok
 .
 3
 Validate 频道 readiness
@@ -108,8 +108,8 @@ Default mode is
 .
 ​
 运行时 模型
-One always-on 进程为routing, 控制 plane,与channel connections.
-Single multiplexed port for:
+One always-on 进程为routing, 控制 plane,与频道 connections.
+Single multiplexed 端口 for:
 WebSocket 控制/RPC
 HTTP APIs (OpenAI-compatible, Responses, 工具 invoke)
 控制 UI与hooks
@@ -117,24 +117,24 @@ Default bind mode:
 loopback
 .
 Auth is required通过default (
-网关.auth.token
+网关.auth.令牌
 /
 网关.auth.password
 , or
-OPENCLAW_GATEWAY_TOKEN
+OPENCLAW_网关_令牌
 /
-OPENCLAW_GATEWAY_PASSWORD
+OPENCLAW_网关_PASSWORD
 ).
 ​
-Port与bind precedence
+端口与bind precedence
 Setting
 Resolution order
-网关 port
---port
+网关 端口
+--端口
 →
-OPENCLAW_GATEWAY_PORT
+OPENCLAW_网关_端口
 →
-网关.port
+网关.端口
 →
 18789
 Bind mode
@@ -197,7 +197,7 @@ Then connect clients to
 ws://127.0.0.1:18789
 locally.
 If 网关 auth is configured, clients still must send auth (
-token
+令牌
 /
 password
 ) even over SSH tunnels.
@@ -210,7 +210,7 @@ Tailscale
 .
 ​
 Supervision与service lifecycle
-Use supervised runs为production-like reliability.
+Use supervised runs为production-like 可靠性.
 macOS (launchd)
 Linux (systemd user)
 Linux (system service)
@@ -283,7 +283,7 @@ one
 Use multiple only为strict isolation/redundancy (for example a rescue profile).
 Checklist per instance:
 Unique
-网关.port
+网关.端口
 Unique
 OPENCLAW_CONFIG_PATH
 Unique
@@ -300,7 +300,7 @@ OPENCLAW_STATE_DIR
 ~/.OpenClaw-a
 OpenClaw
 网关
---port
+--端口
 19001
 OPENCLAW_CONFIG_PATH
 =
@@ -310,7 +310,7 @@ OPENCLAW_STATE_DIR
 ~/.OpenClaw-b
 OpenClaw
 网关
---port
+--端口
 19002
 See:
 Multiple gateways
@@ -419,7 +419,7 @@ Non-loopback bind without token/password
 another 网关 instance is already listening
 /
 EADDRINUSE
-Port conflict
+端口 conflict
 网关 start blocked: set 网关.mode=local
 Config set到remote mode
 unauthorized
@@ -434,7 +434,7 @@ Safety guarantees
 Invalid/non-connect first frames are rejected与closed.
 Graceful shutdown emits
 shutdown
-event before socket close.
+event before 套接字 close.
 Related:
 Troubleshooting
 Background 进程

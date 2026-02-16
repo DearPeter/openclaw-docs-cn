@@ -41,22 +41,22 @@ Next steps
 Getting Started
 Goal: go从zero到a first working chat使用minimal 设置.
 Fastest chat: open the 控制 UI (no 频道 设置 needed). Run
-OpenClaw dashboard
+OpenClaw 仪表板
 and chat在the 浏览器,或open
 http://127.0.0.1:18789/
 on the
 网关 host
 .
 Docs:
-Dashboard
+仪表板
 and
 控制 UI
 .
 ​
 Prereqs
-Node 22或newer
-Check your Node version with
-node --version
+节点 22或newer
+Check your 节点 version with
+节点 --version
 if you are unsure.
 ​
 Quick 设置 (命令行界面)
@@ -73,7 +73,7 @@ bash
 Copy
 iwr
 -
-useb https:
+useb HTTPS:
 //
 OpenClaw.ai
 /
@@ -104,7 +104,7 @@ status
 Open the 控制 UI
 Copy
 OpenClaw
-dashboard
+仪表板
 If the 控制 UI loads, your 网关 is ready为use.
 ​
 Optional checks与extras
@@ -113,7 +113,7 @@ Useful为quick tests或troubleshooting.
 Copy
 OpenClaw
 网关
---port
+--端口
 18789
 Send a 测试 消息
 Requires a configured 频道.

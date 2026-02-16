@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -75,7 +75,7 @@ Skill system 概述
 What the service provides (features)
 Security与moderation
 命令行界面 commands与parameters
-Common workflows为Agent
+Common workflows为代理
 Download new 技能
 Update installed 技能
 Back up your 技能 (publish或sync)
@@ -227,19 +227,19 @@ Global options (apply到all commands):
 Auth:
 clawhub 登录
 (浏览器 flow) or
-clawhub 登录 --token <token>
+clawhub 登录 --token <令牌>
 clawhub logout
 clawhub whoami
 Options:
---token <token>
-: Paste an API token.
+--token <令牌>
+: Paste an API 令牌.
 --label <label>
 : Label stored为浏览器 登录 tokens (default:
-命令行界面 token
+命令行界面 令牌
 ).
 --no-浏览器
 : Do not open a 浏览器 (requires
---token
+--令牌
 ).
 搜索:
 clawhub 搜索 "query"
@@ -300,10 +300,10 @@ patch
 : Comma-separated tags (default:
 latest
 ).
---concurrency <n>
+--并发 <n>
 : Registry checks (default: 4).
 ​
-Common workflows为Agent
+Common workflows为代理
 ​
 Copy
 clawhub

@@ -1,10 +1,11 @@
-baseURL = 'https://dearpeter.github.io/openclaw-docs-cn/'
+baseURL = '/'
 title = 'OpenClaw 中文文档'
 theme = 'book'
 copyright = '© 2026 OpenClaw Community. Licensed under MIT.'
 
 disablePathToLower = true
-enableGitInfo = true
+enableGitInfo = false
+relativeURLs = true
 
 # Multi-lingual mode config
 [languages]
@@ -12,11 +13,15 @@ enableGitInfo = true
   languageName = '中文'
   contentDir = 'content/zh'
   weight = 1
+  [languages.zh.params]
+    BookSearch = true
 
 [languages.en]
   languageName = 'English'
   contentDir = 'content/en'
   weight = 2
+  [languages.en.params]
+    BookSearch = true
 
 # Menu configuration (to be refined)
 [menu]
@@ -29,6 +34,7 @@ enableGitInfo = true
 [params]
   BookTheme = 'auto'
   BookSearch = true
+  BookLanguages = true
   BookToC = true
   BookSection = 'docs'
   BookRepo = 'https://github.com/DearPeter/openclaw-docs-cn'
@@ -51,3 +57,74 @@ enableGitInfo = true
 
 [markup.highlight]
   style = 'github'
+
+# 资源优化配置
+[imaging]
+  quality = 85
+  resampleFilter = "lanczos"
+  anchor = "smart"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+
+# 压缩和缓存配置
+[minify]
+  minifyOutput = true
+  disableCSS = false
+  disableJS = false
+  disableHTML = false
+  disableSVG = false
+  disableXML = false
+  
+[minify.tdewolff]
+  [minify.tdewolff.css]
+    keepCSS2 = true
+    precision = 0
+  [minify.tdewolff.html]
+    keepComments = false
+    keepConditionalComments = false
+    keepDefaultAttrVals = true
+    keepDocumentTags = true
+    keepEndTags = true
+    keepQuotes = false
+    keepWhitespace = false
+  [minify.tdewolff.js]
+    keepVarNames = false
+    noArrowOperatorOptimization = false
+    noBools = false
+    noCoalesce = false
+    noComparison = false
+    noConditional = false
+    noExpr = false
+    noFuncs = false
+    noInObj = false
+    noNegation = false
+    noNew = false
+    noUndef = false
+    noVarEq = false
+    precision = 0
+  [minify.tdewolff.json]
+    precision = 0
+  [minify.tdewolff.svg]
+    precision = 0
+  [minify.tdewolff.xml]
+    keepWhitespace = false
+
+# 缓存配置
+[caches]
+  [caches.getjson]
+    dir = ":cacheDir/:project"
+    maxAge = -1
+  [caches.getcsv]
+    dir = ":cacheDir/:project"
+    maxAge = -1
+  [caches.images]
+    dir = ":resourceDir/_gen"
+    maxAge = -1
+  [caches.assets]
+    dir = ":resourceDir/_gen"
+    maxAge = -1
+  [caches.modules]
+    dir = ":cacheDir/modules"
+    maxAge = -1

@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -76,8 +76,8 @@ cron:<job.id>
 Hooks use
 hook:<uuid>
 unless explicitly set.
-Node sessions use
-node-<nodeId>
+节点 sessions use
+节点-<nodeId>
 unless explicitly set.
 global
 and
@@ -95,7 +95,7 @@ List sessions as an array的rows.
 参数：
 kinds?: string[]
 filter: any of
-"main" | "group" | "cron" | "hook" | "node" | "other"
+"main" | "group" | "cron" | "hook" | "节点" | "other"
 limit?: number
 max rows (default: server default, clamp e.g. 200)
 activeMinutes?: number
@@ -120,7 +120,7 @@ key
 : 会话 key (string)
 kind
 :
-main | group | cron | hook | node | other
+main | group | cron | hook | 节点 | other
 频道
 :
 WhatsApp | Telegram | Discord | signal | imessage | webchat | internal | unknown
@@ -218,7 +218,7 @@ Waits via 网关
 (server-side) so reconnects don’t drop the wait.
 智能体-to-智能体 消息 上下文 is injected为the primary run.
 Inter-会话 messages are persisted with
-消息.provenance.kind = "inter_session"
+消息.provenance.kind = "inter_会话"
 so transcript readers can distinguish routed 智能体 instructions从external user input.
 After the primary run completes, OpenClaw runs a
 reply-back loop
@@ -333,7 +333,7 @@ keep
 )
 Allowlist:
 智能体.list[].subagents.allowAgent
-: list的agent ids allowed via
+: list的代理 ids allowed via
 agentId
 (
 ["*"]
@@ -398,7 +398,7 @@ sandbox
 :
 {
 // default: "spawned"
-session工具Visibility
+会话工具Visibility
 :
 "spawned"
 ,

@@ -24,9 +24,9 @@ approvals
 频道
 配置
 cron
-dashboard
+仪表板
 directory
-dns
+DNS
 docs
 doctor
 网关
@@ -52,9 +52,9 @@ tui
 uninstall
 update
 voicecall
-RPC与API
-RPC Adapters
-Device 模型 Database
+远程过程调用与API
+远程过程调用 Adapters
+Device 模型 数据库
 Templates
 Default 智能体.md
 智能体.md Template
@@ -67,7 +67,7 @@ SOUL.md Template
 USER
 Technical 参考
 向导 参考
-Token Use与Costs
+令牌 Use与Costs
 grammY
 Concept internals
 TypeBox

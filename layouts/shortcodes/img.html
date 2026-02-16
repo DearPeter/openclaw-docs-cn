@@ -1,0 +1,48 @@
+{{/* 图片优化 shortcode */}}
+{{/* 用法: {{< img src="image.jpg" alt="描述" width="800" height="600" class="my-class" >}} */}}
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" | default "" }}
+{{ $width := .Get "width" | default "800" }}
+{{ $height := .Get "height" | default "600" }}
+{{ $class := .Get "class" | default "" }}
+{{ $loading := .Get "loading" | default "lazy" }}
+{{ $caption := .Get "caption" | default "" }}
+
+{{/* 获取资源 */}}
+{{ $image := resources.Get $src }}
+{{ if not $image }}
+  {{/* 如果资源不存在，使用原路径 */}}
+  <figure class="image-container {{ $class }}">
+    <img 
+      src="{{ $src }}" 
+      alt="{{ $alt }}" 
+      width="{{ $width }}" 
+      height="{{ $height }}"
+      loading="{{ $loading }}"
+      decoding="async"
+      {{ with $class }}class="{{ . }}"{{ end }}
+    >
+    {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ else }}
+  {{/* 处理图片：调整大小并转换为WebP */}}
+  {{ $resized := $image.Resize (printf "%sx%s Lanczos" $width $height) }}
+  {{ $webp := $image.Resize (printf "%sx%s webp Lanczos" $width $height) }}
+  
+  <figure class="image-container {{ $class }}">
+    <picture>
+      <source srcset="{{ $webp.RelPermalink }}" type="image/webp">
+      <img 
+        src="{{ $resized.RelPermalink }}" 
+        alt="{{ $alt }}" 
+        width="{{ $width }}" 
+        height="{{ $height }}"
+        loading="{{ $loading }}"
+        decoding="async"
+        {{ with $class }}class="{{ . }}"{{ end }}
+      >
+    </picture>
+    {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+  </figure>
+{{ end }}

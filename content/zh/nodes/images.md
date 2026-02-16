@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -75,7 +75,7 @@ Notes为Tests
 Image & Media Support — 2025-12-05
 The WhatsApp 频道 runs via
 Baileys 网页
-. This document captures the current media handling rules为send, 网关,与agent replies.
+. This document captures the current media handling rules为send, 网关,与代理 replies.
 ​
 Goals
 Send media使用optional captions via
@@ -99,7 +99,7 @@ WhatsApp 网页 频道 behavior
 Input: local file path
 or
 HTTP(S) URL.
-Flow: load into a Buffer, detect media kind,与build the correct payload:
+Flow: load into a 缓冲区, detect media kind,与build the correct payload:
 Images:
 resize & recompress到JPEG (max side 2048px) targeting
 智能体.defaults.mediaMaxMb
@@ -121,7 +121,7 @@ Caption comes from
 or
 reply.text
 ; empty caption is allowed.
-Logging: non-verbose shows
+日志记录: non-verbose shows
 ↩️
 /
 ✅
@@ -192,7 +192,7 @@ Notes为Tests
 Cover send + reply flows为image/audio/document cases.
 Validate recompression为images (size bound)与voice-note flag为audio.
 Ensure multi-media replies fan out as sequential sends.
-Node Troubleshooting
+节点 Troubleshooting
 Audio与Voice Notes
 I
 [查看英文原版](https://docs.OpenClaw.ai/节点/images)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*

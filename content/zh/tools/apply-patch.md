@@ -1,4 +1,4 @@
-# apply_patch Tool - OpenClaw - 中文翻译
+# apply_patch 工具 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture

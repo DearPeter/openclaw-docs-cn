@@ -51,7 +51,7 @@ Testing / verification
 Known considerations
 ​
 Group messages (WhatsApp 网页 频道)
-Goal: let Clawd sit在WhatsApp groups, wake up only when pinged,与keep那thread separate从the personal DM 会话.
+Goal: let Clawd sit在WhatsApp groups, wake up only when pinged,与keep那线程 separate从the personal DM 会话.
 Note:
 智能体.list[].groupChat.mentionPatterns
 is now used通过Telegram/Discord/Slack/iMessage as well;这doc focuses在WhatsApp-specific behavior. For multi-智能体 setups, set
@@ -71,7 +71,7 @@ requires a ping (real WhatsApp @-mentions via
 mentionedJids
 , regex patterns,或the bot’s E.164 anywhere在the text).
 always
-wakes the agent在every 消息 but it should reply only when it can add meaningful value; otherwise it returns the silent token
+wakes the 代理在every 消息 but it should reply only when it can add meaningful value; otherwise it returns the silent 令牌
 NO_REPLY
 . Defaults can be set在config (
 频道.WhatsApp.groups

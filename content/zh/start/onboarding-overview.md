@@ -61,7 +61,7 @@ Use the OpenClaw app when you want a fully guided 设置在macOS. Docs:
 入门指南 (macOS App)
 ​
 Custom Provider
-If you need an endpoint那is not listed, including hosted 提供者 that
+If you need an 端点那is not listed, including hosted 提供者 that
 expose standard OpenAI或Anthropic APIs, choose
 Custom Provider
 in the
@@ -69,9 +69,9 @@ in the
 Pick OpenAI-compatible, Anthropic-compatible, or
 Unknown
 (auto-detect).
-Enter a base URL与API key (if required通过the provider).
+Enter a base URL与API密钥 (if required通过the provider).
 Provide a 模型 ID与optional alias.
-Choose an Endpoint ID so multiple custom endpoints can coexist.
+Choose an 端点 ID so multiple custom endpoints can coexist.
 For detailed steps, follow the 命令行界面 入门指南 docs above.
 Getting Started
 入门指南: 命令行界面

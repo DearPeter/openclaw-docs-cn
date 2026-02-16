@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -68,7 +68,7 @@ Quick start (new到plugins?)
 Available plugins (official)
 运行时 helpers
 Discovery & precedence
-Package packs
+包 packs
 频道 catalog metadata
 Plugin IDs
 Config
@@ -82,7 +82,7 @@ Provider plugins (模型 auth)
 Register a messaging 频道
 Write a new messaging 频道 (step‑by‑step)
 智能体 工具
-Register a 网关 RPC method
+Register a 网关 远程过程调用 method
 Register 命令行界面 commands
 Register auto-reply commands
 Register background services
@@ -97,9 +97,9 @@ Plugins (Extensions)
 ​
 Quick start (new到plugins?)
 A plugin is just a
-small code module
+small code 模块
 that extends OpenClaw使用extra
-features (commands, 工具,与网关 RPC).
+features (commands, 工具,与网关 远程过程调用).
 Most的the time, you’ll use plugins when you want a feature that’s not built
 into core OpenClaw yet (or you want到keep optional features out的your main
 安装).
@@ -159,7 +159,7 @@ google-gemini-命令行界面-auth
 Qwen OAuth (provider auth) — bundled as
 qwen-portal-auth
 (disabled通过default)
-Copilot Proxy (provider auth) — local VS Code Copilot Proxy bridge; distinct从built-in
+Copilot 代理服务器 (provider auth) — local VS Code Copilot 代理服务器 bridge; distinct从built-in
 GitHub-copilot
 device 登录 (bundled, disabled通过default)
 OpenClaw plugins are
@@ -172,7 +172,7 @@ Schema instead. See
 Plugin manifest
 .
 Plugins can register:
-网关 RPC methods
+网关 远程过程调用 methods
 网关 HTTP handlers
 智能体 工具
 命令行界面 commands
@@ -193,14 +193,14 @@ Plugin 智能体 工具
 ​
 运行时 helpers
 Plugins can access selected core helpers via
-api.运行时
+API.运行时
 . For telephony 文本转语音:
 Copy
 const
 result
 =
 await
-api
+API
 .
 运行时
 .
@@ -213,7 +213,7 @@ text
 ,
 cfg
 :
-api
+API
 .config
 ,
 });
@@ -253,9 +253,9 @@ manifest.
 If multiple plugins resolve到the same id, the first match在the order above
 wins与lower-precedence copies are ignored.
 ​
-Package packs
+包 packs
 A plugin directory may include a
-package.JSON
+包.JSON
 with
 OpenClaw.extensions
 :
@@ -282,7 +282,7 @@ becomes
 name/<fileBase>
 .
 If your plugin imports npm deps, 安装 them在that directory so
-node_modules
+节点_modules
 is available (
 npm 安装
 /
@@ -337,7 +337,7 @@ Copy
 ,
 "blurb"
 :
-"Self-hosted chat via Nextcloud Talk webhook bots."
+"Self-hosted chat via Nextcloud Talk Webhook bots."
 ,
 "order"
 :
@@ -390,8 +390,8 @@ contain
 ​
 Plugin IDs
 Default plugin ids:
-Package packs:
-package.JSON
+包 packs:
+包.JSON
 name
 Standalone file: file base name (
 ~/.../voice-call.ts
@@ -595,7 +595,7 @@ false
 {
 "label"
 :
-"API Key"
+"API密钥"
 ,
 "sensitive"
 :
@@ -701,9 +701,9 @@ OpenClaw voicecall
 Plugin API (概述)
 Plugins export either:
 A function:
-(api) => { ... }
+(API) => { ... }
 An object:
-{ id, name, configSchema, register(api) { ... } }
+{ id, name, configSchema, register(API) { ... } }
 ​
 Plugin hooks
 Plugins can ship hooks与register them在runtime. This lets a plugin bundle
@@ -712,7 +712,7 @@ event-driven automation without a separate hook pack 安装.
 Example
 Copy
 import { registerPluginHooksFromDir }从"OpenClaw/plugin-sdk";
-export default function register(api) {
+export default function register(API) {
 registerPluginHooksFromDir(api, "./hooks");
 }
 Notes:
@@ -737,13 +737,13 @@ Plugins can register
 flows so users can run OAuth or
 API-key 设置 inside OpenClaw (no external scripts needed).
 Register a provider via
-api.registerProvider(...)
+API.registerProvider(...)
 . Each provider exposes one
-or more auth methods (OAuth, API key, device code, etc.). These methods power:
+or more auth methods (OAuth, API密钥, device code, etc.). These methods power:
 OpenClaw 模型 auth 登录 --provider <id> [--method <id>]
 示例：
 Copy
-api
+API
 .registerProvider
 ({
 id
@@ -977,8 +977,8 @@ true
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .registerChannel
 ({ plugin
 :
@@ -1062,8 +1062,8 @@ actions
 (消息 actions),
 commands
 (native command behavior)
-Register the channel在your plugin
-api.registerChannel({ plugin })
+Register the 频道在your plugin
+API.registerChannel({ plugin })
 Minimal config example:
 Copy
 {
@@ -1079,9 +1079,9 @@ accounts
 default
 :
 {
-token
+令牌
 :
-"ACME_TOKEN"
+"ACME_令牌"
 ,
 enabled
 :
@@ -1213,8 +1213,8 @@ true
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .registerChannel
 ({ plugin });
 }
@@ -1230,13 +1230,13 @@ See the dedicated guide:
 Plugin 智能体 工具
 .
 ​
-Register a 网关 RPC method
+Register a 网关 远程过程调用 method
 Copy
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .register网关Method
 (
 "myplugin.status"
@@ -1260,8 +1260,8 @@ Copy
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .registerCli
 (
 ({ program })
@@ -1303,8 +1303,8 @@ Copy
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .registerCommand
 ({
 name
@@ -1363,9 +1363,9 @@ handler
 : Function那returns
 { text: string }
 (can be async)
-Example使用authorization与arguments:
+Example使用授权与arguments:
 Copy
-api
+API
 .registerCommand
 ({
 name
@@ -1441,8 +1441,8 @@ Copy
 export
 default
 function
-(api) {
-api
+(API) {
+API
 .registerService
 ({
 id
@@ -1453,7 +1453,7 @@ start
 :
 ()
 =>
-api
+API
 .
 logger
 .info
@@ -1465,7 +1465,7 @@ stop
 :
 ()
 =>
-api
+API
 .
 logger
 .info
@@ -1500,7 +1500,7 @@ it’s present在your 工作空间/managed 技能 locations.
 ​
 Distribution (npm)
 Recommended packaging:
-Main package:
+Main 包:
 OpenClaw
 (this repo)
 Plugins: separate npm packages under
@@ -1510,7 +1510,7 @@ Plugins: separate npm packages under
 )
 Publishing contract:
 Plugin
-package.JSON
+包.JSON
 must include
 OpenClaw.extensions
 with one或more entry files.
@@ -1541,7 +1541,7 @@ Skill:
 OpenClaw voicecall start|status
 工具:
 voice_call
-RPC:
+远程过程调用:
 voicecall.start
 ,
 voicecall.status

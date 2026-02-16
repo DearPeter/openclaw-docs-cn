@@ -48,7 +48,7 @@ Notes
 ​
 Chat 频道
 OpenClaw can talk到you在any chat app you already use. Each 频道 connects via the 网关.
-Text is supported everywhere; media与reactions vary通过channel.
+Text is supported everywhere; media与reactions vary通过频道.
 ​
 Supported 频道
 WhatsApp
@@ -60,11 +60,11 @@ Discord
 IRC
 — Classic IRC servers; 频道 + DMs使用pairing/allowlist controls.
 Slack
-— Bolt SDK; 工作空间 apps.
+— Bolt 软件开发工具包; 工作空间 apps.
 Feishu
 — Feishu/Lark bot via WebSocket (plugin, installed separately).
 Google Chat
-— Google Chat API app via HTTP webhook.
+— Google Chat API app via HTTP Webhook.
 Mattermost
 — Bot API + WebSocket; 频道, groups, DMs (plugin, installed separately).
 Signal
@@ -76,7 +76,7 @@ Recommended为iMessage
 iMessage (legacy)
 — Legacy macOS 集成 via imsg 命令行界面 (deprecated, use BlueBubbles为new setups).
 Microsoft Teams
-— Bot Framework; enterprise support (plugin, installed separately).
+— Bot 框架; enterprise support (plugin, installed separately).
 LINE
 — LINE Messaging API bot (plugin, installed separately).
 Nextcloud Talk
@@ -100,9 +100,9 @@ Notes
 频道 can run simultaneously; 配置 multiple与OpenClaw will route per chat.
 Fastest 设置 is usually
 Telegram
-(simple bot token). WhatsApp requires QR pairing and
+(simple bot 令牌). WhatsApp requires QR pairing and
 stores more state在disk.
-Group behavior varies通过channel; see
+Group behavior varies通过频道; see
 Groups
 .
 DM pairing与allowlists are enforced为safety; see

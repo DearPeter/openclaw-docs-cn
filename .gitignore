@@ -52,3 +52,6 @@ PROJECT_COMPLETION_REPORT.md
 public/
 bin/
 backup-old-build/
+
+# Archive folder
+Archive/

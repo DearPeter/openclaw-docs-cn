@@ -1,4 +1,4 @@
-# Multi-Agent Sandbox & 工具 - OpenClaw - 中文翻译
+# 多代理 Sandbox & 工具 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -67,7 +67,7 @@ Multi-智能体 Sandbox & 工具 配置
 概述
 配置 Examples
 Example 1: Personal + Restricted Family 智能体
-Example 2: Work Agent使用Shared Sandbox
+Example 2: Work 代理使用Shared Sandbox
 Example 2b: Global coding profile + messaging-only 智能体
 Example 3: Different Sandbox Modes per 智能体
 配置 Precedence
@@ -75,7 +75,7 @@ Sandbox Config
 工具 Restrictions
 工具 groups (shorthands)
 Elevated Mode
-Migration从Single 智能体
+迁移从Single 智能体
 工具 Restriction Examples
 Read-only 智能体
 Safe Execution 智能体 (no file modifications)
@@ -85,13 +85,13 @@ Testing
 Troubleshooting
 智能体 not sandboxed despite mode: "all"
 工具 still available despite deny list
-Container not isolated per 智能体
+容器 not isolated per 智能体
 See Also
 ​
 Multi-智能体 Sandbox & 工具 配置
 ​
 概述
-Each agent在a multi-智能体 设置 can now have its own:
+Each 代理在a multi-智能体 设置 can now have its own:
 Sandbox 配置
 (
 智能体.list[].sandbox
@@ -106,15 +106,15 @@ overrides
 , plus
 智能体.list[].工具
 )
-This allows you到run multiple Agent使用different security profiles:
+This allows you到run multiple 代理使用different security profiles:
 Personal assistant使用full access
 Family/work Agent使用restricted 工具
-Public-facing Agent在sandboxes
+Public-facing 代理在sandboxes
 setupCommand
 belongs under
-sandbox.docker
+sandbox.Docker
 (global或per-智能体)与runs once
-when the container is created.
+when the 容器 is created.
 Auth is per-智能体: each 智能体 reads从its own
 agentDir
 auth store at:
@@ -133,7 +133,7 @@ agentDir
 For how sandboxing behaves在runtime, see
 Sandboxing
 .
-For debugging “why is这blocked?”, see
+For 调试 “why is这blocked?”, see
 Sandbox vs 工具 Policy vs Elevated
 and
 OpenClaw sandbox explain
@@ -270,11 +270,11 @@ Result:
 main
 智能体: Runs在host, full 工具 access
 family
-智能体: Runs在Docker (one container per 智能体), only
+智能体: Runs在Docker (one 容器 per 智能体), only
 read
 工具
 ​
-Example 2: Work Agent使用Shared Sandbox
+Example 2: Work 代理使用Shared Sandbox
 Copy
 {
 "智能体"
@@ -495,7 +495,7 @@ Copy
 配置 Precedence
 When both global (
 智能体.defaults.*
-)与agent-specific (
+)与代理-specific (
 智能体.list[].*
 ) configs exist:
 ​
@@ -506,14 +506,14 @@ Copy
 智能体.list[].sandbox.scope > 智能体.defaults.sandbox.scope
 智能体.list[].sandbox.workspaceRoot > 智能体.defaults.sandbox.workspaceRoot
 智能体.list[].sandbox.workspaceAccess > 智能体.defaults.sandbox.workspaceAccess
-智能体.list[].sandbox.docker.* > 智能体.defaults.sandbox.docker.*
+智能体.list[].sandbox.Docker.* > 智能体.defaults.sandbox.Docker.*
 智能体.list[].sandbox.浏览器.* > 智能体.defaults.sandbox.浏览器.*
 智能体.list[].sandbox.prune.* > 智能体.defaults.sandbox.prune.*
 Notes:
-智能体.list[].sandbox.{docker,浏览器,prune}.*
+智能体.list[].sandbox.{Docker,浏览器,prune}.*
 overrides
-智能体.defaults.sandbox.{docker,浏览器,prune}.*
-for那agent (ignored when sandbox scope resolves to
+智能体.defaults.sandbox.{Docker,浏览器,prune}.*
+for那代理 (ignored when sandbox scope resolves to
 "shared"
 ).
 ​
@@ -564,12 +564,12 @@ If
 智能体.list[].工具.sandbox.工具
 is set, it replaces
 工具.sandbox.工具
-for那agent.
+for那代理.
 If
 智能体.list[].工具.profile
 is set, it overrides
 工具.profile
-for那agent.
+for那代理.
 Provider 工具 keys accept either
 provider
 (e.g.
@@ -610,12 +610,12 @@ sessions_send
 ,
 sessions_spawn
 ,
-session_status
+会话_status
 group:记忆
 :
-memory_search
+记忆_search
 ,
-memory_get
+记忆_get
 group:ui
 :
 浏览器
@@ -654,7 +654,7 @@ Disable elevated per 智能体 (
 智能体.list[].工具.elevated.enabled: false
 )为sensitive profiles
 ​
-Migration从Single 智能体
+迁移从Single 智能体
 Before (single 智能体):
 Copy
 {
@@ -706,7 +706,7 @@ Copy
 }
 }
 }
-After (multi-agent使用different profiles):
+After (多代理使用different profiles):
 Copy
 {
 "智能体"
@@ -826,7 +826,7 @@ Copy
 ,
 "sessions_history"
 ,
-"session_status"
+"会话_status"
 ]
 ,
 "deny"
@@ -855,7 +855,7 @@ is based on
 "main"
 ),
 not the 智能体 id. Group/频道 sessions always get their own keys, so they
-are treated as non-main与will be sandboxed. If you want an agent到never
+are treated as non-main与will be sandboxed. If you want an 代理到never
 sandbox, set
 智能体.list[].sandbox.mode: "off"
 .
@@ -867,7 +867,7 @@ Copy
 OpenClaw 智能体 list --bindings
 Verify sandbox containers:
 Copy
-docker ps --filter "name=OpenClaw-sbx-"
+Docker ps --filter "name=OpenClaw-sbx-"
 测试 工具 restrictions:
 Send a 消息 requiring restricted 工具
 Verify the 智能体 cannot use denied 工具
@@ -889,18 +889,18 @@ that overrides it
 Check 工具 filtering order: global → 智能体 → sandbox → subagent
 Each level can only further restrict, not grant back
 Verify使用logs:
-[工具] filtering 工具为agent:${agentId}
+[工具] filtering 工具为代理:${agentId}
 ​
-Container not isolated per 智能体
+容器 not isolated per 智能体
 Set
 scope: "智能体"
 in 智能体-specific sandbox config
 Default is
 "会话"
-which creates one container per 会话
+which creates one 容器 per 会话
 ​
 See Also
-多Agent路由
+多代理路由
 Sandbox 配置
 会话管理
 Sub-智能体

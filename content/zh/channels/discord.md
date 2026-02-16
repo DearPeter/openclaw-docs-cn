@@ -74,7 +74,7 @@ Create an 应用在the Discord Developer Portal, add a bot, then enable:
 Server Members Intent
 (required为role allowlists与role-based routing; recommended为name-to-ID allowlist matching)
 2
-配置 token
+配置 令牌
 Copy
 {
 频道
@@ -87,9 +87,9 @@ enabled
 :
 true
 ,
-token
+令牌
 :
-"YOUR_BOT_TOKEN"
+"YOUR_BOT_令牌"
 ,
 }
 ,
@@ -98,7 +98,7 @@ token
 }
 Env fallback为the default account:
 Copy
-DISCORD_BOT_TOKEN
+DISCORD_BOT_令牌
 =
 ...
 3
@@ -123,8 +123,8 @@ COD
 E
 >
 Pairing codes expire after 1 hour.
-Token resolution is account-aware. Config token values win over env fallback.
-DISCORD_BOT_TOKEN
+令牌 resolution is account-aware. Config 令牌 values win over env fallback.
+DISCORD_BOT_令牌
 is only used为the default account.
 ​
 运行时 模型
@@ -273,7 +273,7 @@ true
 ,
 }
 If you only set
-DISCORD_BOT_TOKEN
+DISCORD_BOT_令牌
 and do not create a
 频道.Discord
 block, 运行时 fallback is
@@ -303,7 +303,7 @@ dm.group频道
 Role-based 智能体 routing
 Use
 bindings[].match.roles
-to route Discord guild members到different Agent通过role ID. Role-based bindings accept role IDs only与are evaluated after peer或parent-peer bindings与before guild-only bindings. If a binding also sets other match fields (for example
+to route Discord guild members到different 代理通过role ID. Role-based bindings accept role IDs only与are evaluated after peer或parent-peer bindings与before guild-only bindings. If a binding also sets other match fields (for example
 peer
 +
 guildId
@@ -374,7 +374,7 @@ New 应用
 Bot
 ->
 Add Bot
-Copy bot token
+Copy bot 令牌
 Privileged intents
 In
 Bot -> Privileged 网关 Intents
@@ -425,7 +425,7 @@ for command catalog与behavior.
 ​
 Feature details
 Reply tags与native replies
-Discord supports reply tags在agent output:
+Discord supports reply tags在代理 output:
 [[reply_to_current]]
 [[reply_to:<id>]]
 Controlled by
@@ -436,7 +436,7 @@ off
 first
 all
 消息 IDs are surfaced在上下文/history so 智能体 can target specific messages.
-History, 上下文,与thread behavior
+History, 上下文,与线程 behavior
 Guild history 上下文:
 频道.Discord.historyLimit
 default
@@ -448,10 +448,10 @@ disables
 DM history controls:
 频道.Discord.dmHistoryLimit
 频道.Discord.dms["<user_id>"].historyLimit
-Thread behavior:
+线程 behavior:
 Discord threads are routed as 频道 sessions
-parent thread metadata can be used为parent-会话 linkage
-thread config inherits parent 频道 config unless a thread-specific entry exists
+parent 线程 metadata can be used为parent-会话 linkage
+线程 config inherits parent 频道 config unless a 线程-specific entry exists
 频道 topics are injected as
 untrusted
 上下文 (not as system 提示词).
@@ -489,9 +489,9 @@ false
 }
 ,
 }
-网关 proxy
-Route Discord 网关 WebSocket traffic through an HTTP(S) proxy with
-频道.Discord.proxy
+网关 代理服务器
+Route Discord 网关 WebSocket traffic through an HTTP(S) 代理服务器 with
+频道.Discord.代理服务器
 .
 Copy
 {
@@ -501,7 +501,7 @@ Copy
 Discord
 :
 {
-proxy
+代理服务器
 :
 "http://proxy.example:8080"
 ,
@@ -525,7 +525,7 @@ accounts
 primary
 :
 {
-proxy
+代理服务器
 :
 "http://proxy.example:8080"
 ,
@@ -555,7 +555,7 @@ enabled
 :
 true
 ,
-token
+令牌
 :
 "pk_live_..."
 ,
@@ -801,7 +801,7 @@ High-signal Discord fields:
 startup/auth:
 enabled
 ,
-token
+令牌
 ,
 accounts.*
 ,
@@ -863,7 +863,7 @@ responsePrefix
 ​
 Safety与operations
 Treat bot tokens as secrets (
-DISCORD_BOT_TOKEN
+DISCORD_BOT_令牌
 preferred在supervised environments).
 Grant least-privilege Discord permissions.
 If command 部署/state is stale, restart 网关与re-check with

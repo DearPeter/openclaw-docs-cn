@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -67,7 +67,7 @@ Thinking Levels (/think directives)
 What it does
 Resolution order
 Setting a 会话 default
-应用通过agent
+应用通过代理
 Verbose directives (/verbose或/v)
 Reasoning visibility (/reasoning)
 Related
@@ -157,9 +157,9 @@ Send
 /think:
 )使用no argument到see the current thinking level.
 ​
-应用通过agent
+应用通过代理
 Embedded Pi
-: the resolved level is passed到the in-进程 Pi Agent运行时.
+: the resolved level is passed到the in-进程 Pi 代理运行时.
 ​
 Verbose directives (/verbose或/v)
 Levels:
@@ -170,9 +170,9 @@ full
 off
 (default).
 Directive-only 消息 toggles 会话 verbose与replies
-Verbose logging enabled.
+Verbose 日志记录 enabled.
 /
-Verbose logging disabled.
+Verbose 日志记录 disabled.
 ; invalid levels return a hint without changing state.
 /verbose off
 stores an explicit 会话 override; clear it via the 会话 UI通过choosing
@@ -184,7 +184,7 @@ Send
 (or
 /verbose:
 )使用no argument到see the current verbose level.
-When verbose is on, Agent那emit structured 工具 results (Pi, other JSON 智能体) send each 工具 call back as its own metadata-only 消息, prefixed with
+When verbose is on, 代理那emit structured 工具 results (Pi, other JSON 智能体) send each 工具 call back as its own metadata-only 消息, prefixed with
 <emoji> <工具-name>: <arg>
 when available (path/command). These 工具 summaries are sent as soon as each 工具 starts (separate bubbles), not as 流式传输 deltas.
 When verbose is
@@ -195,7 +195,7 @@ while a run is in-flight, subsequent 工具 bubbles honor the new setting.
 ​
 Reasoning visibility (/reasoning)
 Levels:
-on|off|stream
+on|off|流
 .
 Directive-only 消息 toggles whether thinking blocks are shown在replies.
 When enabled, reasoning is sent as a
@@ -203,7 +203,7 @@ separate 消息
 prefixed with
 Reasoning:
 .
-stream
+流
 (Telegram only): streams reasoning into the Telegram draft bubble while the reply is generating, then sends the final answer without reasoning.
 Alias:
 /reason

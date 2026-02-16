@@ -30,11 +30,11 @@ Formal Verification (Security 模型)
 网页 interfaces
 网页
 控制 UI
-Dashboard
+仪表板
 WebChat
 TUI
 本页内容
-Tailscale (网关 dashboard)
+Tailscale (网关 仪表板)
 Modes
 Auth
 Config examples
@@ -47,13 +47,13 @@ Notes
 Tailscale prerequisites + limits
 Learn more
 ​
-Tailscale (网关 dashboard)
+Tailscale (网关 仪表板)
 OpenClaw can auto-配置 Tailscale
 Serve
 (tailnet) or
 Funnel
 (public)为the
-网关 dashboard与WebSocket port. This keeps the 网关 bound到loopback while
+网关 仪表板与WebSocket 端口. This keeps the 网关 bound到loopback while
 Tailscale provides HTTPS, routing,与(for Serve) identity headers.
 ​
 Modes
@@ -74,13 +74,13 @@ Auth
 Set
 网关.auth.mode
 to 控制 the handshake:
-token
+令牌
 (default when
-OPENCLAW_GATEWAY_TOKEN
+OPENCLAW_网关_令牌
 is set)
 password
 (shared secret via
-OPENCLAW_GATEWAY_PASSWORD
+OPENCLAW_网关_PASSWORD
 or config)
 When
 tailscale.mode = "serve"
@@ -89,7 +89,7 @@ and
 is
 true
 ,
-valid Serve proxy requests can authenticate via Tailscale identity headers
+valid Serve 代理服务器 requests can authenticate via Tailscale identity headers
 (
 tailscale-user-登录
 ) without supplying a token/password. OpenClaw verifies
@@ -159,11 +159,11 @@ auth
 {
 mode
 :
-"token"
+"令牌"
 ,
-token
+令牌
 :
-"your-token"
+"your-令牌"
 }
 ,
 }
@@ -214,7 +214,7 @@ password
 ,
 }
 Prefer
-OPENCLAW_GATEWAY_PASSWORD
+OPENCLAW_网关_PASSWORD
 over committing a password到disk.
 ​
 命令行界面 examples
@@ -254,20 +254,20 @@ if you want Tailnet-only.
 Serve/Funnel only expose the
 网关 控制 UI + WS
 . 节点 connect over
-the same 网关 WS endpoint, so Serve can work为node access.
+the same 网关 WS 端点, so Serve can work为节点 access.
 ​
 浏览器 控制 (remote 网关 + local 浏览器)
 If you run the 网关在one machine but want到drive a 浏览器在another machine,
 run a
-node host
+节点 host
 on the 浏览器 machine与keep both在the same tailnet.
-The 网关 will proxy 浏览器 actions到the node; no separate 控制 server或Serve URL needed.
-Avoid Funnel为浏览器 控制; treat node pairing like operator access.
+The 网关 will 代理服务器 浏览器 actions到the 节点; no separate 控制 server或Serve URL needed.
+Avoid Funnel为浏览器 控制; treat 节点 pairing like operator access.
 ​
 Tailscale prerequisites + limits
 Serve requires HTTPS enabled为your tailnet; the 命令行界面 prompts if it is missing.
 Serve injects Tailscale identity headers; Funnel does not.
-Funnel requires Tailscale v1.38.3+, MagicDNS, HTTPS enabled,与a funnel node attribute.
+Funnel requires Tailscale v1.38.3+, MagicDNS, HTTPS enabled,与a funnel 节点 attribute.
 Funnel only supports ports
 443
 ,

@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -66,10 +66,10 @@ Location Command
 网页 工具
 How it works
 Choosing a 搜索 provider
-Getting a Brave API key
+Getting a Brave API密钥
 Where到set the key (recommended)
 Using Perplexity (direct或via OpenRouter)
-Getting an OpenRouter API key
+Getting an OpenRouter API密钥
 Setting up Perplexity 搜索
 Available Perplexity 模型
 web_search
@@ -112,7 +112,7 @@ Choosing a 搜索 provider
 Provider
 Pros
 Cons
-API Key
+API密钥
 Brave
 (default)
 Fast, structured results, free tier
@@ -193,11 +193,11 @@ baseUrl
 ,
 }
 ​
-Getting a Brave API key
+Getting a Brave API密钥
 https://brave.com/搜索/api/
-In the dashboard, choose the
+In the 仪表板, choose the
 Data为搜索
-plan (not “Data为AI”)与generate an API key.
+plan (not “Data为AI”)与generate an API密钥.
 Run
 OpenClaw 配置 --section 网页
 to store the key在config (recommended),或set
@@ -231,11 +231,11 @@ Perplexity Sonar 模型 have built-in 网页 搜索 capabilities与return AI-syn
 answers使用citations. You can use them via OpenRouter (no credit card required - supports
 crypto/prepaid).
 ​
-Getting an OpenRouter API key
+Getting an OpenRouter API密钥
 Create an account at
 https://openrouter.ai/
 Add credits (supports crypto, prepaid,或credit card)
-Generate an API key在your account settings
+Generate an API密钥在your account settings
 ​
 Setting up Perplexity 搜索
 Copy
@@ -293,7 +293,7 @@ in the 网关
 environment. For a 网关 安装, put it in
 ~/.OpenClaw/.env
 .
-If no base URL is set, OpenClaw chooses a default based在the API key source:
+If no base URL is set, OpenClaw chooses a default based在the API密钥 source:
 PERPLEXITY_API_KEY
 or
 pplx-...
@@ -328,7 +328,7 @@ Requirements
 must not be
 false
 (default: enabled)
-API key为your chosen provider:
+API密钥为your chosen provider:
 Brave
 :
 BRAVE_API_KEY
@@ -583,7 +583,7 @@ maxChars
 Notes:
 web_fetch
 uses Readability (main-content extraction) first, then Firecrawl (if configured). If both fail, the 工具 returns an error.
-Firecrawl requests use bot-circumvention mode与cache results通过default.
+Firecrawl requests use bot-circumvention mode与缓存 results通过default.
 web_fetch
 sends a Chrome-like User-智能体 and
 Accept-Language

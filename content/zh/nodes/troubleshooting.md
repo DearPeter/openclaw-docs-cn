@@ -1,10 +1,10 @@
-# Node Troubleshooting - OpenClaw - 中文翻译
+# 节点 Troubleshooting - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
 K
 Media与devices
-Node Troubleshooting
+节点 Troubleshooting
 开始使用
 安装
 频道
@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -63,16 +63,16 @@ Talk Mode
 Voice Wake
 Location Command
 本页内容
-Node troubleshooting
+节点 troubleshooting
 Command ladder
 Foreground requirements
 Permissions matrix
 Pairing versus approvals
-Common node error codes
+Common 节点 error codes
 Fast recovery loop
 ​
-Node troubleshooting
-Use这page when a node is visible在status but node 工具 fail.
+节点 troubleshooting
+Use这page when a 节点 is visible在status but 节点 工具 fail.
 ​
 Command ladder
 Copy
@@ -90,7 +90,7 @@ OpenClaw
 频道
 status
 --probe
-Then run node specific checks:
+Then run 节点 specific checks:
 Copy
 OpenClaw
 节点
@@ -98,7 +98,7 @@ status
 OpenClaw
 节点
 describe
---node
+--节点
 <
 idOrNameOrI
 p
@@ -106,14 +106,14 @@ p
 OpenClaw
 approvals
 get
---node
+--节点
 <
 idOrNameOrI
 p
 >
 Healthy signals:
-Node is connected与paired为role
-node
+节点 is connected与paired为role
+节点
 .
 节点 describe
 includes the capability you are calling.
@@ -131,7 +131,7 @@ Copy
 OpenClaw
 节点
 describe
---node
+--节点
 <
 idOrNameOrI
 p
@@ -140,7 +140,7 @@ OpenClaw
 节点
 画布
 snapshot
---node
+--节点
 <
 idOrNameOrI
 p
@@ -149,14 +149,14 @@ OpenClaw
 logs
 --follow
 If you see
-NODE_BACKGROUND_UNAVAILABLE
-, bring the node app到the foreground与retry.
+节点_BACKGROUND_UNAVAILABLE
+, bring the 节点 app到the foreground与retry.
 ​
 Permissions matrix
 Capability
 iOS
 Android
-macOS node app
+macOS 节点 app
 Typical failure code
 camera.snap
 ,
@@ -184,9 +184,9 @@ SYSTEM_RUN_DENIED
 Pairing versus approvals
 These are different gates:
 Device pairing
-: can这node connect到the 网关?
+: can这节点 connect到the 网关?
 执行 approvals
-: can这node run a specific shell command?
+: can这节点 run a specific shell command?
 Quick checks:
 Copy
 OpenClaw
@@ -198,7 +198,7 @@ status
 OpenClaw
 approvals
 get
---node
+--节点
 <
 idOrNameOrI
 p
@@ -207,22 +207,22 @@ OpenClaw
 approvals
 allowlist
 add
---node
+--节点
 <
 idOrNameOrI
 p
 >
 "/usr/bin/uname"
-If pairing is missing, approve the node device first.
+If pairing is missing, approve the 节点 device first.
 If pairing is fine but
 system.run
 fails, fix 执行 approvals/allowlist.
 ​
-Common node error codes
-NODE_BACKGROUND_UNAVAILABLE
+Common 节点 error codes
+节点_BACKGROUND_UNAVAILABLE
 → app is backgrounded; bring it foreground.
 CAMERA_DISABLED
-→ camera toggle disabled在node settings.
+→ camera toggle disabled在节点 settings.
 *_PERMISSION_REQUIRED
 → OS permission missing/denied.
 LOCATION_DISABLED
@@ -244,7 +244,7 @@ status
 OpenClaw
 节点
 describe
---node
+--节点
 <
 idOrNameOrI
 p
@@ -252,7 +252,7 @@ p
 OpenClaw
 approvals
 get
---node
+--节点
 <
 idOrNameOrI
 p
@@ -262,7 +262,7 @@ logs
 --follow
 If still stuck:
 Re-approve device pairing.
-Re-open node app (foreground).
+Re-open 节点 app (foreground).
 Re-grant OS permissions.
 Recreate/adjust 执行 approval policy.
 Related:

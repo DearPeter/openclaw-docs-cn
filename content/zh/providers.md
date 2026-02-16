@@ -115,7 +115,7 @@ Transcription 提供者
 Deepgram (audio transcription)
 ​
 Community 工具
-Claude Max API Proxy
+Claude Max API 代理服务器
 - Use Claude Max/Pro subscription as an OpenAI-compatible API endpoint
 For the full provider catalog (xAI, Groq, Mistral, etc.)与advanced 配置,
 see

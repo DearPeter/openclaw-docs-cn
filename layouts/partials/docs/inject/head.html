@@ -1,0 +1,142 @@
+<!-- OpenClaw SEO 优化 -->
+<meta name="description" content="OpenClaw 中文文档 - 开源 AI 代理平台，支持 WhatsApp、Telegram、Discord、iMessage 等消息渠道，提供智能代理、工具调用、会话管理和多代理协作功能。">
+<meta name="keywords" content="OpenClaw, AI代理, 开源, 中文文档, 智能代理, 工具调用, 会话管理, 多代理系统">
+<meta name="author" content="OpenClaw Community">
+
+<!-- Open Graph -->
+<meta property="og:title" content="OpenClaw 中文文档">
+<meta property="og:description" content="开源 AI 代理平台，让您可以通过消息渠道与 AI 代理交互">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ .Site.BaseURL }}images/openclaw-og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenClaw 中文文档">
+<meta name="twitter:description" content="开源 AI 代理平台，让您可以通过消息渠道与 AI 代理交互">
+<meta name="twitter:image" content="{{ .Site.BaseURL }}images/openclaw-twitter-image.png">
+
+<!-- 网站验证（可选） -->
+<!-- <meta name="google-site-verification" content="..."> -->
+
+<!-- 性能优化 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="//github.com">
+
+<!-- 图标 -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+<link rel="mask-icon" href="{{ "safari-pinned-tab.svg" | relURL }}" color="#0366d6">
+<meta name="msapplication-TileColor" content="#0366d6">
+<meta name="theme-color" content="#0366d6">
+
+<!-- 结构化数据 -->
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "OpenClaw 中文文档",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "OpenClaw 是一个开源的 AI 代理平台，让您可以通过 WhatsApp、Telegram、Discord、iMessage 等消息渠道与 AI 代理交互。",
+  "publisher": {
+    "@type": "Organization",
+    "name": "OpenClaw Community",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}images/logo.png",
+      "width": 120,
+      "height": 60
+    },
+    "url": "https://github.com/openclaw"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ .Site.BaseURL }}search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "license": "https://github.com/openclaw/openclaw/blob/main/LICENSE"
+}
+</script>
+{{ else if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 150 }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "OpenClaw Community",
+    "url": "https://github.com/openclaw"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OpenClaw Community",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ .Site.BaseURL }}images/logo.png",
+      "width": 120,
+      "height": 60
+    }
+  },
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  "wordCount": "{{ .WordCount }}",
+  "license": "https://github.com/openclaw/openclaw/blob/main/LICENSE"
+}
+</script>
+{{ end }}
+
+<!-- 面包屑结构化数据 -->
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首页",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+
+<!-- 社交分享优化 -->
+<meta property="og:site_name" content="OpenClaw 中文文档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:updated_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{ if .IsPage }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:section" content="{{ with .Section }}{{ . }}{{ else }}文档{{ end }}">
+{{ end }}
+<meta property="og:see_also" content="https://github.com/openclaw/openclaw">
+
+<!-- Twitter 增强 -->
+<meta name="twitter:creator" content="@openclaw">
+<meta name="twitter:site" content="@openclaw">
+<meta name="twitter:label1" content="阅读时间">
+<meta name="twitter:data1" content="{{ .ReadingTime }}分钟">
+{{ if .IsPage }}
+<meta name="twitter:label2" content="字数">
+<meta name="twitter:data2" content="{{ .WordCount }}字">
+{{ end }}

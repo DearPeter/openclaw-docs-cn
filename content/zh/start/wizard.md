@@ -47,9 +47,9 @@ Copy
 OpenClaw
 onboard
 Fastest first chat: open the 控制 UI (no 频道 设置 needed). Run
-OpenClaw dashboard
+OpenClaw 仪表板
 and chat在the 浏览器. Docs:
-Dashboard
+仪表板
 .
 To reconfigure later:
 Copy
@@ -87,10 +87,10 @@ Advanced
 Advanced (full 控制)
 Local 网关 (loopback)
 工作空间 default (or existing 工作空间)
-网关 port
+网关 端口
 18789
 网关 auth
-Token
+令牌
 (auto‑generated, even在loopback)
 Tailscale exposure
 Off
@@ -103,14 +103,14 @@ What the 向导 configures
 Local mode (default)
 walks you through这些steps:
 模型/Auth
-— Anthropic API key (recommended), OpenAI,或Custom Provider
+— Anthropic API密钥 (recommended), OpenAI,或Custom Provider
 (OpenAI-compatible, Anthropic-compatible,或Unknown auto-detect). Pick a default 模型.
 工作空间
-— Location为agent files (default
+— Location为代理 files (default
 ~/.OpenClaw/工作空间
 ). Seeds 引导 files.
 网关
-— Port, bind address, auth mode, Tailscale exposure.
+— 端口, bind address, auth mode, Tailscale exposure.
 频道
 — WhatsApp, Telegram, Discord, Google Chat, Mattermost, Signal, BlueBubbles,或iMessage.
 Daemon
@@ -138,7 +138,7 @@ not
 Add another 智能体
 Use
 OpenClaw 智能体 add <name>
-来创建 a separate agent使用its own 工作空间,
+来创建 a separate 代理使用its own 工作空间,
 sessions,与auth profiles. 运行 without
 --工作空间
 launches the 向导.
@@ -165,7 +165,7 @@ Non-interactive flags:
 ​
 Full 参考
 For detailed step-by-step breakdowns, non-interactive scripting, Signal 设置,
-RPC API,与a full list的config fields the 向导 writes, see the
+远程过程调用 API,与a full list的config fields the 向导 writes, see the
 向导 参考
 .
 ​

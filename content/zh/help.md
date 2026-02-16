@@ -21,13 +21,13 @@ Troubleshooting
 FAQ
 Community
 OpenClaw Lore
-Environment与debugging
+Environment与调试
 Environment Variables
-Debugging
+调试
 Testing
 Scripts
-Node 运行时
-Node.js
+节点 运行时
+节点.js
 压缩 internals
 会话管理 Deep Dive
 Developer 设置
@@ -51,9 +51,9 @@ Start here
 网关 issues:
 网关 troubleshooting
 Logs:
-Logging
+日志记录
 and
-网关 logging
+网关 日志记录
 Repairs:
 Doctor
 If you’re looking为conceptual questions (not “something broke”):

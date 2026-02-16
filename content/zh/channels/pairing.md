@@ -48,8 +48,8 @@ Approve a sender
 Where the state lives
 2) Node device pairing (iOS/Android/macOS/headless 节点)
 Pair via Telegram (recommended为iOS)
-Approve a node device
-Node pairing state storage
+Approve a 节点 device
+节点 pairing state storage
 Notes
 Related docs
 ​
@@ -60,7 +60,7 @@ step.
 It is used在two places:
 DM pairing
 (who is allowed到talk到the bot)
-Node pairing
+节点 pairing
 (which devices/节点 are allowed到join the 网关 network)
 Security 上下文:
 Security
@@ -127,7 +127,7 @@ Treat这些as sensitive (they gate access到your assistant).
 节点 connect到the 网关 as
 devices
 with
-role: node
+role: 节点
 . The 网关
 creates a device pairing request那must be approved.
 ​
@@ -151,11 +151,11 @@ ws://...
 or
 wss://...
 )
-token
-: a short-lived pairing token
+令牌
+: a short-lived pairing 令牌
 Treat the 设置 code like a password while it is valid.
 ​
-Approve a node device
+Approve a 节点 device
 Copy
 OpenClaw
 devices
@@ -175,7 +175,7 @@ requestI
 d
 >
 ​
-Node pairing state storage
+节点 pairing state storage
 Stored under
 ~/.OpenClaw/devices/
 :
@@ -186,7 +186,7 @@ paired.JSON
 ​
 Notes
 The legacy
-node.pair.*
+节点.pair.*
 API (命令行界面:
 OpenClaw 节点 pending/approve
 ) is a

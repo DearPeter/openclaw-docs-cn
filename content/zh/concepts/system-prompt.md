@@ -1,4 +1,4 @@
-# System Prompt - OpenClaw - 中文翻译
+# 系统提示 - OpenClaw - 中文翻译
 OpenClaw
 首页
 英文
@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -50,7 +50,7 @@ Time handling
 Documentation
 ​
 系统提示
-OpenClaw builds a custom system prompt为every 智能体 run. The 提示词 is
+OpenClaw builds a custom 系统提示为every 智能体 run. The 提示词 is
 OpenClaw-owned
 and does not use the p-coding-智能体 default 提示词.
 The 提示词 is assembled通过OpenClaw与injected into each 智能体 run.
@@ -74,7 +74,7 @@ update.run
 智能体.defaults.工作空间
 ).
 Documentation
-: local path到OpenClaw docs (repo或npm package)与when到read them.
+: local path到OpenClaw docs (repo或npm 包)与when到read them.
 工作空间 Files (injected)
 : indicates 引导 files are included below.
 Sandbox
@@ -86,10 +86,10 @@ Reply Tags
 Heartbeats
 : heartbeat prompt与ack behavior.
 运行时
-: host, OS, node, 模型, repo root (when detected), thinking level (one line).
+: host, OS, 节点, 模型, repo root (when detected), thinking level (one line).
 Reasoning
 : current visibility level + /reasoning toggle hint.
-Safety guardrails在the system 提示词 are advisory. They guide 模型 behavior but do not enforce policy. Use 工具 policy, 执行 approvals, sandboxing,与channel allowlists为hard enforcement; operators can disable these通过design.
+Safety guardrails在the system 提示词 are advisory. They guide 模型 behavior but do not enforce policy. Use 工具 policy, 执行 approvals, sandboxing,与频道 allowlists为hard enforcement; operators can disable these通过design.
 ​
 提示词 modes
 OpenClaw can render smaller system prompts为sub-智能体. The 运行时 sets a
@@ -163,9 +163,9 @@ daily files are
 not
 injected automatically. They
 are accessed在demand via the
-memory_search
+记忆_search
 and
-memory_get
+记忆_get
 工具, so they
 do not count against the 上下文 window unless the 模型 explicitly reads them.
 Large files are truncated使用a marker. The max per-file size is controlled by
@@ -196,12 +196,12 @@ Time handling
 The system 提示词 includes a dedicated
 Current Date & Time
 section when the
-user timezone is known. To keep the 提示词 cache-stable, it now only includes
+user timezone is known. To keep the 提示词 缓存-stable, it now only includes
 the
 time zone
 (no dynamic clock或time format).
 Use
-session_status
+会话_status
 when the 智能体 needs the current time; the status card
 includes a timestamp line.
 配置 with:
@@ -248,14 +248,14 @@ section那points到the
 local OpenClaw docs directory (either
 docs/
 in the repo 工作空间或the bundled npm
-package docs)与also notes the public mirror, source repo, community Discord, and
+包 docs)与also notes the public mirror, source repo, community Discord, and
 ClawHub (
 https://clawhub.com
 )为技能 discovery. The 提示词 instructs the model到consult local docs first
 for OpenClaw behavior, commands, 配置,或架构,与to run
 OpenClaw status
 itself when possible (asking the user only when it lacks access).
-Agent循环
+代理循环
 上下文
 I
 [查看英文原版](https://docs.OpenClaw.ai/concepts/system-提示词)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*

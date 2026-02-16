@@ -51,10 +51,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -63,7 +63,7 @@ Voice Wake
 Location Command
 本页内容
 Firecrawl
-Get an API key
+Get an API密钥
 配置 Firecrawl
 Stealth / bot circumvention
 How web_fetch uses Firecrawl
@@ -77,8 +77,8 @@ web_fetch
 content extraction service那supports bot circumvention与caching, which helps
 with JS-heavy sites或pages那block plain HTTP fetches.
 ​
-Get an API key
-Create a Firecrawl account与generate an API key.
+Get an API密钥
+Create a Firecrawl account与generate an API密钥.
 Store it在config或set
 FIRECRAWL_API_KEY
 in the 网关 environment.
@@ -129,13 +129,13 @@ timeoutSeconds
 }
 Notes:
 firecrawl.enabled
-defaults到true when an API key is present.
+defaults到true when an API密钥 is present.
 maxAgeMs
 controls how old cached results can be (ms). Default is 2 days.
 ​
 Stealth / bot circumvention
 Firecrawl exposes a
-proxy mode
+代理服务器 mode
 parameter为bot circumvention (
 basic
 ,
@@ -144,11 +144,11 @@ stealth
 auto
 ).
 OpenClaw always uses
-proxy: "auto"
+代理服务器: "auto"
 plus
 storeInCache: true
 for Firecrawl requests.
-If proxy is omitted, Firecrawl defaults to
+If 代理服务器 is omitted, Firecrawl defaults to
 auto
 .
 auto

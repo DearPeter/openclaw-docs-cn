@@ -21,13 +21,13 @@ Troubleshooting
 FAQ
 Community
 OpenClaw Lore
-Environment与debugging
+Environment与调试
 Environment Variables
-Debugging
+调试
 Testing
 Scripts
-Node 运行时
-Node.js
+节点 运行时
+节点.js
 压缩 internals
 会话管理 Deep Dive
 Developer 设置
@@ -68,7 +68,7 @@ Quick start
 入门指南
 向导
 设置
-Dashboard (local 网关)
+仪表板 (local 网关)
 帮助
 Docs directory
 配置
@@ -87,12 +87,12 @@ Core concepts
 架构
 Features
 Network hub
-Agent运行时
-Agent工作空间
+代理运行时
+代理工作空间
 记忆
 智能体 loop
 流式传输 + 分块
-多Agent routing
+多代理 routing
 压缩
 会话
 会话 (alias)
@@ -100,7 +100,7 @@ Agent工作空间
 会话 工具
 队列
 Slash commands
-RPC adapters
+远程过程调用 adapters
 TypeBox schemas
 Timezone handling
 在线状态
@@ -139,9 +139,9 @@ Background 进程
 Health
 Heartbeat
 Doctor
-Logging
+日志记录
 Sandboxing
-Dashboard
+仪表板
 控制 UI
 Remote access
 Remote 网关 README
@@ -194,7 +194,7 @@ macOS 画布
 macOS child 进程
 macOS health
 macOS icon
-macOS logging
+macOS 日志记录
 macOS permissions
 macOS remote
 macOS signing

@@ -1,0 +1,473 @@
+{{ if .Site.Params.BookSearch }}
+<script src="{{ "flexsearch.min.js" | relURL }}"></script>
+<script src="{{ "elasticlunr.min.js" | relURL }}"></script>
+{{ end }}
+
+<!-- OpenClaw 自定义脚本 -->
+<script src="{{ "js/main.js" | relURL }}"></script>
+
+<!-- 主题切换按钮注入 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 只在没有主题切换按钮时添加
+    if (document.querySelector('.theme-toggle')) return;
+    
+    // 尝试在菜单栏中添加主题切换按钮
+    const menuContent = document.querySelector('.book-menu-content nav');
+    if (menuContent) {
+      // 创建主题切换容器
+      const themeContainer = document.createElement('div');
+      themeContainer.className = 'theme-toggle-container';
+      themeContainer.style.cssText = 'margin: 1rem 0; padding: 0.5rem; border-top: 1px solid var(--oc-gray-2); border-bottom: 1px solid var(--oc-gray-2);';
+      
+      const toggleLabel = document.createElement('div');
+      toggleLabel.className = 'theme-toggle-label';
+      toggleLabel.style.cssText = 'display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem; color: var(--oc-gray-7);';
+      toggleLabel.innerHTML = '<span>主题</span>';
+      
+      const toggle = document.createElement('button');
+      toggle.className = 'theme-toggle';
+      toggle.setAttribute('aria-label', '切换深色/浅色模式');
+      toggle.setAttribute('title', '点击切换深色/浅色模式');
+      
+      toggleLabel.appendChild(toggle);
+      themeContainer.appendChild(toggleLabel);
+      
+      // 插入到语言切换器之后或菜单末尾
+      const languages = menuContent.querySelector('.book-languages');
+      if (languages && languages.parentNode) {
+        languages.parentNode.insertBefore(themeContainer, languages.nextSibling);
+      } else {
+        menuContent.appendChild(themeContainer);
+      }
+      
+      // 初始化主题状态
+      const currentTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      toggle.setAttribute('data-theme', currentTheme);
+      
+      // 切换主题
+      toggle.addEventListener('click', () => {
+        const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        toggle.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
+  });
+</script>
+
+<!-- 字体大小调整控件 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 只在没有字体大小控件时添加
+    if (document.querySelector('.font-size-controls')) return;
+    
+    // 尝试在菜单栏中添加字体大小控件（放在主题切换下方）
+    const menuContent = document.querySelector('.book-menu-content nav');
+    if (menuContent) {
+      // 创建字体大小控件容器
+      const fontSizeContainer = document.createElement('div');
+      fontSizeContainer.className = 'font-size-container';
+      fontSizeContainer.style.cssText = 'margin: 1rem 0; padding: 0.5rem; border-top: 1px solid var(--oc-gray-2); border-bottom: 1px solid var(--oc-gray-2);';
+      
+      const fontSizeLabel = document.createElement('div');
+      fontSizeLabel.className = 'font-size-label';
+      fontSizeLabel.style.cssText = 'display: flex; align-items: center; justify-content: space-between; font-size: 0.875rem; color: var(--oc-gray-7); margin-bottom: 0.5rem;';
+      fontSizeLabel.innerHTML = '<span>字体大小</span>';
+      
+      const fontSizeControls = document.createElement('div');
+      fontSizeControls.className = 'font-size-controls';
+      
+      // 字体大小选项：小(80%)、中(100%)、大(120%)、超大(140%)
+      const sizes = [
+        { value: 80, label: '小', ariaLabel: '小号字体' },
+        { value: 100, label: '中', ariaLabel: '中号字体' },
+        { value: 120, label: '大', ariaLabel: '大号字体' },
+        { value: 140, label: '超大', ariaLabel: '超大号字体' }
+      ];
+      
+      sizes.forEach(size => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.size = size.value;
+        button.setAttribute('aria-label', size.ariaLabel);
+        button.setAttribute('title', `设置字体大小为${size.label}`);
+        
+        // 添加可访问的名称（屏幕阅读器）
+        const span = document.createElement('span');
+        span.className = 'sr-only';
+        span.textContent = size.label;
+        button.appendChild(span);
+        
+        fontSizeControls.appendChild(button);
+      });
+      
+      fontSizeContainer.appendChild(fontSizeLabel);
+      fontSizeContainer.appendChild(fontSizeControls);
+      
+      // 插入到主题切换之后，如果主题切换存在
+      const themeContainer = menuContent.querySelector('.theme-toggle-container');
+      if (themeContainer && themeContainer.parentNode) {
+        themeContainer.parentNode.insertBefore(fontSizeContainer, themeContainer.nextSibling);
+      } else {
+        // 如果没有主题切换，插入到语言切换器之后或菜单末尾
+        const languages = menuContent.querySelector('.book-languages');
+        if (languages && languages.parentNode) {
+          languages.parentNode.insertBefore(fontSizeContainer, languages.nextSibling);
+        } else {
+          menuContent.appendChild(fontSizeContainer);
+        }
+      }
+      
+      // 初始化字体大小状态
+      const fontSizeKey = 'font-size';
+      const defaultSize = 100; // 百分比
+      
+      // 获取保存的字体大小
+      let currentSize = parseInt(localStorage.getItem(fontSizeKey)) || defaultSize;
+      document.documentElement.style.fontSize = currentSize + '%';
+      
+      // 激活当前按钮
+      const buttons = fontSizeControls.querySelectorAll('button');
+      buttons.forEach(btn => {
+        const size = parseInt(btn.dataset.size);
+        if (size === currentSize) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.setAttribute('aria-pressed', 'false');
+        }
+        
+        // 添加点击事件
+        btn.addEventListener('click', () => {
+          currentSize = size;
+          document.documentElement.style.fontSize = currentSize + '%';
+          localStorage.setItem(fontSizeKey, currentSize);
+          
+          // 更新按钮状态
+          buttons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        });
+        
+        // 键盘导航支持
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
+          
+          // 箭头键导航
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = btn.nextElementSibling || buttons[0];
+            next.focus();
+          }
+          
+          if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = btn.previousElementSibling || buttons[buttons.length - 1];
+            prev.focus();
+          }
+        });
+      });
+      
+      // 添加键盘快捷键提示
+      const shortcutHint = document.createElement('div');
+      shortcutHint.className = 'font-size-shortcut';
+      shortcutHint.style.cssText = 'font-size: 0.75rem; color: var(--oc-gray-5); margin-top: 0.25rem;';
+      shortcutHint.innerHTML = '使用 <kbd>Ctrl</kbd>+<kbd>+</kbd>/<kbd>-</kbd> 调整';
+      fontSizeContainer.appendChild(shortcutHint);
+      
+      // 全局快捷键（Ctrl++ / Ctrl+-）
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '=')) {
+          e.preventDefault();
+          increaseFontSize();
+        }
+        
+        if ((e.ctrlKey || e.metaKey) && e.key === '-') {
+          e.preventDefault();
+          decreaseFontSize();
+        }
+      });
+      
+      function increaseFontSize() {
+        const sizes = [80, 100, 120, 140];
+        let currentIndex = sizes.indexOf(currentSize);
+        if (currentIndex < sizes.length - 1) {
+          const newSize = sizes[currentIndex + 1];
+          updateFontSize(newSize);
+        }
+      }
+      
+      function decreaseFontSize() {
+        const sizes = [80, 100, 120, 140];
+        let currentIndex = sizes.indexOf(currentSize);
+        if (currentIndex > 0) {
+          const newSize = sizes[currentIndex - 1];
+          updateFontSize(newSize);
+        }
+      }
+      
+      function updateFontSize(newSize) {
+        currentSize = newSize;
+        document.documentElement.style.fontSize = currentSize + '%';
+        localStorage.setItem(fontSizeKey, currentSize);
+        
+        // 更新按钮状态
+        buttons.forEach(btn => {
+          const size = parseInt(btn.dataset.size);
+          if (size === currentSize) {
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            btn.focus();
+          } else {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+          }
+        });
+      }
+    }
+  });
+</script>
+
+<!-- 页面反馈组件 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 避免重复初始化
+    if (document.querySelector('.feedback-fab')) return;
+    
+    // 创建反馈浮动按钮
+    const feedbackFab = document.createElement('button');
+    feedbackFab.className = 'feedback-fab';
+    feedbackFab.setAttribute('aria-label', '提供页面反馈');
+    feedbackFab.setAttribute('title', '点击提供页面反馈');
+    feedbackFab.innerHTML = '<span class="feedback-icon">💬</span>';
+    document.body.appendChild(feedbackFab);
+    
+    // 创建反馈模态框
+    const feedbackModal = document.createElement('div');
+    feedbackModal.className = 'feedback-modal';
+    feedbackModal.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-header">
+          <h3>页面反馈</h3>
+          <button class="close-btn" aria-label="关闭反馈窗口">×</button>
+        </div>
+        <div class="feedback-body">
+          <div class="rating-container">
+            <label class="rating-label" for="rating-stars">页面评分</label>
+            <div class="rating-stars" id="rating-stars" role="radiogroup" aria-label="选择1到5星">
+              <button class="star" type="button" role="radio" aria-label="1星" data-value="1" aria-checked="false">
+                <span class="star-icon">★</span>
+              </button>
+              <button class="star" type="button" role="radio" aria-label="2星" data-value="2" aria-checked="false">
+                <span class="star-icon">★</span>
+              </button>
+              <button class="star" type="button" role="radio" aria-label="3星" data-value="3" aria-checked="false">
+                <span class="star-icon">★</span>
+              </button>
+              <button class="star" type="button" role="radio" aria-label="4星" data-value="4" aria-checked="false">
+                <span class="star-icon">★</span>
+              </button>
+              <button class="star" type="button" role="radio" aria-label="5星" data-value="5" aria-checked="false">
+                <span class="star-icon">★</span>
+              </button>
+            </div>
+            <span class="rating-hint">点击选择评分</span>
+          </div>
+          
+          <div class="feedback-textarea-container">
+            <label for="feedback-text" class="rating-label">意见反馈（可选）</label>
+            <textarea 
+              id="feedback-text" 
+              class="feedback-textarea" 
+              placeholder="请提供您的宝贵意见，帮助我们改进文档..."
+              aria-label="意见反馈输入框"
+            ></textarea>
+          </div>
+        </div>
+        <div class="feedback-footer">
+          <button class="btn btn-secondary cancel-btn">取消</button>
+          <button class="btn btn-success submit-btn" disabled>提交反馈</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(feedbackModal);
+    
+    // 创建成功消息模态框（隐藏）
+    const successModal = document.createElement('div');
+    successModal.className = 'feedback-modal';
+    successModal.innerHTML = `
+      <div class="feedback-content">
+        <div class="feedback-success">
+          <div class="success-icon">✅</div>
+          <h3>感谢您的反馈！</h3>
+          <p>您的意见对我们非常重要，将帮助我们持续改进文档质量。</p>
+          <button class="btn btn-primary close-success-btn">关闭</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(successModal);
+    
+    // 获取元素引用
+    const stars = feedbackModal.querySelectorAll('.star');
+    const submitBtn = feedbackModal.querySelector('.submit-btn');
+    const cancelBtn = feedbackModal.querySelector('.cancel-btn');
+    const closeBtn = feedbackModal.querySelector('.close-btn');
+    const feedbackTextarea = feedbackModal.querySelector('#feedback-text');
+    const closeSuccessBtn = successModal.querySelector('.close-success-btn');
+    
+    let selectedRating = 0;
+    let feedbackText = '';
+    
+    // 打开模态框
+    feedbackFab.addEventListener('click', openFeedbackModal);
+    
+    // 关闭模态框
+    function closeFeedbackModal() {
+      feedbackModal.classList.remove('active');
+      feedbackFab.setAttribute('aria-expanded', 'false');
+      // 重置表单
+      setTimeout(() => {
+        stars.forEach(star => {
+          star.classList.remove('active');
+          star.setAttribute('aria-checked', 'false');
+        });
+        selectedRating = 0;
+        feedbackTextarea.value = '';
+        submitBtn.disabled = true;
+      }, 300);
+    }
+    
+    function openFeedbackModal() {
+      feedbackModal.classList.add('active');
+      feedbackFab.setAttribute('aria-expanded', 'true');
+      // 焦点移动到第一个星标
+      stars[0].focus();
+    }
+    
+    // 星标评分逻辑
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const value = parseInt(star.dataset.value);
+        selectedRating = value;
+        
+        // 更新星标状态
+        stars.forEach((s, index) => {
+          const starValue = index + 1;
+          if (starValue <= value) {
+            s.classList.add('active');
+            s.setAttribute('aria-checked', 'true');
+          } else {
+            s.classList.remove('active');
+            s.setAttribute('aria-checked', 'false');
+          }
+        });
+        
+        // 启用提交按钮
+        submitBtn.disabled = false;
+      });
+      
+      // 键盘导航
+      star.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          star.click();
+        }
+        
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = star.nextElementSibling || stars[0];
+          next.focus();
+        }
+        
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const prev = star.previousElementSibling || stars[stars.length - 1];
+          prev.focus();
+        }
+      });
+    });
+    
+    // 文本输入变化
+    feedbackTextarea.addEventListener('input', () => {
+      feedbackText = feedbackTextarea.value.trim();
+    });
+    
+    // 提交反馈
+    submitBtn.addEventListener('click', () => {
+      // 在实际应用中，这里应该发送数据到服务器
+      // 现在模拟提交成功
+      console.log('反馈提交:', {
+        rating: selectedRating,
+        feedback: feedbackText,
+        page: window.location.href,
+        timestamp: new Date().toISOString()
+      });
+      
+      // 显示成功消息
+      feedbackModal.classList.remove('active');
+      setTimeout(() => {
+        successModal.classList.add('active');
+        closeSuccessBtn.focus();
+      }, 300);
+    });
+    
+    // 取消按钮
+    cancelBtn.addEventListener('click', closeFeedbackModal);
+    closeBtn.addEventListener('click', closeFeedbackModal);
+    
+    // 关闭成功消息
+    closeSuccessBtn.addEventListener('click', () => {
+      successModal.classList.remove('active');
+      feedbackFab.focus();
+    });
+    
+    // 点击模态框外部关闭
+    feedbackModal.addEventListener('click', (e) => {
+      if (e.target === feedbackModal) {
+        closeFeedbackModal();
+      }
+    });
+    
+    successModal.addEventListener('click', (e) => {
+      if (e.target === successModal) {
+        successModal.classList.remove('active');
+        feedbackFab.focus();
+      }
+    });
+    
+    // ESC键关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (feedbackModal.classList.contains('active')) {
+          closeFeedbackModal();
+        }
+        if (successModal.classList.contains('active')) {
+          successModal.classList.remove('active');
+          feedbackFab.focus();
+        }
+      }
+    });
+    
+    // 无障碍访问：屏幕阅读器通知
+    const ariaNotice = document.createElement('div');
+    ariaNotice.className = 'feedback-aria-notice';
+    ariaNotice.setAttribute('role', 'status');
+    ariaNotice.setAttribute('aria-live', 'polite');
+    ariaNotice.setAttribute('aria-atomic', 'true');
+    document.body.appendChild(ariaNotice);
+  });
+</script>
+
+<!-- 搜索功能增强 -->
+<script src="{{ "js/search-enhancements.js" | relURL }}"></script>

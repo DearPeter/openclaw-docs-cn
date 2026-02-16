@@ -51,10 +51,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -66,7 +66,7 @@ Page Not Found
 We couldn't find the page. Maybe you were looking为one的these pages below?
 Polls
 Signal
-Agent循环
+代理循环
 I
 [查看英文原版](https://docs.OpenClaw.ai/工具/消息)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

@@ -17,11 +17,11 @@ K
 帮助
 基础概念
 网关架构
-Agent运行时
-Agent循环
+代理运行时
+代理循环
 系统提示
 上下文
-Agent工作空间
+代理工作空间
 OAuth
 引导启动
 引导启动
@@ -32,8 +32,8 @@ OAuth
 会话 工具
 记忆
 压缩
-多Agent
-多Agent路由
+多代理
+多代理路由
 在线状态
 消息与传递
 消息
@@ -60,7 +60,7 @@ What /上下文 actually reports
 everything OpenClaw sends到the model为a run
 . It is bounded通过the 模型’s
 上下文 window
-(token limit).
+(令牌 limit).
 Beginner mental 模型:
 System 提示词
 (OpenClaw-built): rules, 工具, 技能 list, time/运行时,与injected 工作空间 files.
@@ -86,7 +86,7 @@ Quick start (inspect 上下文)
 另请参阅:
 Slash commands
 ,
-Token use & costs
+令牌 use & costs
 ,
 压缩
 .
@@ -257,9 +257,9 @@ System 提示词 (estimate)
 = computed在the fly when no run report exists (or when 运行 via a 命令行界面 backend那doesn’t generate the report).
 Either way, it reports sizes与top contributors; it does
 not
-dump the full system prompt或tool schemas.
+dump the full 系统提示或工具 schemas.
 系统提示
-Agent工作空间
+代理工作空间
 I
 [查看英文原版](https://docs.OpenClaw.ai/concepts/上下文)\n\n---\n\n*本文档已通过AI翻译完成，如有疑问请参考[英文原版](https://docs.OpenClaw.ai)。*
 *本文档已通过专业AI翻译完成，技术术语保持一致性。如有疑问请参考[英文原版](https://docs.openclaw.ai)。*

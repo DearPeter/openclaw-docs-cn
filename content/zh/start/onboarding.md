@@ -63,11 +63,11 @@ credentials must exist在the 网关 host.
 skip 设置与leave the app unconfigured.
 网关 auth tip:
 The 向导 now generates a
-token
+令牌
 even为loopback, so local WS clients must authenticate.
 If you disable auth, any local 进程 can connect; use那only在fully trusted machines.
 Use a
-token
+令牌
 for multi‑machine access或non‑loopback binds.
 5
 Permissions

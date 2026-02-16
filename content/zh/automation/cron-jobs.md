@@ -52,10 +52,10 @@ Automation Troubleshooting
 Webhooks
 Gmail PubSub
 Polls
-Auth Monitoring
+Auth 监控
 Media与devices
 节点
-Node Troubleshooting
+节点 Troubleshooting
 Image与Media Support
 Audio与Voice Notes
 Camera Capture
@@ -80,7 +80,7 @@ Announce delivery flow
 Model与thinking overrides
 Delivery (频道 + target)
 Telegram delivery targets (topics / forum threads)
-JSON schema为tool calls
+JSON schema为工具 calls
 cron.add params
 cron.update params
 cron.run与cron.remove params
@@ -103,7 +103,7 @@ the right time,与can optionally deliver output back到a chat.
 If you want
 “run这every morning”
 or
-“poke the agent在20 minutes”
+“poke the 代理在20 minutes”
 ,
 cron is the mechanism.
 Troubleshooting:
@@ -197,7 +197,7 @@ Slack
 ​
 工具-call equivalents (网关 cron 工具)
 For the canonical JSON shapes与examples, see
-JSON schema为tool calls
+JSON schema为工具 calls
 .
 ​
 Where cron jobs are stored
@@ -328,7 +328,7 @@ delivery.mode = "announce"
 delivery.mode
 (isolated-only) chooses what happens:
 announce
-: deliver a summary到the target channel与post a brief summary到the main 会话.
+: deliver a summary到the target 频道与post a brief summary到the main 会话.
 none
 : internal only (no delivery, no main-会话 summary).
 wakeMode
@@ -499,7 +499,7 @@ form (see below).
 ​
 Telegram delivery targets (topics / forum threads)
 Telegram supports forum topics via
-message_thread_id
+消息_线程_id
 . For cron delivery, you can encode
 the topic/thread into the
 to
@@ -517,10 +517,10 @@ Telegram:group:...
 are also accepted:
 Telegram:group:-1001234567890:topic:123
 ​
-JSON schema为tool calls
+JSON schema为工具 calls
 Use这些shapes when calling 网关
 cron.*
-工具 directly (智能体 工具 calls或RPC).
+工具 directly (智能体 工具 calls或远程过程调用).
 命令行界面 flags accept human durations like
 20m
 , but 工具 calls should use an ISO 8601 string
@@ -913,7 +913,7 @@ WhatsApp
 "+15551234567"
 智能体 selection (multi-智能体 setups):
 Copy
-# Pin a job到agent "ops" (falls back到default if那agent is missing)
+# Pin a job到代理 "ops" (falls back到default if那代理 is missing)
 OpenClaw
 cron
 add
@@ -927,7 +927,7 @@ isolated
 "Check ops 队列"
 --智能体
 ops
-# Switch或clear the agent在an existing job
+# Switch或clear the 代理在an existing job
 OpenClaw
 cron
 edit
